@@ -82,6 +82,9 @@ deploy:
   repo: git@github.com:Ain-Crad/Ain-Crad.github.io.git
   branch: master
 
+plugins:
+  hexo-math
+
 math:
   engine: 'mathjax' # or 'katex'
   mathjax:
