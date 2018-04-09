@@ -81,3 +81,10 @@ deploy:
   type: git
   repo: git@github.com:Ain-Crad/Ain-Crad.github.io.git
   branch: master
+
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    # src: custom_mathjax_source
+    config:
+      # MathJax config
