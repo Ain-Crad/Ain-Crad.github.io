@@ -1,5 +1,11 @@
 ---
 title: 新起点
+date : 2018-04-08 23:12:00
+categories:
+- Diary
+tags:
+- 生活
+- 总结
 ---
 搭一个自己的独立博客的想法记得从去年暑假就有了，可是当时还是小菜鸡蛋，什么都不懂＝＝，现在孵成了小菜鸡，才终于磨磨蹭蹭的搭了起来，内心还是十分激动的(〃∇〃)，其间走了很多弯路，陷进了很多坑，感谢[CrazyMilk的这篇博文](http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/#more)以及[陶司机](http://logqtainia.github.io/)的指导，感谢女票的支持，也感谢自己没有就此放弃ヽ(•̀ω•́ )ゝ。
 
