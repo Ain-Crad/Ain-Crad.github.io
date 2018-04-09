@@ -16,7 +16,7 @@ mathjax的安装配置和使用大家可以参照[Steven's space的博文](http:
 markdown本身的特殊符号和Latex中的符号会出现冲突。
 - 下划线_在markdown中是斜体，但是Latex中下划线是下标的意思，所以这里会冲突。
 - 双斜线\\在markdown中会被转义为\，所以Latex的\\换行功能也会不正常。
-- 乘法符号*在markdown中是粗体＝＝(就是在这被卡了)，所以Latex在写两个数相乘时不能写
+- 乘法符号*在markdown中是粗体＝＝(就是在这被卡了)，所以Latex在写两个数相乘时不能直接写
 ```
 $a*b$
 ```
@@ -28,3 +28,14 @@ $a*b$
 ```
 $a\*b$
 ```
+下标写成
+```
+$a\_1$
+```
+换行写成
+```
+$\\\\$
+```
+解决，散花。
+
+更多解决方法可以参考[hexo下mathjax的转义问题](http://shomy.top/2016/10/22/hexo-markdown-mathjax/)
