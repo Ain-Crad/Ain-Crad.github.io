@@ -89,10 +89,11 @@ ssr start
 ssr stop
 ```
 ## 可能的问题
-检查自己是否可以登录google、youtube、twitter等网站，若依旧不能，依次打开ubuntu系统设置->网络->网络代理，设置如下
+- 检查自己是否可以登录google、youtube、twitter等网站，若依旧不能，依次打开ubuntu系统设置->网络->网络代理，设置如下
 ![p8](/p8.png)
-推荐使用chrome浏览器+proxy SwitchyOmega插件(可离线安装)
+- 推荐使用chrome浏览器+proxy SwitchyOmega插件(可离线安装)
 proxy SwitchyOmega配置如下
 ![p９](/p9.png)
+- 有可能申请的服务器的ip被墙，可通过在线网站验证是否可以ping通，若确认ip被墙，在你的vultr账户中申请更换即可(更换服务器位置，或只更换ip地址)
 
 ps:服务器端配置好后，windows、android端只需下载shadowsocksR软件并进行简单配置即可使用
