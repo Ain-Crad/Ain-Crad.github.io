@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="vultr服务器搭建," />
 
 
 
@@ -79,16 +79,28 @@
 
 
 
-<meta name="description" content="Aincrad&apos;s blog 记录生活、思考和进步">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Aincrad&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="前一段时间在陶司机学长的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。觉得靠免费的VPN软件不是长久之计，于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。 注册vultr账号">
+<meta name="keywords" content="vultr服务器搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu下vultr服务器搭建">
+<meta property="og:url" content="http://yoursite.com/2018/04/13/vultr/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="Aincrad&apos;s blog 记录生活、思考和进步">
+<meta property="og:description" content="前一段时间在陶司机学长的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。觉得靠免费的VPN软件不是长久之计，于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。 注册vultr账号">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p1.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p２.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p３.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p４.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p５.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p6.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p7.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p8.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p9.png">
+<meta property="og:updated_time" content="2018-04-13T13:26:04.973Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Aincrad&#39;s blog">
-<meta name="twitter:description" content="Aincrad&apos;s blog 记录生活、思考和进步">
+<meta name="twitter:title" content="ubuntu下vultr服务器搭建">
+<meta name="twitter:description" content="前一段时间在陶司机学长的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。觉得靠免费的VPN软件不是长久之计，于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。 注册vultr账号">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/13/vultr/p1.png">
 
 
 
@@ -118,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/13/vultr/"/>
 
 
 
 
 
-  <title>Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>ubuntu下vultr服务器搭建 | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -143,8 +155,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-  page-home">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,9 +288,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -309,9 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/13/vultr/" itemprop="url">ubuntu下vultr服务器搭建</a></h1>
+          <h1 class="post-title" itemprop="name headline">ubuntu下vultr服务器搭建</h1>
         
 
         <div class="post-meta">
@@ -383,9 +392,7 @@
       
 
       
-        
-          
-            <p>前一段时间在<a href="http://logqtainia.github.io/" target="_blank" rel="noopener">陶司机学长</a>的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。<br>觉得靠免费的VPN软件不是长久之计，于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。</p>
+        <p>前一段时间在<a href="http://logqtainia.github.io/" target="_blank" rel="noopener">陶司机学长</a>的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。<br>觉得靠免费的VPN软件不是长久之计，于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。</p>
 <h2 id="注册vultr账号"><a href="#注册vultr账号" class="headerlink" title="注册vultr账号"></a>注册vultr账号</h2><p><a href="https://www.vultr.com/" target="_blank" rel="noopener">链接</a></p>
 <h2 id="创建vultr主机"><a href="#创建vultr主机" class="headerlink" title="创建vultr主机"></a>创建vultr主机</h2><p>点击右上角的蓝色加号，创建新的vultr主机<br><img src="/2018/04/13/vultr/p1.png" alt="p1"><br>服务器位置选择，推荐选择新加坡，或者美国的服务器(日本服务器已基本被墙)<br><img src="/2018/04/13/vultr/p２.png" alt="p2"><br>服务器端系统选择，选择ubuntu<br><img src="/2018/04/13/vultr/p３.png" alt="p3"><br>服务器配置选择,配置越高价格也越高，一般最便宜的2.5刀/month就够用了，但是很难抢到，，，于是就选5刀/month的了。<br><img src="/2018/04/13/vultr/p４.png" alt="p3"><br>其它的选项不需要填写，点击支付就ok(ps:从2017年10月开始支持支付宝支付！！)<br><img src="/2018/04/13/vultr/p５.png" alt="p5"><br>接下来等待主机部署完成即可。</p>
 <h2 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h2><p>服务器端，也就是你刚刚创建的那台主机。<br>点击主机右侧”…”展开菜单，选择”Server Details”可以看到这台主机的一些信息。包括这台主机的IP地址(IP Address)、用户名(Username)、密码(Password)等，这些信息下面需要用到。<br><img src="/2018/04/13/vultr/p6.png" alt="p6"><br>打开终端，使用ssh远程登录到主机<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@你的主机IP地址</span><br></pre></td></tr></table></figure></p>
@@ -398,8 +405,6 @@
 <h2 id="可能的问题"><a href="#可能的问题" class="headerlink" title="可能的问题"></a>可能的问题</h2><p>检查自己是否可以登录google、youtube、twitter等网站，若依旧不能，依次打开ubuntu系统设置-&gt;网络-&gt;网络代理，设置如下<br><img src="/2018/04/13/vultr/p8.png" alt="p8"><br>推荐使用chrome浏览器+proxy SwitchyOmega插件(可离线安装)<br>proxy SwitchyOmega配置如下<br><img src="/2018/04/13/vultr/p9.png" alt="p９"></p>
 <p>ps:服务器端配置好后，windows、android端只需下载shadowsocksR软件并进行简单配置即可使用</p>
 
-          
-        
       
     </div>
     
@@ -414,316 +419,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/hexo-mathjax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aincrad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/user2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aincrad's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/09/hexo-mathjax/" itemprop="url">hexo中mathjax使用坑点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T15:29:50+08:00">
-                2018-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mathjax/" itemprop="url" rel="index">
-                    <span itemprop="name">mathjax</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/vultr服务器搭建/" rel="tag"># vultr服务器搭建</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻<br>这里记录一下在mathjax里踩到的坑。<br>mathjax的安装配置和使用大家可以参照<a href="http://stevenshi.me/2017/06/26/hexo-insert-formula/" target="_blank" rel="noopener">Steven’s space的博文</a>，不再赘述了。</p>
-<h2 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h2><p>markdown本身的特殊符号和Latex中的符号会出现冲突。</p>
-<ul>
-<li>下划线_在markdown中是斜体，但是Latex中下划线是下标的意思，所以这里会冲突。</li>
-<li>双斜线\在markdown中会被转义为\，所以Latex的\换行功能也会不正常。</li>
-<li>乘法符号*在markdown中是粗体＝＝(就是在这被卡了)，所以Latex在写两个数相乘时不能直接写<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a*b$</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>以上情况都会导致无法在mathjax中渲染出来。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>手动转义：<br>比如需要在公式中写乘法*可以写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a\*b$</span><br></pre></td></tr></table></figure></p>
-<p>下标写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a\_1$</span><br></pre></td></tr></table></figure></p>
-<p>换行写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\\\\$</span><br></pre></td></tr></table></figure></p>
-<p>解决，散花。</p>
-<p>更多解决方法可以参考<a href="http://shomy.top/2016/10/22/hexo-markdown-mathjax/" target="_blank" rel="noopener">hexo下mathjax的转义问题</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/hdu-2050/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aincrad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/user2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aincrad's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/09/hdu-2050/" itemprop="url">hdu-2050-线切割平面问题-思维+简单dp</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T10:42:54+08:00">
-                2018-04-09
-              </time>
+              <a href="/2018/04/09/hexo-mathjax/" rel="next" title="hexo中mathjax使用坑点">
+                <i class="fa fa-chevron-left"></i> hexo中mathjax使用坑点
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>和队友一块做这道题，队友们几乎秒杀，而自己想了很久也没有推导出一个清晰的规律…看了<a href="https://blog.csdn.net/vinacky/article/details/8958326" target="_blank" rel="noopener">vinacky的线切割平面问题</a>这篇博客后才豁然开朗,个人感觉一道很好的思维题。<br>题目描述就是求n条折线可以分割平面的最大数目。比如，一条折线可以将平面分成两部分，两条折线最多可以将平面分成七部分。<br><img src="/2018/04/09/hdu-2050/line.jpg" alt="example"></p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2050" target="_blank" rel="noopener">hdu-2050</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="直线切割平面"><a href="#直线切割平面" class="headerlink" title="直线切割平面"></a>直线切割平面</h3><p>首先考虑向平面添加直线(简化思维)后的平面分割情况：<br>(下面假设新添加的直线与已有直线均相交)<br>当平面上没有直线时，有一个平面；<br>有１条直线时，没有节点，多出１部分，共２个平面；<br>有２条直线时，多了１个节点，多出２部分，共４个平面；<br>有３条直线时，多了２个节点，多出３部分，共７个平面；<br>…<br>至此我们便可以直观的思考一下是什么导致了平面的分割，当添加第i条直线时，因为我们总可以使它和前i-1条直线都相交，所以共有i-1个交点，也即第i条直线被分割成了i段，对每一段来说，它都将自己所在的平面重新分割为两部分。所以添加了第i条直线后，最多可以重新多分割出i个平面。<br>所以原始的１个平面,<br>添加１条直线后平面数为1+1;<br>添加２条直线后平面数为1+1+2;<br>添加３条直线后平面数为1+1+2+3；<br>…<br>得到添加n条直线后的平面数公式：$res = 1 + 1 + 2 + 3 + … + n = \frac{n(n+1)}{2} + 1$</p>
-<h3 id="V型折线切割平面"><a href="#V型折线切割平面" class="headerlink" title="V型折线切割平面"></a>V型折线切割平面</h3><p>V型折线切割平面可以看做同时添加了两条相交直线，但是稍有不同的是，这两条直线的交点有一侧平面合并了,因此而产生的影响是减少了两个平面。</p>
-<p>我们仍然可以保证添加的折线与其他折线均有交点，所以添加第i条V型折线时，增加的平面数为：$2*i - 1 + 2*i - 2$<br>得到添加n条折线后的平面数公式：$$res = 1 + (1 + 2) + (3 + 4) + … + (2n - 1 + 2n) = \frac{2n(2n + 1)}{2} + 1 - 2n$$<br>于是可以公式直接求解，也可以dp求解</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>下面给出dp求解代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e4</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> dp[maxn] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> c;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;c);</span><br><span class="line">	<span class="keyword">while</span>(c--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++)&#123;</span><br><span class="line">			dp[i] = dp[i - <span class="number">1</span>] + ２*i - <span class="number">1</span> + <span class="number">2</span>*i - <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, dp[n]);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -733,156 +458,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/new start point/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aincrad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/user2.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aincrad's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/08/new start point/" itemprop="url">新起点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T23:12:00+08:00">
-                2018-04-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index">
-                    <span itemprop="name">Diary</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>搭一个自己的独立博客的想法记得从去年暑假就有了，可是当时还是小菜鸡蛋，什么都不懂＝＝，现在孵成了小菜鸡，才终于磨磨蹭蹭的搭了起来，内心还是十分激动的(〃∇〃)，其间走了很多弯路，陷进了很多坑，感谢<a href="http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/#more" target="_blank" rel="noopener">CrazyMilk的这篇博文</a>以及<a href="http://logqtainia.github.io/" target="_blank" rel="noopener">陶司机</a>的指导，感谢女票的支持，也感谢自己没有就此放弃ヽ(•̀ω•́ )ゝ。</p>
-<h3 id="为什么要搭建独立博客"><a href="#为什么要搭建独立博客" class="headerlink" title="为什么要搭建独立博客"></a>为什么要搭建独立博客</h3><p>最近３个月左右，一直在跟着校内的ACM队进行训练，最初是想提高自己的编程能力，后来发现自己无论对这个团队还是对这项竞赛都有一种由衷的向往，虽然最后因为个人能力以及年级太高(大三下)等方面因素没能成为正式队员，但还是想至少沿这个方向走下去。从接触ACM开始后就发现，优秀的人实在太多太多，自己会的实在太少太少，都不敢以菜鸡自称，简直是菜鸡蛋2333<br>所以想在这里记录自己的成长，努力成为一个优秀的人。我也十分赞同CrazyMilk博主提到的Litten（Yilia主题的制作者）说的那句话：有了一个独立博客，就有了属于自己的一片田，开始默默耕作。<br>等到自己不再是小菜鸡的那一天再回头来看那个曾经的小菜鸡的成长历程，应该会别有一番滋味吧，哈哈，期待。</p>
-<p>Hello, Aincrad.</p>
-<p>要去耕作了(ง •̀_•́)ง，告辞。</p>
-<p>Ps:博客框架采用hexo,及其经典的next主题。</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -890,6 +470,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -910,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -991,6 +584,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册vultr账号"><span class="nav-number">1.</span> <span class="nav-text">注册vultr账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建vultr主机"><span class="nav-number">2.</span> <span class="nav-text">创建vultr主机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端配置"><span class="nav-number">3.</span> <span class="nav-text">服务器端配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端配置"><span class="nav-number">4.</span> <span class="nav-text">客户端配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能的问题"><span class="nav-number">5.</span> <span class="nav-text">可能的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1131,6 +740,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

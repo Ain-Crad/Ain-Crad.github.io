@@ -14,13 +14,13 @@ tags:
 点击右上角的蓝色加号，创建新的vultr主机
 ![p1](/p1.png)
 服务器位置选择，推荐选择新加坡，或者美国的服务器(日本服务器已基本被墙)
-![p2](/p２.png)
+![p2](/p2.png)
 服务器端系统选择，选择ubuntu
-![p3](/p３.png)
+![p3](/p3.png)
 服务器配置选择,配置越高价格也越高，一般最便宜的2.5刀/month就够用了，但是很难抢到，，，于是就选5刀/month的了。
-![p3](/p４.png)
+![p4](/p4.png)
 其它的选项不需要填写，点击支付就ok(ps:从2017年10月开始支持支付宝支付！！)
-![p5](/p５.png)
+![p5](/p5.png)
 接下来等待主机部署完成即可。
 ## 服务器端配置
 服务器端，也就是你刚刚创建的那台主机。
@@ -57,7 +57,7 @@ $ sudo chmod 766 /usr/local/bin/ssr
 $ ssr install
 $ ssr config
 ```
-配置和服务器端保持一直即可,下面给出示例，只需配置server、server_port、password、method、protocol、obfs这几项
+配置和服务器端保持一直即可，下面给出示例，只需配置server、server_port、password、method、protocol、obfs这几项
 ```
     "server": "11.22.33.44",
     "server_ipv6": "::",
