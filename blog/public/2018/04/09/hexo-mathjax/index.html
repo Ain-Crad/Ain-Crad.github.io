@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:description" content="刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻这里记录一下在mathjax里踩到的坑。mathjax的安装配置和使用大家可以参照Steven’s space的博文，不再赘述了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T08:29:47.000Z">
+<meta property="og:updated_time" content="2018-04-09T08:37:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo中mathjax使用坑点">
 <meta name="twitter:description" content="刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻这里记录一下在mathjax里踩到的坑。mathjax的安装配置和使用大家可以参照Steven’s space的博文，不再赘述了。">
@@ -387,11 +387,15 @@
 <ul>
 <li>下划线_在markdown中是斜体，但是Latex中下划线是下标的意思，所以这里会冲突。</li>
 <li>双斜线\在markdown中会被转义为\，所以Latex的\换行功能也会不正常。</li>
-<li>乘法符号*在markdown中是粗体＝＝(就是在这被卡了)，所以Latex在写两个数相乘时不能写<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a*b$</span><br></pre></td></tr></table></figure>
+<li>乘法符号*在markdown中是粗体＝＝(就是在这被卡了)，所以Latex在写两个数相乘时不能直接写<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a*b$</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>以上情况都会导致无法在mathjax中渲染出来。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>手动转义：<br>比如需要在公式中写乘法*可以写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a\*b$</span><br></pre></td></tr></table></figure></p>
+<p>下标写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a\_1$</span><br></pre></td></tr></table></figure></p>
+<p>换行写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\\\\$</span><br></pre></td></tr></table></figure></p>
+<p>解决，散花。</p>
+<p>更多解决方法可以参考<a href="http://shomy.top/2016/10/22/hexo-markdown-mathjax/" target="_blank" rel="noopener">hexo下mathjax的转义问题</a></p>
 
       
     </div>
