@@ -89,7 +89,8 @@ ssr start
 ssr stop
 ```
 ## 可能的问题
-1. 检查自己是否可以登录google、youtube、twitter等网站，若依旧不能，依次打开ubuntu系统设置->网络->网络代理，设置如下
+检查自己是否可以登录google、youtube、twitter等网站，若依旧不能可尝试用以下方法解决。
+1. 依次打开ubuntu系统设置->网络->网络代理，设置如下
 ![p8](/p8.png)
 2. 推荐使用chrome浏览器+proxy SwitchyOmega插件(可离线安装)
 proxy SwitchyOmega配置如下
