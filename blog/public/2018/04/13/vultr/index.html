@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p7.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p8.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p9.png">
-<meta property="og:updated_time" content="2018-04-13T13:44:07.067Z">
+<meta property="og:updated_time" content="2018-04-22T09:00:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu下vultr服务器搭建">
 <meta name="twitter:description" content="前一段时间在陶司机学长的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。觉得靠免费的VPN软件不是长久之计，于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。 注册vultr账号">
@@ -403,11 +403,11 @@
 <p>配置和服务器端保持一直即可，下面给出示例，只需配置server、server_port、password、method、protocol、obfs这几项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&quot;server&quot;: &quot;11.22.33.44&quot;,</span><br><span class="line">&quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line">&quot;server_port&quot;: 1234,</span><br><span class="line">&quot;local_address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">&quot;local_port&quot;: 1080,</span><br><span class="line"></span><br><span class="line">&quot;password&quot;: &quot;123456789&quot;,</span><br><span class="line">&quot;method&quot;: &quot;none&quot;,</span><br><span class="line">&quot;protocol&quot;: &quot;auth_chain_a&quot;,</span><br><span class="line">&quot;protocol_param&quot;: &quot;&quot;,</span><br><span class="line">&quot;obfs&quot;: &quot;plain&quot;,</span><br><span class="line">&quot;obfs_param&quot;: &quot;&quot;,</span><br><span class="line">&quot;speed_limit_per_con&quot;: 0,</span><br><span class="line">&quot;speed_limit_per_user&quot;: 0,</span><br><span class="line"></span><br><span class="line">&quot;additional_ports&quot; : &#123;&#125;, // only works under multi-user mode</span><br><span class="line">&quot;additional_ports_only&quot; : false, // only works under multi-user mode</span><br><span class="line">&quot;timeout&quot;: 120,</span><br><span class="line">&quot;udp_timeout&quot;: 60,</span><br><span class="line">&quot;dns_ipv6&quot;: false,</span><br><span class="line">&quot;connect_verbose_info&quot;: 0,</span><br><span class="line">&quot;redirect&quot;: &quot;&quot;,</span><br></pre></td></tr></table></figure></p>
 <p>以后若想修改配置，在终端中输入ssh config即可(服务器端也要对应修改)，还有打开和关闭命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssr start</span><br><span class="line">ssr stop</span><br></pre></td></tr></table></figure></p>
 <h2 id="可能的问题"><a href="#可能的问题" class="headerlink" title="可能的问题"></a>可能的问题</h2><p>检查自己是否可以登录google、youtube、twitter等网站，若依旧不能可尝试用以下方法解决。</p>
-<ol>
+<ul>
 <li>依次打开ubuntu系统设置-&gt;网络-&gt;网络代理，设置如下<br><img src="/2018/04/13/vultr/p8.png" alt="p8"></li>
 <li>推荐使用chrome浏览器+proxy SwitchyOmega插件(可离线安装)<br>proxy SwitchyOmega配置如下<br><img src="/2018/04/13/vultr/p9.png" alt="p９"></li>
 <li>有可能申请的服务器的ip被墙，可通过在线网站验证是否可以ping通，若确认ip被墙，在你的vultr账户中申请更换即可(更换服务器位置，或只更换ip地址)</li>
-</ol>
+</ul>
 <p>ps:服务器端配置好后，windows、android端只需下载shadowsocksR软件并进行简单配置即可使用</p>
 
       
@@ -448,6 +448,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/hdu-2481/" rel="prev" title="hdu-2481">
+                hdu-2481 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -528,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
