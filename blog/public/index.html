@@ -292,6 +292,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/hdu-4856-Tunnels/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aincrad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/user2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aincrad's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/16/hdu-4856-Tunnels/" itemprop="url">hdu 4856 Tunnels-BFS+状态压缩DP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T14:03:19+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近的几场训练赛做题的时候发现自己对搜索类、动态规划类的题有些恐惧，导致这些类型的题比赛时基本做不出来。仔细想了一下，是自己的递归部分理解的就不够透彻，导致搜索写不出来，动态规划就更无从下手。之前也找了很多递归理解的文章去看，也做了一些递归的题，但是效果不佳。意识到网上的资料对于递归的理解一般会拿经典的斐波那契数列或汉诺塔来举例，这对于递归的理解确实是有帮助的，但是对于锻炼搜索思维的效果不是太有效，于是决定先恶补一部分搜索类的题。<br>这道题是准备西安邀请赛时打的模拟赛做到的题，知识点主要用到了BFS和状态压缩DP，可以当做旅行商问题来做，但是最后不返回起点。由于自己DP比较差，所以搞懂这道题还是花了挺长时间。状态压缩DP部分的实现代码参考大白。</p>
+<p>Ps：在最后会贴几个自己觉得看到的对递归和动态规划理解比较有帮助的文章链接。</p>
+<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4856" target="_blank" rel="noopener">hdu-4856-Tunnels</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>一张城市网格图，城市中有m条快速通道，可以从图中任意位置出发，求访问完所有快速通道所用的最少时间，忽略在快速通道内的时间。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为在快速通道内的时间是不计的所以只要到达了一个快速通道的入口就相当于访问完了这一条通道，所以可以构造一张$m×m$的邻接表，其中$d[i][j]$表示从第$i$个通道的出口到第$j$个通道的入口的距离，这一部分直接用BFS就能实现，接下来就可以用旅行商问题的解法求解不重复的访问完所有通道所用的时间。<br>有两个与旅行商问题不同需要注意的地方：<br><strong>最后不返回起点</strong><br><strong>起点位置任意，也就是可以将任意一个通道的入口作为起点</strong><br>解决方法详见代码。</p>
+<p>##代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">char</span> mp[maxn][maxn];</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; P;</span><br><span class="line">P in[maxm];</span><br><span class="line">P out[maxm];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> d[maxn][maxn];</span><br><span class="line"><span class="keyword">int</span> sx, sy;</span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dis[maxm][maxm];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1</span> &lt;&lt;  maxm][maxm];</span><br><span class="line"></span><br><span class="line"><span class="comment">//状态压缩DP</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dpsolve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> S = <span class="number">0</span>; S &lt; <span class="number">1</span> &lt;&lt; m; S++)&#123;</span><br><span class="line">        fill(dp[S], dp[S] + m, inf);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        dp[(<span class="number">1</span> &lt;&lt; m) - <span class="number">1</span>][i] = <span class="number">0</span>;<span class="comment">//因为起点未定，所以终点在任意一个通道都可以</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> S = (<span class="number">1</span> &lt;&lt; m) - <span class="number">2</span>; S &gt;= <span class="number">0</span>; S--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; m; v++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; m; u++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!(S &gt;&gt; u &amp; <span class="number">1</span>))&#123;</span><br><span class="line">                    dp[S][v] = min(dp[S][v], dp[S | <span class="number">1</span> &lt;&lt; u][u] + dis[v][u]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> res = inf;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        res = min(res, dp[<span class="number">1</span> &lt;&lt; i][i]);<span class="comment">//判断以不同通道为起点的情况下，哪种用时最短</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(res == inf) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//bfs搜索确定两两通道之间最小距离</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> sx, <span class="keyword">int</span> sy)</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;P&gt; que;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">            d[i][j] = inf;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    d[sx][sy] = <span class="number">0</span>;</span><br><span class="line">    que.push(P(sx, sy));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        P p = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> nx = p.first + dx[i];</span><br><span class="line">            <span class="keyword">int</span> ny = p.second + dy[i];</span><br><span class="line">            <span class="keyword">if</span>(nx &gt;= <span class="number">0</span> &amp;&amp; nx &lt; n &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; ny &lt; n &amp;&amp; mp[nx][ny] != <span class="string">'#'</span> &amp;&amp; d[nx][ny] == inf)&#123;</span><br><span class="line"></span><br><span class="line">                d[nx][ny] = d[p.first][p.second] + <span class="number">1</span>;</span><br><span class="line">                que.push(P(nx, ny));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">        freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// ONLINE_JUDGE</span></span></span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m))&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>, mp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;in[i].first, &amp;in[i].second, &amp;out[i].first, &amp;out[i].second);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//构建邻接表</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            bfs(out[i].first - <span class="number">1</span>, out[i].second - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i == j) dis[i][j] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">else</span> dis[i][j] = d[in[j].first - <span class="number">1</span>][in[j].second - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        dpsolve();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于递归、动态规划理解的文章链接"><a href="#关于递归、动态规划理解的文章链接" class="headerlink" title="关于递归、动态规划理解的文章链接"></a>关于递归、动态规划理解的文章链接</h2><p><a href="https://blog.csdn.net/vagrxie/article/details/8470798" target="_blank" rel="noopener">写递归函数的正确思维方法</a><br><a href="https://chenqx.github.io/2014/09/29/Algorithm-Recursive-Programming/" target="_blank" rel="noopener">递归算法详解</a><br><a href="https://blog.csdn.net/StruggleShu/article/details/51051140" target="_blank" rel="noopener">怎么更好地终极理解递归算法</a><br><a href="https://blog.csdn.net/qq_34773981/article/details/79225588" target="_blank" rel="noopener">如何有效地理解程序中的递归</a></p>
+<p><a href="http://www.importnew.com/27323.html" target="_blank" rel="noopener">一道题看清动态规划的前世今生（一）</a><br><a href="http://www.importnew.com/27444.html" target="_blank" rel="noopener">一道题看清动态规划的前世今生（二）</a></p>
+<p>最后对这些文章的博主表示感谢！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/14/quick-matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1512,7 +1662,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1534,7 +1684,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

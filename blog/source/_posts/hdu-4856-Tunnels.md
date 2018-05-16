@@ -106,7 +106,7 @@ int main(){
         for(int i = 0; i < m; i++){
             scanf("%d%d%d%d", &in[i].first, &in[i].second, &out[i].first, &out[i].second);
         }
-		//构建邻接表
+        //构建邻接表
         for(int i = 0; i < m; i++){
             bfs(out[i].first - 1, out[i].second - 1);
             for(int j = 0; j < m; j++){
