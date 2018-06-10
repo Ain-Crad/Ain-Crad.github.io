@@ -18,5 +18,10 @@ tags:
     ![邱小雁](/moon1.jpg)
     ![邱小雁](/together1.jpg)
 </figure>
+
 　　周五要回学校了，女票早上发消息说她准备来找我，我骗女票说我是9:45的飞机，我已经走了（其实是11:45的飞机，那时候大概7:40左右我刚醒），本来我以为傻女票不会相信，没想到她直接哭着给我打电话问我“你干嘛啊”，天啊，心都要化了。可能是之前和她说机场有点远不想让她送我，所以她才相信我真的走了吧。
 　　我爱你，傻女票。
+<figure class="half">
+    <img src="{{site.url}}/blog/source/_posts/My-little-angel/moon1.jpg">
+    <img src="{{site.url}}/blog/source/_posts/My-little-angel/together1.jpg">
+</figure>
