@@ -2,7 +2,7 @@
 title: hexo中mathjax使用坑点
 date: 2018-04-09 15:29:50
 categories:
-- mathjax
+- 技术杂文
 tags:
 - mathjax
 - hexo插入数学公式
