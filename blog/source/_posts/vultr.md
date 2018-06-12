@@ -2,7 +2,7 @@
 title: ubuntu下vultr服务器搭建
 date: 2018-04-13 19:09:32
 categories:
-- 技术杂文
+- Messy article
 tags:
 - vultr服务器搭建
 ---
