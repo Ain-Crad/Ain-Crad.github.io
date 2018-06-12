@@ -14,6 +14,7 @@ mathjax的安装配置和使用大家可以参照[Steven's space的博文](http:
 
 ## 坑点
 markdown本身的特殊符号和Latex中的符号会出现冲突。
+<!-- more -->
 - 下划线\_在markdown中是斜体，但是Latex中下划线是下标的意思，所以这里会冲突。
 - 双斜线\\\\在markdown中会被转义为\，所以Latex的\\\\换行功能也会不正常。
 - 乘法符号\*在markdown中是粗体＝＝(就是在这被卡了)，所以Latex在写两个数相乘时不能直接写

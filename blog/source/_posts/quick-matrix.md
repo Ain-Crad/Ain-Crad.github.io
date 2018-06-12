@@ -22,6 +22,7 @@ ll mod_pow(ll x, ll n, ll mod){
 }
 ```
 ## 矩阵快速幂
+<!-- more -->
 ``` C++
 struct Ma
 {

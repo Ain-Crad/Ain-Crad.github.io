@@ -10,6 +10,7 @@ tags:
 [参考链接](https://www.zybuluo.com/lychee123/note/731591)
 
 ## 基于区间和的线段树区间更新模板
+<!-- more -->
 ```C++
 struct SegTree{
     int vl, vr;
