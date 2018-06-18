@@ -85,7 +85,7 @@ $ ssr config
     "redirect": "",
 
 ```
-以后若想修改配置，在终端中输入ssh config即可(服务器端也要对应修改)，还有打开和关闭命令
+以后若想修改配置，在终端中输入ssr config即可(服务器端也要对应修改)，还有打开和关闭命令
 ```
 ssr start
 ssr stop
