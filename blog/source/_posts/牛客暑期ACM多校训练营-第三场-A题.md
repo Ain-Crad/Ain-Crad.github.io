@@ -68,8 +68,7 @@ int v[maxn];
 short d[maxn][maxn][maxn][maxn][maxn];
 int n;
 int Pm, Am, Cm, Mm;
-int used[maxn];
-vector<int> vec;
+int used[maxn];//记录路径
 
 int main(){
     //ios::sync_with_stdio(false);
@@ -112,7 +111,7 @@ int main(){
             }
         }
     }
-    
+    //记录路径部分
     for(int i = n - 1; i >= 0; i--){
         if(d[i + 1][Pm][Am][Cm][Mm] != d[i][Pm][Am][Cm][Mm]){
             used[i] = 1;
@@ -138,3 +137,28 @@ int main(){
     return 0;
 }
 ```
+## 坑点
+数据d的类型要是short类型，int类型会爆内存，char类型会数据溢出．
+
+## 背包记录路径问题总结
+###　方法一核心代码
+``` C++
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j <= W; j++){
+            if(j < w[i]){
+                d[i + 1][j] = d[i][j];
+            }
+            else{
+                d[i + 1][j] = max(d[i][j], d[i][j - w[i]] + v[i]);
+            }
+        }
+    }
+
+    for(int i = n - 1; i >= 0; i--){
+        if(d[i + 1][W]!= d[i][W]){
+            used[i] = 1;
+            W -= w[i];
+        }
+    }
+```
+###　方法二核心代码
