@@ -141,7 +141,7 @@ int main(){
 数据d的类型要是short类型，int类型会爆内存，char类型会数据溢出．
 
 ## 背包记录路径问题总结
-###　方法一核心代码
+### 方法一核心代码
 ``` C++
     for(int i = 0; i < n; i++){
         for(int j = 0; j <= W; j++){
@@ -155,10 +155,31 @@ int main(){
     }
 
     for(int i = n - 1; i >= 0; i--){
-        if(d[i + 1][W]!= d[i][W]){
+        if(d[i + 1][W] != d[i][W]){
             used[i] = 1;
             W -= w[i];
         }
     }
 ```
-###　方法二核心代码
+### 方法二核心代码
+``` C++
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j <= W; j++){
+            d[i + 1][j] = d[i][j];
+            if(j >= w[i]){
+                int tmp = d[i][j - w[i]] + v[i];
+                if(tmp > d[i + 1][j]){
+                    d[i + 1][j] = tmp;
+                    path[i][j] = 1;
+                }
+            }
+        }
+    }
+
+    for(int i = n - 1; i >= 0; i--){
+        if(path[i][W] == 1){
+            used[i] = 1;
+            W -= w[i];
+        }
+    }
+```
