@@ -19,7 +19,6 @@ There are N candidate groups each composed of pi physics experts, ai algorithm e
 Eddy is still busy in studying Physics. You come to help him to figure out which groups should be invited such that they doesn't exceed the constraint and will bring the most knowledge points in total.
 
 输入描述:
-
 The first line contains a positive integer N indicating the number of candidate groups.
 Each of following N lines contains five space-separated integer pi, ai, ci, mi, gi indicating that i-th team consists of pi physics experts, ai algorithm experts, ci coding experts, mi math experts, and will bring gi knowledge points.
 The last line contains four space-separated integer P, A, C, M indicating the maximum possible number of physics experts, algorithm experts, coding experts, and math experts, respectively.
@@ -27,14 +26,12 @@ The last line contains four space-separated integer P, A, C, M indicating the ma
  1 ≤ N ≤ 36
  0 ≤ pi,ai,ci,mi,gi ≤ 36
  0 ≤ P, A, C, M ≤ 36
-
 输出描述:
 
 The first line should contain a non-negative integer K indicating the number of invited groups.
 The second line should contain K space-separated integer indicating the index of invited groups(groups are indexed from 0).
 
 You can output index in any order as long as each index appears at most once. If there are multiple way to reach the most total knowledge points, you can output any one of them. If none of the groups will be invited, you could either output one line or output a blank line in the second line.
-
 示例1:
 
 输入:
@@ -52,7 +49,6 @@ You can output index in any order as long as each index appears at most once. If
 1
 2 1 1 0 31
 1 0 2 1
-
 输出：
 0
 
