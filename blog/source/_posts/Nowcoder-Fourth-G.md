@@ -84,8 +84,7 @@ int main(){
         int rem = n - m;//剩余数的个数
         int i;
         for(i = cnt - 1; i >= 0; i--){
-            int res = rem - 
-            d[i].second;
+            int res = rem - d[i].second;
             if(res <= 0){
                 flag = 1;
                 break;
