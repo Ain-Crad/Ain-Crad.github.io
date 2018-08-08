@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="逆向思维," />
+  <meta name="keywords" content="字符串," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一道逆向思维的好题,比赛的时候没有做出来,赛后补题的时候按原来的思路写出来了,然而代码超时了= =,阅读了别人的代码后发现自己想复杂了,从逆向来考虑感觉非常巧妙,思路也很顺畅.从正向考虑反而要顾及很多情况,可能就是因为考虑的太多代码冗余就TLE了. 链接Nowcoder-Fourth-G 题目描述The mode of an integer sequence is the value that a">
-<meta name="keywords" content="逆向思维">
+<meta name="description" content="继续填坑٩(•̤̀ᵕ•̤́๑)，这次是stringstream的内容，最初是看到它可以把字符串直接输出成int类型，惊了，但是一直不是很懂。在网上查了很多资料，才终于差不多理解。stringstream是C++提供的一个字符串流，和cin，cout输入输出流类似，只不过它不是从从键盘或文件输入，也不是输出到屏幕或文件中，而是接受一个对象的输入，或把缓存区的内容输出到一个对象中。具体可以用在类型转换">
+<meta name="keywords" content="字符串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="牛客暑期ACM多校训练营(第四场)G题-Maxinum Mode-思维+map">
-<meta property="og:url" content="http://yoursite.com/2018/07/29/Nowcoder-Fourth-G/index.html">
+<meta property="og:title" content="stringstream-类型转换&amp;&amp;字符分割">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/stringstream/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="一道逆向思维的好题,比赛的时候没有做出来,赛后补题的时候按原来的思路写出来了,然而代码超时了= =,阅读了别人的代码后发现自己想复杂了,从逆向来考虑感觉非常巧妙,思路也很顺畅.从正向考虑反而要顾及很多情况,可能就是因为考虑的太多代码冗余就TLE了. 链接Nowcoder-Fourth-G 题目描述The mode of an integer sequence is the value that a">
+<meta property="og:description" content="继续填坑٩(•̤̀ᵕ•̤́๑)，这次是stringstream的内容，最初是看到它可以把字符串直接输出成int类型，惊了，但是一直不是很懂。在网上查了很多资料，才终于差不多理解。stringstream是C++提供的一个字符串流，和cin，cout输入输出流类似，只不过它不是从从键盘或文件输入，也不是输出到屏幕或文件中，而是接受一个对象的输入，或把缓存区的内容输出到一个对象中。具体可以用在类型转换">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-30T01:01:36.821Z">
+<meta property="og:updated_time" content="2018-08-08T15:41:39.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="牛客暑期ACM多校训练营(第四场)G题-Maxinum Mode-思维+map">
-<meta name="twitter:description" content="一道逆向思维的好题,比赛的时候没有做出来,赛后补题的时候按原来的思路写出来了,然而代码超时了= =,阅读了别人的代码后发现自己想复杂了,从逆向来考虑感觉非常巧妙,思路也很顺畅.从正向考虑反而要顾及很多情况,可能就是因为考虑的太多代码冗余就TLE了. 链接Nowcoder-Fourth-G 题目描述The mode of an integer sequence is the value that a">
+<meta name="twitter:title" content="stringstream-类型转换&amp;&amp;字符分割">
+<meta name="twitter:description" content="继续填坑٩(•̤̀ᵕ•̤́๑)，这次是stringstream的内容，最初是看到它可以把字符串直接输出成int类型，惊了，但是一直不是很懂。在网上查了很多资料，才终于差不多理解。stringstream是C++提供的一个字符串流，和cin，cout输入输出流类似，只不过它不是从从键盘或文件输入，也不是输出到屏幕或文件中，而是接受一个对象的输入，或把缓存区的内容输出到一个对象中。具体可以用在类型转换">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/29/Nowcoder-Fourth-G/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/08/stringstream/"/>
 
 
 
 
 
-  <title>牛客暑期ACM多校训练营(第四场)G题-Maxinum Mode-思维+map | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>stringstream-类型转换&&字符分割 | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/Nowcoder-Fourth-G/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/stringstream/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Aincrad">
@@ -310,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">牛客暑期ACM多校训练营(第四场)G题-Maxinum Mode-思维+map</h1>
+          <h1 class="post-title" itemprop="name headline">stringstream-类型转换&&字符分割</h1>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T20:06:46+08:00">
-                2018-07-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T22:07:28+08:00">
+                2018-08-08
               </time>
             
 
@@ -382,11 +382,13 @@
       
 
       
-        <p>一道逆向思维的好题,比赛的时候没有做出来,赛后补题的时候按原来的思路写出来了,然而代码超时了= =,阅读了别人的代码后发现自己想复杂了,从逆向来考虑感觉非常巧妙,思路也很顺畅.从正向考虑反而要顾及很多情况,可能就是因为考虑的太多代码冗余就TLE了.</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.nowcoder.com/acm/contest/142/G" target="_blank" rel="noopener">Nowcoder-Fourth-G</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>The mode of an integer sequence is the value that appears most often. Chiaki has n integers a1,a2,…,an. She woud like to delete exactly m of them such that: the rest integers have only one mode and the mode is maximum.<br><a id="more"></a><br>输入描述:<br>There are multiple test cases. The first line of input contains an integer T, indicating the number of test cases. For each test case:<br>The first line contains two integers n and m (1 ≤ n ≤ 105, 0 ≤ m &lt; n) – the length of the sequence and the number of integers to delete.<br>The second line contains n integers a1, a2, …, an (1 ≤ ai ≤ 109) denoting the sequence.<br>It is guaranteed that the sum of all n does not exceed 106.<br>输出描述:<br>For each test case, output an integer denoting the only maximum mode, or -1 if Chiaki cannot achieve it.<br>输入:<br>5<br>5 0<br>2 2 3 3 4<br>5 1<br>2 2 3 3 4<br>5 2<br>2 2 3 3 4<br>5 3<br>2 2 3 3 4<br>5 4<br>2 2 3 3 4<br>输出:<br>-1<br>3<br>3<br>3<br>4</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>题目大意是给定n个数,从这n个数中删掉m个数,使得出现次数最多的数只有一个且要求尽量大.求解这个出现次数最多的数.<br>思路:<br>map存数据及数据个数, 按键值从大到小排(实际上map会按键值从小到大自动排列,那么就从后往前判断就好了).然后不考虑删除数的情况而是考虑剩余数(逆向思维)的情况,首先判断剩余数的个数是否小于等于最大值的个数,若满足则最终的结果就是最大值;若不满足则把剩余的数进行分配,看是否可以在满足min(d[max] - 1,d[i])的分配条件下将剩余的数分配完(其中d[i]表示第i个数的个数,用d[max]表示了最大的数的个数),如果可以分配完则最终结果就是最大值.若最大值不能满足上述情况则考虑次大值,以此类推,若全都不满足则无解,输出-1.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; P;</span><br><span class="line">P d[maxn];</span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">//cin.tie(0);</span></span><br><span class="line">    <span class="comment">//cout.tie(0);</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">        freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        mp.clear();</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;tmp);</span><br><span class="line">            mp[tmp]++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x : mp)&#123;</span><br><span class="line">            d[cnt].first = x.first;</span><br><span class="line">            d[cnt].second = x.second;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> rem = n - m;<span class="comment">//剩余数的个数</span></span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">for</span>(i = cnt - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">int</span> res = rem - d[i].second;</span><br><span class="line">            <span class="keyword">if</span>(res &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cnt; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j == i) <span class="keyword">continue</span>;</span><br><span class="line">                res -= min(d[i].second - <span class="number">1</span>, d[j].second);</span><br><span class="line">                <span class="keyword">if</span>(res &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">                    flag = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, d[i].first);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>继续填坑٩(•̤̀ᵕ•̤́๑)，这次是stringstream的内容，最初是看到它可以把字符串直接输出成int类型，惊了，但是一直不是很懂。在网上查了很多资料，才终于差不多理解。stringstream是C++提供的一个字符串流，和cin，cout输入输出流类似，只不过它不是从从键盘或文件输入，也不是输出到屏幕或文件中，而是接受一个对象的输入，或把缓存区的内容输出到一个对象中。具体可以用在类型转换和字符分割中。</p>
+<h2 id="基本方法-操作"><a href="#基本方法-操作" class="headerlink" title="基本方法(操作)"></a>基本方法(操作)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">clear()－用来清空流标志(输入，输出标志)</span><br><span class="line">str()－获得当前流中的内容</span><br><span class="line">str(<span class="string">"content"</span>)－设置流的内容（或清空流的内容）</span><br><span class="line"><span class="keyword">operator</span> &lt;&lt;－添加内容到<span class="built_in">stringstream</span>对象</span><br><span class="line"><span class="keyword">operator</span> &gt;&gt;－从<span class="built_in">stringstream</span>中输出内容</span><br></pre></td></tr></table></figure>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line"><span class="comment">//int型转换为字符串类型</span></span><br><span class="line">ss &lt;&lt; a;　<span class="comment">//将a输入流中（输入模式）</span></span><br><span class="line">ss &gt;&gt; s;　<span class="comment">//将流中的数值输出到字符串s中（输出模式）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串类型转换为int型</span></span><br><span class="line">ss &lt;&lt; s;　<span class="comment">//将字符串输入到流中</span></span><br><span class="line">ss &gt;&gt; a;　<span class="comment">//将流中的字符串输出到int型变量a中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//注意：如果做多次数据转换须调用clear()和str("")来清空输入输出标志和内容</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line">ss &lt;&lt; <span class="string">"123"</span>;</span><br><span class="line">ss &gt;&gt; a;</span><br><span class="line">ss.clear();</span><br><span class="line">ss.str(<span class="string">""</span>);</span><br><span class="line">ss &lt;&lt; <span class="string">"456"</span>;</span><br><span class="line">ss &gt;&gt; b;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"a:"</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"b:"</span> &lt;&lt; b &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"ss:"</span> &lt;&lt; ss.str() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果,不加clear()和str("");</span></span><br><span class="line">a:<span class="number">123</span></span><br><span class="line">b:<span class="number">0</span></span><br><span class="line">ss:<span class="number">123</span></span><br><span class="line"><span class="comment">//原因：不加clear()和str("")，流处于输出模式无法接收新内容"456"且未被清空，所以ss仍为"123"，又由于缓存区的内容已输出到a中，所以b中无内容。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果，加clear()但不加str("");</span></span><br><span class="line">a:<span class="number">123</span></span><br><span class="line">b:<span class="number">456</span></span><br><span class="line">ss:<span class="number">123456</span></span><br><span class="line"><span class="comment">//原因：加入clear()清空模式，可以接收新内容"456"，所以ss:123456。缓存区依次缓存"123"，"456"并分别输出到a, b，所以a:123, b:456</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果，加clear()和str("");</span></span><br><span class="line">a:<span class="number">123</span></span><br><span class="line">b:<span class="number">456</span></span><br><span class="line">ss:<span class="number">456</span></span><br><span class="line"><span class="comment">//原因：clear()清空模式，str("")清空ss对象的内容。</span></span><br></pre></td></tr></table></figure>
+<h3 id="支持char-的输入和输出"><a href="#支持char-的输入和输出" class="headerlink" title="支持char*的输入和输出"></a>支持char*的输入和输出</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch[<span class="number">20</span>];</span><br><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line">ss &lt;&lt; <span class="number">2333</span>;</span><br><span class="line">ss &gt;&gt; ch; <span class="comment">//直接将数输出到ch字符数组中</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符分割"><a href="#字符分割" class="headerlink" title="字符分割"></a>字符分割</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">stringstream</span> <span class="title">ss</span><span class="params">(<span class="string">"hello hi hey"</span>)</span></span>;</span><br><span class="line"><span class="built_in">string</span> word;</span><br><span class="line"><span class="keyword">while</span>(ss &gt;&gt; word)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; word &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line">hello</span><br><span class="line">hi</span><br><span class="line">hey</span><br></pre></td></tr></table></figure>
+<p>##三种给stringstream对象赋初值的方式<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">stringstream</span> <span class="title">ss</span><span class="params">(<span class="string">"123"</span>)</span></span>; <span class="comment">//创建的时候赋初值</span></span><br><span class="line">ss.str(<span class="string">"123"</span>); <span class="comment">//str()函数赋值</span></span><br><span class="line">ss &lt;&lt; <span class="string">"123"</span>; <span class="comment">//操作符"&lt;&lt;"添加内容（需注意当前模式）</span></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -403,7 +405,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/逆向思维/" rel="tag"># 逆向思维</a>
+            <a href="/tags/字符串/" rel="tag"># 字符串</a>
           
         </div>
       
@@ -416,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/26/Nowcoder-Third-A/" rel="next" title="牛客暑期ACM多校训练营(第三场)A题-PACM Team-多维01背包+记录路径">
-                <i class="fa fa-chevron-left"></i> 牛客暑期ACM多校训练营(第三场)A题-PACM Team-多维01背包+记录路径
+              <a href="/2018/08/07/STL-cmp/" rel="next" title="STL中自定义比较函数和重载运算符总结">
+                <i class="fa fa-chevron-left"></i> STL中自定义比较函数和重载运算符总结
               </a>
             
           </div>
@@ -425,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/31/Codeforces-498Div3-C/" rel="prev" title="Codeforces-#498Div3-C-前&&后缀和">
-                Codeforces-#498Div3-C-前&&后缀和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -580,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本方法-操作"><span class="nav-number">1.</span> <span class="nav-text">基本方法(操作)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">2.1.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持char-的输入和输出"><span class="nav-number">2.2.</span> <span class="nav-text">支持char*的输入和输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符分割"><span class="nav-number">2.3.</span> <span class="nav-text">字符分割</span></a></li></ol></li></ol></div>
             
 
           </div>

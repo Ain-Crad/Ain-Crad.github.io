@@ -7,13 +7,14 @@ tags:
 - 字符串
 ---
 继续填坑٩(•̤̀ᵕ•̤́๑)，这次是stringstream的内容，最初是看到它可以把字符串直接输出成int类型，惊了，但是一直不是很懂。在网上查了很多资料，才终于差不多理解。stringstream是C++提供的一个字符串流，和cin，cout输入输出流类似，只不过它不是从从键盘或文件输入，也不是输出到屏幕或文件中，而是接受一个对象的输入，或把缓存区的内容输出到一个对象中。具体可以用在类型转换和字符分割中。
+<!-- more -->
 ## 基本方法(操作)
 ```C++
 clear()－用来清空流标志(输入，输出标志)
 str()－获得当前流中的内容
 str("content")－设置流的内容（或清空流的内容）
 operator <<－添加内容到stringstream对象
-operator >>－从stringstream中输出内容
+operator >>－从stringstream流缓存区中输出内容
 ```
 ## 应用
 ### 类型转换
@@ -81,7 +82,7 @@ hi
 hey
 
 ```
-##三种给stringstream对象赋初值的方式
+## 三种给stringstream对象赋初值的方式
 ```C++
 stringstream ss("123"); //创建的时候赋初值
 ss.str("123"); //str()函数赋值
