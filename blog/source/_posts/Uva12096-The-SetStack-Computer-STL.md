@@ -8,9 +8,9 @@ tags:
 - STL
 ---
 最近在看刘汝佳老师的《算法竞赛入门经典（第2版）》，收获很大，很多知识都在上面查漏补缺，书上有一道STL的例题，用到了stack、vector、map、set，而且“化集合为ID”的思路很好，记录一下。
+<!-- more -->
 ## 链接
 [Uva12096-The SetStack Computer](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3248)
-<!-- more -->
 ## 题目描述
 有一个专门为了集合运算而设计的“集合栈”计算机。该机器有一个初始为空的栈，并且支持一下操作。
 - PUSH:空集“{}”入栈。

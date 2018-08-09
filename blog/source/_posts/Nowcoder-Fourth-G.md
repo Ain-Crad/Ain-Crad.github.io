@@ -7,11 +7,11 @@ tags:
 - 逆向思维
 ---
 一道逆向思维的好题,比赛的时候没有做出来,赛后补题的时候按原来的思路写出来了,然而代码超时了= =,阅读了别人的代码后发现自己想复杂了,从逆向来考虑感觉非常巧妙,思路也很顺畅.从正向考虑反而要顾及很多情况,可能就是因为考虑的太多代码冗余就TLE了.
+<!-- more -->
 ## 链接
 [Nowcoder-Fourth-G](https://www.nowcoder.com/acm/contest/142/G)
 ## 题目描述
 The mode of an integer sequence is the value that appears most often. Chiaki has n integers a1,a2,...,an. She woud like to delete exactly m of them such that: the rest integers have only one mode and the mode is maximum.
-<!-- more -->
 输入描述:
 There are multiple test cases. The first line of input contains an integer T, indicating the number of test cases. For each test case:
 The first line contains two integers n and m (1 ≤ n ≤ 105, 0 ≤ m < n) -- the length of the sequence and the number of integers to delete.

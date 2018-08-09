@@ -8,12 +8,12 @@ tags:
 - 01背包
 ---
 DP果然是最弱的，记录路径更是十分懵，在多校训练营里被虐的抬不起头，，，算了，只要不死，就会更强(赛亚人的特性其实也就是人的特性)
-
+<!-- more -->
 ## 题目描述
 Eddy was a contestant participating in ACM ICPC contests. ACM is short for Algorithm, Coding, Math. Since in the ACM contest, the most important knowledge is about algorithm, followed by coding(implementation ability), then math. However, in the ACM ICPC World Finals 2018, Eddy failed to solve a physics equation, which pushed him away from a potential medal.
 
 Since then on, Eddy found that physics is actually the most important thing in the contest. Thus, he wants to form a team to guide the following contestants to conquer the PACM contests(PACM is short for Physics, Algorithm, Coding, Math). 
-<!-- more -->
+
 There are N candidate groups each composed of pi physics experts, ai algorithm experts, ci coding experts, mi math experts. For each group, Eddy can either invite all of them or none of them. If i-th team is invited, they will bring gi knowledge points which is calculated by Eddy's magic formula. Eddy believes that the higher the total knowledge points is, the better a team could place in a contest. But, Eddy doesn't want too many experts in the same area in the invited groups. Thus, the number of invited physics experts should not exceed P, and A for algorithm experts, C for coding experts, M for math experts.
 
 Eddy is still busy in studying Physics. You come to help him to figure out which groups should be invited such that they doesn't exceed the constraint and will bring the most knowledge points in total.
