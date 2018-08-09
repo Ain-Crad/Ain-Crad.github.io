@@ -384,9 +384,7 @@
 
       
         
-          <p>最近在做一道DP的题时发现数据范围竟然是1e18，这样的话只能用log(n)复杂度的算法来实现了，于是从队长那里了解到了矩阵快速幂。在这里记录一下快速幂以及其它矩阵处理的模板。<br>矩阵快速幂模板参考自<a href="https://github.com/eecrazy/ACM/blob/master/%E6%95%B0%E8%AE%BA/poj3233%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82.cpp" target="_blank" rel="noopener">eecrazy</a></p>
-<h2 id="常数快速幂"><a href="#常数快速幂" class="headerlink" title="常数快速幂"></a>常数快速幂</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function">ll <span class="title">mod_pow</span><span class="params">(ll x, ll n, ll mod)</span></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &amp; <span class="number">1</span>) res *= x % mod;</span><br><span class="line">        x = x * x % mod;</span><br><span class="line">        n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h2>
+          <p>最近在做一道DP的题时发现数据范围竟然是1e18，这样的话只能用log(n)复杂度的算法来实现了，于是从队长那里了解到了矩阵快速幂。在这里记录一下快速幂以及其它矩阵处理的模板。<br>矩阵快速幂模板参考自<a href="https://github.com/eecrazy/ACM/blob/master/%E6%95%B0%E8%AE%BA/poj3233%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82.cpp" target="_blank" rel="noopener">eecrazy</a><br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/14/quick-matrix/#more" rel="contents">
@@ -532,8 +530,7 @@
 
       
         
-          <p>线段树区间更新中比较重要的一个概念是延迟标记，即lazy思想，当要对某一个区间中的所有节点进行更新时，先找到包含该区间所有节点的那一个（或多个）节点，只对它（们）进行更新，同时保存更新的值lazy。当进行区间查询时，若查询的区间的大小在lazy标记区间之内则直接返回，否则将lazy值向下进行传递，直到包含查询的区间。通过这种方式，可以用更新整个区间的值来代替更新区间中的每一个节点，从而避免了很多不必要的操作，提高了效率。说起来可能比较抽象，详见代码。<br><a href="https://www.zybuluo.com/lychee123/note/731591" target="_blank" rel="noopener">参考链接</a></p>
-<h2 id="基于区间和的线段树区间更新模板"><a href="#基于区间和的线段树区间更新模板" class="headerlink" title="基于区间和的线段树区间更新模板"></a>基于区间和的线段树区间更新模板</h2>
+          <p>线段树区间更新中比较重要的一个概念是延迟标记，即lazy思想，当要对某一个区间中的所有节点进行更新时，先找到包含该区间所有节点的那一个（或多个）节点，只对它（们）进行更新，同时保存更新的值lazy。当进行区间查询时，若查询的区间的大小在lazy标记区间之内则直接返回，否则将lazy值向下进行传递，直到包含查询的区间。通过这种方式，可以用更新整个区间的值来代替更新区间中的每一个节点，从而避免了很多不必要的操作，提高了效率。说起来可能比较抽象，详见代码。<br><a href="https://www.zybuluo.com/lychee123/note/731591" target="_blank" rel="noopener">参考链接</a><br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/08/segtree-intval/#more" rel="contents">
@@ -679,8 +676,7 @@
 
       
         
-          <p>之前一直在用大白上的线段树单点更新模板，最近渐渐发现有一些不太舒服的地方，一方面是大白上的模板会强行把线段树建成一个满二叉树，这样虽然比较好理解一些，但同时也会因为要考虑多出来的那些点的影响而相对麻烦。另一方面是因为大家貌似都不用大白上的线段树模板= =||，这样搜题解以及和队友交流的时候会存在一些障碍（其实这一方面是主要原因），所以最后通过权衡还是选择了一个自己觉得通用性比较好也比较好实现的模板。<a href="http://www.hysonn.com/2017/01/26/segtree/" target="_blank" rel="noopener">参考博客链接</a><br>Ps:关于线段树区间更新目前正在学习中，之后再补上关于区间更新的模板。</p>
-<h2 id="基于最大值查询的线段树模板"><a href="#基于最大值查询的线段树模板" class="headerlink" title="基于最大值查询的线段树模板"></a>基于最大值查询的线段树模板</h2>
+          <p>之前一直在用大白上的线段树单点更新模板，最近渐渐发现有一些不太舒服的地方，一方面是大白上的模板会强行把线段树建成一个满二叉树，这样虽然比较好理解一些，但同时也会因为要考虑多出来的那些点的影响而相对麻烦。另一方面是因为大家貌似都不用大白上的线段树模板= =||，这样搜题解以及和队友交流的时候会存在一些障碍（其实这一方面是主要原因），所以最后通过权衡还是选择了一个自己觉得通用性比较好也比较好实现的模板。<a href="http://www.hysonn.com/2017/01/26/segtree/" target="_blank" rel="noopener">参考博客链接</a><br>Ps:关于线段树区间更新目前正在学习中，之后再补上关于区间更新的模板。<br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/06/segtree-template/#more" rel="contents">
@@ -826,10 +822,7 @@
 
       
         
-          <p>最近刚刚开始做线段树相关的题目，很艰难…依照现在的理解其实线段树的题的暴力求解思路比较容易想到，但是暴力求解的时间复杂度一般肯会超，而线段树也正是这样一种通过区间更新来解决大量输入数据问题、降低时间复杂度的高级数据结构。线段树的关键是确定每个节点维护的是什么数据，以及以什么参数为依据进行区间的查询。<br>被POJ上的这道题卡了很久，一开始是思路问题，后来是一些细节问题，总之还是熟练度不高…<br><a href="http://111qqz.com/2015/08/poj2481/" target="_blank" rel="noopener">参考博客链接</a></p>
-<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="http://poj.org/problem?id=2481" target="_blank" rel="noopener">poj-2481</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>共有N头牛，每头牛对应一个进食区间[$S$,$E$], 对两头牛$i$,$j$来说，假设它们对应的区间分别为[$S_i$,$E_i$]和[$S_j$,$E_j$]，如果满足$S_i&lt;=S_j，E_j&lt;=E_i$且$E_i-S_i&gt;E_j-S_j$,那么我们可以说牛$i$要比牛$j$强壮。<br>现对于每头牛来说计算比它强壮的牛的数量。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2>
+          <p>最近刚刚开始做线段树相关的题目，很艰难…依照现在的理解其实线段树的题的暴力求解思路比较容易想到，但是暴力求解的时间复杂度一般肯会超，而线段树也正是这样一种通过区间更新来解决大量输入数据问题、降低时间复杂度的高级数据结构。线段树的关键是确定每个节点维护的是什么数据，以及以什么参数为依据进行区间的查询。<br>被POJ上的这道题卡了很久，一开始是思路问题，后来是一些细节问题，总之还是熟练度不高…<br><a href="http://111qqz.com/2015/08/poj2481/" target="_blank" rel="noopener">参考博客链接</a><br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/22/poj-2481/#more" rel="contents">
@@ -975,9 +968,7 @@
 
       
         
-          <p>工欲善其事必先利其器。<br>前一段时间在<a href="http://logqtainia.github.io/" target="_blank" rel="noopener">陶司机学长</a>的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。<br>觉得靠免费的VPN软件不是长久之计（一方面是速度不理想，另一方面是考虑安全的问题），于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。</p>
-<h2 id="注册vultr账号"><a href="#注册vultr账号" class="headerlink" title="注册vultr账号"></a>注册vultr账号</h2><p><a href="https://www.vultr.com/" target="_blank" rel="noopener">链接</a></p>
-<h2 id="创建vultr主机"><a href="#创建vultr主机" class="headerlink" title="创建vultr主机"></a>创建vultr主机</h2>
+          <p>工欲善其事必先利其器。<br>前一段时间在<a href="http://logqtainia.github.io/" target="_blank" rel="noopener">陶司机学长</a>的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。<br>觉得靠免费的VPN软件不是长久之计（一方面是速度不理想，另一方面是考虑安全的问题），于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。<br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/13/vultr/#more" rel="contents">
@@ -1123,8 +1114,7 @@
 
       
         
-          <p>刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻<br>这里记录一下在mathjax里踩到的坑。<br>mathjax的安装配置和使用大家可以参照<a href="http://stevenshi.me/2017/06/26/hexo-insert-formula/" target="_blank" rel="noopener">Steven’s space的博文</a>，不再赘述了。</p>
-<h2 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h2><p>markdown本身的特殊符号和Latex中的符号会出现冲突。<br></p>
+          <p>刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻<br>这里记录一下在mathjax里踩到的坑。<br>mathjax的安装配置和使用大家可以参照<a href="http://stevenshi.me/2017/06/26/hexo-insert-formula/" target="_blank" rel="noopener">Steven’s space的博文</a>，不再赘述了。<br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/09/hexo-mathjax/#more" rel="contents">
@@ -1270,9 +1260,7 @@
 
       
         
-          <p>和队友一块做这道题，队友们几乎秒杀，而自己想了很久也没有推导出一个清晰的规律…看了<a href="https://blog.csdn.net/vinacky/article/details/8958326" target="_blank" rel="noopener">vinacky的线切割平面问题</a>这篇博客后才豁然开朗,个人感觉一道很好的思维题。<br>题目描述就是求n条折线可以分割平面的最大数目。比如，一条折线可以将平面分成两部分，两条折线最多可以将平面分成七部分。<br><img src="/2018/04/09/hdu-2050/line.jpg" alt="example"></p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2050" target="_blank" rel="noopener">hdu-2050</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2>
+          <p>和队友一块做这道题，队友们几乎秒杀，而自己想了很久也没有推导出一个清晰的规律…看了<a href="https://blog.csdn.net/vinacky/article/details/8958326" target="_blank" rel="noopener">vinacky的线切割平面问题</a>这篇博客后才豁然开朗,个人感觉一道很好的思维题。<br>题目描述就是求n条折线可以分割平面的最大数目。比如，一条折线可以将平面分成两部分，两条折线最多可以将平面分成七部分。<br><img src="/2018/04/09/hdu-2050/line.jpg" alt="example"><br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/09/hdu-2050/#more" rel="contents">
