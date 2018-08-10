@@ -17,7 +17,9 @@ tags:
 - DUP:把当前栈顶元素复制一份后再入栈。
 - UNION:出栈两个集合，然后把二者的并集入栈。
 - INTERSECT:出栈两个集合，然后把出栈的集合加入到后出栈的集合中，把结果入栈。
+
 每次操作后，输出栈顶集合的大小（即元素个数）。
+
 ## 题解
 本题的集合并不是简单的整数集合或者字符串集合，而是集合的集合。为了方便为每个不同的集合分配一个唯一的ID，则每个集合都可以表示成所包含元素的ID的集合，这样就可以用STL的set<int> 来表示了，而整个栈则是一个stack<int>。map用来把集合映射成ID，vector则根据ID取集合。
 ## 代码
@@ -102,4 +104,5 @@ set_intersection(st1.begin(), st1.end(), st2.begin(), st2.end(), inserter(st, st
 类似的还有：
 - set_difference:差集，从第一个区间去除第二个区间的元素。
 - set_merge:合并，与set_union不同，set_merge不会去除重复的元素（不能用于set，可用于vector）。
+
 注意：set_union和set_intersection等也可用于vector，但必须是排好序的vector。
