@@ -7,6 +7,7 @@ tags:
 - DFS
 ---
 从$n$个整数中任选$k$个整数相加，求得到的一系列和中为素数的共有多少种．
+<!-- more -->
 ## 链接
 [NOIP2002](http://acmoj.shu.edu.cn/problem/264/)
 ## 题目
