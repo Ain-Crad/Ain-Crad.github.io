@@ -1,9 +1,10 @@
 ---
-title: hdu 4856 Tunnels-BFS+状态压缩DP
+title: HDU4856-Tunnels-BFS+状态压缩DP
 date: 2018-05-16 14:03:19
 categories:
 - ACM
 tags:
+- HDU
 - 状态压缩DP
 - BFS
 ---
@@ -13,7 +14,7 @@ tags:
 Ps：在最后会贴几个自己觉得看到的对递归和动态规划理解比较有帮助的文章链接。
 <!-- more -->
 ## 题目链接
-[hdu-4856-Tunnels](http://acm.hdu.edu.cn/showproblem.php?pid=4856)
+[HDU4856-Tunnels](http://acm.hdu.edu.cn/showproblem.php?pid=4856)
 ## 题目描述
 一张城市网格图，城市中有m条快速通道，可以从图中任意位置出发，求访问完所有快速通道所用的最少时间，忽略在快速通道内的时间。
 ## 题解

@@ -1,5 +1,5 @@
 ---
-title: hdu1016-Prime Ring Problem-DFS
+title: HDU1016-Prime Ring Problem-DFS
 date: 2018-08-12 23:16:27
 categories:
 - ACM
@@ -10,7 +10,7 @@ tags:
 题目描述：由$1-n$这$n$个自然数组成一个环,要求任意相邻两数之和为素数, 按顺序输出这些数.
 <!-- more -->
 ## 链接
-[hdu1016](http://acm.hdu.edu.cn/showproblem.php?pid=1016)
+[HDU1016-Prime Ring Problem](http://acm.hdu.edu.cn/showproblem.php?pid=1016)
 ## 原题
 A ring is compose of $n$ circles as shown in diagram. Put natural number $1, 2,...,n$ into each circle separately, and the sum of numbers in two adjacent circles should be a prime.
 Note: the number of first circle should always be 1.
