@@ -19,7 +19,7 @@ Horizontal lines are marked 1, 2, ..., 19 from up to down and vertical lines are
 ![example](/Renju.png)
 The objective of this game is to put five stones of the same color consecutively along a horizontal, vertical, or diagonal line. So, black wins in the above figure. But, a player does not win the game if more than five stones of the same color were put consecutively. 
 Given a configuration of the game, write a program to determine whether white has won or black has won or nobody has won yet. There will be no input data where the black and the white both win at the same time. Also there will be no input data where the white or the black wins in more than one place. 
-##　题解
+## 题解
 相比于其它迷宫问题的搜索，这个问题要求每一次DFS始终沿一个方向进行搜索判断，判断出一方的某一个方向上的棋子个数等于5时该方获胜，所以在DFS函数上加上一个控制方向的参数，并把方向的选择放在DFS外部（main函数中）．还有一个需要注意的地方是连续棋子个数大于5的情况不算获胜．
 ## 代码
 ```C++
