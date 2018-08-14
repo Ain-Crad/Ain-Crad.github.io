@@ -16,7 +16,7 @@ tags:
 ## 原题描述
 A game of Renju is played on a 19*19 board by two players. One player uses black stones and the other uses white stones. The game begins in an empty board and two players alternate in placing black stones and white stones. Black always goes first. There are 19 horizontal lines and 19 vertical lines in the board and the stones are placed on the intersections of the lines. 
 Horizontal lines are marked 1, 2, ..., 19 from up to down and vertical lines are marked 1, 2, ..., 19 from left to right. 
-[!example](/dfs.png)
+![example](/Renju.png)
 The objective of this game is to put five stones of the same color consecutively along a horizontal, vertical, or diagonal line. So, black wins in the above figure. But, a player does not win the game if more than five stones of the same color were put consecutively. 
 Given a configuration of the game, write a program to determine whether white has won or black has won or nobody has won yet. There will be no input data where the black and the white both win at the same time. Also there will be no input data where the white or the black wins in more than one place. 
 ##　题解

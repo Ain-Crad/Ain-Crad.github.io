@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="DFS,迷宫问题," />
+  <meta name="keywords" content="DFS,迷宫问题,POJ," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解． 链接POJ1970-The Game 原题描述A game of Renju is played on a 19*19 board by two players. On">
-<meta name="keywords" content="DFS,迷宫问题">
+<meta name="description" content="在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解．">
+<meta name="keywords" content="DFS,迷宫问题,POJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ1970-The Game-DFS">
 <meta property="og:url" content="http://yoursite.com/2018/08/14/POJ1970-The-Game-DFS/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解． 链接POJ1970-The Game 原题描述A game of Renju is played on a 19*19 board by two players. On">
+<meta property="og:description" content="在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解．">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-14T12:01:57.000Z">
+<meta property="og:updated_time" content="2018-08-14T12:10:11.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ1970-The Game-DFS">
-<meta name="twitter:description" content="在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解． 链接POJ1970-The Game 原题描述A game of Renju is played on a 19*19 board by two players. On">
+<meta name="twitter:description" content="在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解．">
 
 
 
@@ -382,7 +382,7 @@
       
 
       
-        <p>在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．<br>相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解．</p>
+        <p>在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．<br>相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解．<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://poj.org/problem?id=1970" target="_blank" rel="noopener">POJ1970-The Game</a></p>
 <h2 id="原题描述"><a href="#原题描述" class="headerlink" title="原题描述"></a>原题描述</h2><p>A game of Renju is played on a 19*19 board by two players. One player uses black stones and the other uses white stones. The game begins in an empty board and two players alternate in placing black stones and white stones. Black always goes first. There are 19 horizontal lines and 19 vertical lines in the board and the stones are placed on the intersections of the lines.<br>Horizontal lines are marked 1, 2, …, 19 from up to down and vertical lines are marked 1, 2, …, 19 from left to right.<br><a href="/dfs.png">!example</a><br>The objective of this game is to put five stones of the same color consecutively along a horizontal, vertical, or diagonal line. So, black wins in the above figure. But, a player does not win the game if more than five stones of the same color were put consecutively.<br>Given a configuration of the game, write a program to determine whether white has won or black has won or nobody has won yet. There will be no input data where the black and the white both win at the same time. Also there will be no input data where the white or the black wins in more than one place. </p>
 <p>##　题解<br>相比于其它迷宫问题的搜索，这个问题要求每一次DFS始终沿一个方向进行搜索判断，判断出一方的某一个方向上的棋子个数等于5时该方获胜，所以在DFS函数上加上一个控制方向的参数，并把方向的选择放在DFS外部（main函数中）．还有一个需要注意的地方是连续棋子个数大于5的情况不算获胜．</p>
@@ -407,6 +407,8 @@
           
             <a href="/tags/迷宫问题/" rel="tag"># 迷宫问题</a>
           
+            <a href="/tags/POJ/" rel="tag"># POJ</a>
+          
         </div>
       
 
@@ -418,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/12/hdu1016-Prime-Ring-Problem-DFS/" rel="next" title="hdu1016-Prime Ring Problem-DFS">
-                <i class="fa fa-chevron-left"></i> hdu1016-Prime Ring Problem-DFS
+              <a href="/2018/08/12/HDU1016-Prime-Ring-Problem-DFS/" rel="next" title="HDU1016-Prime Ring Problem-DFS">
+                <i class="fa fa-chevron-left"></i> HDU1016-Prime Ring Problem-DFS
               </a>
             
           </div>
@@ -529,7 +531,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
