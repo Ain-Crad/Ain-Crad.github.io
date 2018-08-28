@@ -7,6 +7,7 @@ tags:
 - 思维
 ---
 也是一道思维题，理解了题意就很简单，但是自己理解题意费了好长时间，，还好最后AC了，背景故事蛮有意思的2333.
+<!--more-->
 ## 链接
 [CodeForces-569A-Music](http://codeforces.com/problemset/problem/569/A)
 ## 题意
