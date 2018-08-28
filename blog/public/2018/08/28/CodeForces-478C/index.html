@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="水题, 然而自己WA了orz, 看到了一种很有意思的解法.参考连接 链接CodeForces-478C-Table Decorations 题目描述给定红黄蓝三种气球的数量, 要求每个桌子上放三个气球, 且三个气球的颜色不能完全相同, 求这些气球最多可以装饰几张桌子. 题解假定三种气球的数量分别为$a[0], a[1], a[2]$, 且已按大小排好序, $a[0] &amp;lt;= a[1] &amp;lt;">
+<meta name="description" content="水题，然而自己WA了orz，看到了一种很有意思的解法。参考连接 链接CodeForces-478C-Table Decorations 题目描述给定红黄蓝三种气球的数量，要求每个桌子上放三个气球，且三个气球的颜色不能完全相同，求这些气球最多可以装饰几张桌子。 题解假定三种气球的数量分别为$a[0]，a[1]，a[2]$，且已按大小排好序，$a[0] &amp;lt;= a[1] &amp;lt;= a[2]$。有">
 <meta name="keywords" content="思维">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CodeForces-478C-Table Decorations">
 <meta property="og:url" content="http://yoursite.com/2018/08/28/CodeForces-478C/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="水题, 然而自己WA了orz, 看到了一种很有意思的解法.参考连接 链接CodeForces-478C-Table Decorations 题目描述给定红黄蓝三种气球的数量, 要求每个桌子上放三个气球, 且三个气球的颜色不能完全相同, 求这些气球最多可以装饰几张桌子. 题解假定三种气球的数量分别为$a[0], a[1], a[2]$, 且已按大小排好序, $a[0] &amp;lt;= a[1] &amp;lt;">
+<meta property="og:description" content="水题，然而自己WA了orz，看到了一种很有意思的解法。参考连接 链接CodeForces-478C-Table Decorations 题目描述给定红黄蓝三种气球的数量，要求每个桌子上放三个气球，且三个气球的颜色不能完全相同，求这些气球最多可以装饰几张桌子。 题解假定三种气球的数量分别为$a[0]，a[1]，a[2]$，且已按大小排好序，$a[0] &amp;lt;= a[1] &amp;lt;= a[2]$。有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-28T06:52:59.431Z">
+<meta property="og:updated_time" content="2018-08-28T07:04:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CodeForces-478C-Table Decorations">
-<meta name="twitter:description" content="水题, 然而自己WA了orz, 看到了一种很有意思的解法.参考连接 链接CodeForces-478C-Table Decorations 题目描述给定红黄蓝三种气球的数量, 要求每个桌子上放三个气球, 且三个气球的颜色不能完全相同, 求这些气球最多可以装饰几张桌子. 题解假定三种气球的数量分别为$a[0], a[1], a[2]$, 且已按大小排好序, $a[0] &amp;lt;= a[1] &amp;lt;">
+<meta name="twitter:description" content="水题，然而自己WA了orz，看到了一种很有意思的解法。参考连接 链接CodeForces-478C-Table Decorations 题目描述给定红黄蓝三种气球的数量，要求每个桌子上放三个气球，且三个气球的颜色不能完全相同，求这些气球最多可以装饰几张桌子。 题解假定三种气球的数量分别为$a[0]，a[1]，a[2]$，且已按大小排好序，$a[0] &amp;lt;= a[1] &amp;lt;= a[2]$。有">
 
 
 
@@ -382,15 +382,15 @@
       
 
       
-        <p>水题, 然而自己WA了orz, 看到了一种很有意思的解法.<br><a href="http://codeforces.com/blog/entry/18619" target="_blank" rel="noopener">参考连接</a></p>
+        <p>水题，然而自己WA了orz，看到了一种很有意思的解法。<br><a href="http://codeforces.com/blog/entry/18619" target="_blank" rel="noopener">参考连接</a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://codeforces.com/problemset/problem/478/C" target="_blank" rel="noopener">CodeForces-478C-Table Decorations</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定红黄蓝三种气球的数量, 要求每个桌子上放三个气球, 且三个气球的颜色不能完全相同, 求这些气球最多可以装饰几张桌子.</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>假定三种气球的数量分别为$a[0], a[1], a[2]$, 且已按大小排好序, $a[0] &lt;= a[1] &lt;= a[2]$.<br>有两种情况:</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定红黄蓝三种气球的数量，要求每个桌子上放三个气球，且三个气球的颜色不能完全相同，求这些气球最多可以装饰几张桌子。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>假定三种气球的数量分别为$a[0]，a[1]，a[2]$，且已按大小排好序，$a[0] &lt;= a[1] &lt;= a[2]$。<br>有两种情况:</p>
 <ul>
-<li>$2 * (a[0] + a[1]) &lt;=  a[2]$.这种情况下可以每取一个$a[0]<br>$取两个$a[2]$组成三气球或者每取一个$a[1]$取两个$a[2]$组成三气球,即, 取球集合为$(1, 0, 2)$和$(0, 1, 2)$.答案为$a[0] + a[1]$.</li>
-<li>$2 * (a[0] + a[1]) &gt; a[2]$.这种情况下我们从$a[2]$中取两个气球同时从$max(a[0], a[1])$中取一个气球, 直到$a[2] &lt;= max(a[0], a[1])$.这时满足$max(a[0], a[1]) - a[2] &lt;= 1, max(a[0], a[1]) - min(a[0], a[1]) &lt;= 1, max(a[0], a[1], a[2]) - min(a[0], a[1], a[2]) &lt;= 1$. 接下来的按集合$(1, 1, 1)$继续取球.<strong>可以发现这种取法最后剩余球的数量一定是</strong>$(a[0]+a[1]+a[2]) % 3$<strong>除去剩余的这些球(数量小于3), 其它球每三个装饰一张桌子, 所以针对这种情况我们直接可以用</strong>$(a[0]+a[1]+a[2]) / 3$<strong>来得到最终结果</strong></li>
+<li>$2*(a[0] + a[1]) &lt;=  a[2]$。这种情况下可以每取一个$a[0]<br>$取两个$a[2]$组成三气球或者每取一个$a[1]$取两个$a[2]$组成三气球，即取球集合为$(1，0，2)$和$(0，1，2)$。答案为$a[0] + a[1]$。</li>
+<li>$2*(a[0] + a[1]) &gt; a[2]$。这种情况下我们从$a[2]$中取两个气球同时从$max(a[0]，a[1])$中取一个气球，直到$a[2] &lt;= max(a[0]，a[1])$。这时满足$max(a[0]，a[1]) - a[2] &lt;= 1$，$max(a[0]，a[1]) - min(a[0]，a[1]) &lt;= 1$，$max(a[0]，a[1]，a[2]) - min(a[0]，a[1]，a[2]) &lt;= 1$。接下来的按集合$(1，1，1)$继续取球。<strong>可以发现这种取法最后剩余球的数量一定是</strong> $(a[0]+a[1]+a[2]) mod 3$，<strong>除去剩余的这些球(数量小于3)，其它球每三个装饰一张桌子，所以针对这种情况我们直接可以用</strong> $(a[0]+a[1]+a[2]) div 3$ <strong>来得到最终结果。</strong></li>
 </ul>
-<p>真是神解orz.</p>
+<p>真是神解orz。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Author : Aincrad</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Date : Tue 28 Aug 14:12:13 CST 2018</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> d[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">//cin.tie(0);</span></span><br><span class="line">    <span class="comment">//cout.tie(0);</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">        <span class="comment">//freopen("in.txt", "r", stdin);</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; d[i];</span><br><span class="line">    sort(d, d + <span class="number">3</span>);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">2</span> * (d[<span class="number">0</span>] + d[<span class="number">1</span>]) &lt;= d[<span class="number">2</span>])</span><br><span class="line">        ans = d[<span class="number">0</span>] + d[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        ans = (d[<span class="number">0</span>] + d[<span class="number">1</span>] + d[<span class="number">2</span>]) / <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       

@@ -8,6 +8,7 @@ tags:
 ---
 水题，然而自己WA了orz，看到了一种很有意思的解法。
 [参考连接](http://codeforces.com/blog/entry/18619)
+<!--more-->
 ## 链接
 [CodeForces-478C-Table Decorations](http://codeforces.com/problemset/problem/478/C)
 ## 题目描述
