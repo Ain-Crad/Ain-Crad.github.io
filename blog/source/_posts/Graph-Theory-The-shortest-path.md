@@ -128,7 +128,7 @@ void dijkstra(int s){
     while(!que.empty()){
         P p = que.top();
         que.pop();
-        int v = p.first;
+        int v = p.second;
         if(d[v] < p.first) continue;    //v点的距离已被更新为更小的值，队列中的值丢弃
         for(int i = 0; i < G[v].size(); i++){
             edge e = G[v][i];
