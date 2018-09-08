@@ -11,7 +11,7 @@ $Bellman-Ford、SPFA、Dijkstra$这些单源最短路算法自己一直都在用
 $PS：Floyd-Warshall$多源最短路算法受限于自己对DP的理解，还没有完全搞明白= =，之后再来填坑。
 *Bellman-Ford代码、Dijkstra理解和代码部分参考自《挑战程序设计竞赛》。*
 ## 限制和复杂度
-$Bellman-Ford$：不含负圈（可判断出）。运行时间：$O(|V|*|E|)$
+$Bellman-Ford$：不含负圈（可判断出）。运行时间：$O(|V|*|E|)$。
 $SPFA$：不含负圈（可判断出）。运行时间：$O(k*|E|)$，一般情况下$(k <<|V|)$，可以认为近似线性。
 $Dijkstra$：不含负权边。运行时间：$O(|E|*|log|V|)$（优先队列实现）
 ## Bellman-Ford
