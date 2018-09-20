@@ -6,7 +6,7 @@ categories:
 tags:
 - C++
 ---
-使用new关键字和不使用new关键字创建对象的异同及优劣对比。
+使用$new$关键字和不使用$new$关键字创建对象的异同及优劣对比。
 <!--more-->
 # 参考链接
 [When should I use the new keyword in C++](https://stackoverflow.com/questions/655065/when-should-i-use-the-new-keyword-in-c)
