@@ -6,7 +6,7 @@ categories:
 tags:
 - 总结
 ---
-关于sscanf和sprintf用法的总结。
+关于$sscanf$和$sprintf$用法的总结。
 <!--more-->
 ## sscanf
 int sscanf（const char * str，const char * format，...）从字符串中读取格式化的输入。
