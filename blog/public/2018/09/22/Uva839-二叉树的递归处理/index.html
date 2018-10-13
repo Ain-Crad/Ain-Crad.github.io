@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="输入一个树状天平，根据力矩相等原则判断是否相等。即判断是否满足$W_lD_l=W_rD_r$。">
+<meta name="description" content="输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。">
 <meta name="keywords" content="DFS,二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Uva839-二叉树的递归处理">
 <meta property="og:url" content="http://yoursite.com/2018/09/22/Uva839-二叉树的递归处理/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="输入一个树状天平，根据力矩相等原则判断是否相等。即判断是否满足$W_lD_l=W_rD_r$。">
+<meta property="og:description" content="输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/22/Uva839-二叉树的递归处理/tree.png">
-<meta property="og:updated_time" content="2018-09-22T15:10:35.101Z">
+<meta property="og:updated_time" content="2018-09-22T15:15:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Uva839-二叉树的递归处理">
-<meta name="twitter:description" content="输入一个树状天平，根据力矩相等原则判断是否相等。即判断是否满足$W_lD_l=W_rD_r$。">
+<meta name="twitter:description" content="输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。">
 <meta name="twitter:image" content="http://yoursite.com/2018/09/22/Uva839-二叉树的递归处理/tree.png">
 
 
@@ -229,6 +229,16 @@
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-links"></i> <br />
+            
+            友情链接
           </a>
         </li>
       
@@ -384,7 +394,7 @@
       
 
       
-        <p>输入一个树状天平，根据力矩相等原则判断是否相等。即判断是否满足$W_lD_l=W_rD_r$。<br><img src="/2018/09/22/Uva839-二叉树的递归处理/tree.png" alt="example"><br><a id="more"></a></p>
+        <p>输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。<br><img src="/2018/09/22/Uva839-二叉树的递归处理/tree.png" alt="example"><br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>(Uva839-Not so Mobile)[<a href="https://vjudge.net/problem/UVA-839]" target="_blank" rel="noopener">https://vjudge.net/problem/UVA-839]</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>题目输入采用递归（先序）方式：每个天平的格式为$W_l$，$D_l$，$W_r$，$D_r$，当$W_l$或$W_r$为$0$时，表示该“砝码”实际是一个子天平，接下来会进一步描述这个子天平。当$W_l=W_r=0$时，会先描述左子天平，然后是右子天平。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为题目的输入就采取了递归方式定义，所以编写一个递归过程读取输入同时进行处理比较合适。在递归的过程中判断子天平是否满足平衡并自下向上不断的更新$W$为$0$的节点（更新为其左子砝码重量$W_l$和右子砝码重量$W_r$之和）。可以定义一个标志变量来标明整个过程是否一直都满足平衡条件。</p>
@@ -563,6 +573,20 @@
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.bowen-blog.com/" title="Bowen's Blog" target="_blank">Bowen's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
