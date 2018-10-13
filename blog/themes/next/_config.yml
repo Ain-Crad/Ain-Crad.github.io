@@ -97,6 +97,7 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
+  links: /links/ || links
   schedule: /schedule/ || calendar
   sitemap: /sitemap.xml || sitemap
   commonweal: /404/ || heartbeat
@@ -145,11 +146,13 @@ social_icons:
 
 # Blog rolls
 links_icon: link
-links_title: Links
+#links_title: Links
 links_layout: block
 #links_layout: inline
-#links:
+links_title: 友情链接
+links:
   #Title: http://example.com/
+  Bowen's Blog: http://www.bowen-blog.com/ 
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -255,7 +258,7 @@ post_copyright:
 
 
 # ---------------------------------------------------------------
-# Misc Theme Settings
+# Misc Theme Settingsbuilti
 # ---------------------------------------------------------------
 
 # Reduce padding / margin indents on devices with narrow width.
