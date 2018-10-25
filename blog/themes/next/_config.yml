@@ -97,8 +97,8 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  links: /links/ || links
-  schedule: /schedule/ || calendar
+  links: /links/ || users
+  #schedule: /schedule/ || calendar
   sitemap: /sitemap.xml || sitemap
   commonweal: /404/ || heartbeat
 
@@ -150,9 +150,9 @@ links_icon: link
 links_layout: block
 #links_layout: inline
 links_title: 友情链接
-links:
+#links:
   #Title: http://example.com/
-  Bowen's Blog: http://www.bowen-blog.com/ 
+  #Bowen's Blog: http://www.bowen-blog.com/ 
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -398,7 +398,7 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-#livere_uid: your uid
+livere_uid: MTAyMC80MDMwNS8xNjgzMg==
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
@@ -534,9 +534,9 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true
+  app_id: QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz
+  app_key: NIP5Gqn2qVviUE2rp4ajjUUW
 
 # Another tool to show number of visitors to each article.
 # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId

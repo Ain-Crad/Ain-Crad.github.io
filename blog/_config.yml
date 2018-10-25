@@ -91,3 +91,7 @@ math:
     # src: custom_mathjax_source
     config:
       # MathJax config
+# Security
+##
+encrypt:
+  enable: true

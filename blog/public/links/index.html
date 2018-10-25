@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Bowen’s Blog">
+<meta name="description" content="Links Notes     Bowen’s Blog 徐阿卞大佬">
 <meta property="og:type" content="website">
-<meta property="og:title" content="links">
+<meta property="og:title" content="Friends">
 <meta property="og:url" content="http://yoursite.com/links/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="Bowen’s Blog">
+<meta property="og:description" content="Links Notes     Bowen’s Blog 徐阿卞大佬">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-13T02:51:13.000Z">
+<meta property="og:updated_time" content="2018-10-13T03:27:15.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="links">
-<meta name="twitter:description" content="Bowen’s Blog">
+<meta name="twitter:title" content="Friends">
+<meta name="twitter:description" content="Links Notes     Bowen’s Blog 徐阿卞大佬">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>links | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Friends | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,19 +233,9 @@
         <li class="menu-item menu-item-links">
           <a href="/links/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-links"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br />
             
             友情链接
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
-            
-            日程表
           </a>
         </li>
       
@@ -295,7 +285,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">links</h1>
+	<h1 class="post-title" itemprop="name headline">Friends</h1>
 
 
 
@@ -307,7 +297,20 @@
       <div class="post-body">
         
         
-          <p><a href="http://www.bowen-blog.com/" target="_blank" rel="noopener">Bowen’s Blog</a></p>
+          <table>
+<thead>
+<tr>
+<th style="text-align:center">Links</th>
+<th style="text-align:center">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.bowen-blog.com/" target="_blank" rel="noopener">Bowen’s Blog</a></td>
+<td style="text-align:center">徐阿卞大佬</td>
+</tr>
+</tbody>
+</table>
 
         
       </div>
@@ -326,6 +329,11 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDMwNS8xNjgzMg=="></div>
+    </div>
 
   
 
@@ -424,20 +432,6 @@
           
 
           
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                友情链接
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.bowen-blog.com/" title="Bowen's Blog" target="_blank">Bowen's Blog</a>
-                  </li>
-                
-              </ul>
-            </div>
           
 
           
@@ -618,6 +612,17 @@
 
 
   
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
 
 
 
@@ -637,6 +642,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz", "NIP5Gqn2qVviUE2rp4ajjUUW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
