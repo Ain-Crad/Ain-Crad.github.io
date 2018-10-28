@@ -88,7 +88,7 @@
 <meta property="og:description" content="输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/22/Uva839-二叉树的递归处理/tree.png">
-<meta property="og:updated_time" content="2018-09-22T15:15:13.000Z">
+<meta property="og:updated_time" content="2018-10-25T12:27:12.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Uva839-二叉树的递归处理">
 <meta name="twitter:description" content="输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。">
@@ -396,7 +396,7 @@
 
       
         <p>输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。<br><img src="/2018/09/22/Uva839-二叉树的递归处理/tree.png" alt="example"><br><a id="more"></a></p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>(Uva839-Not so Mobile)[<a href="https://vjudge.net/problem/UVA-839]" target="_blank" rel="noopener">https://vjudge.net/problem/UVA-839]</a></p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://vjudge.net/problem/UVA-839" target="_blank" rel="noopener">Uva839-Not so Mobile</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>题目输入采用递归（先序）方式：每个天平的格式为$W_l$，$D_l$，$W_r$，$D_r$，当$W_l$或$W_r$为$0$时，表示该“砝码”实际是一个子天平，接下来会进一步描述这个子天平。当$W_l=W_r=0$时，会先描述左子天平，然后是右子天平。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为题目的输入就采取了递归方式定义，所以编写一个递归过程读取输入同时进行处理比较合适。在递归的过程中判断子天平是否满足平衡并自下向上不断的更新$W$为$0$的节点（更新为其左子砝码重量$W_l$和右子砝码重量$W_r$之和）。可以定义一个标志变量来标明整个过程是否一直都满足平衡条件。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Author : Aincrad</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Date : Sat 22 Sep 22:02:34 CST 2018</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="keyword">bool</span> f;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> w1, d1, w2, d2;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; w1 &gt;&gt; d1 &gt;&gt; w2 &gt;&gt; d2;</span><br><span class="line">    <span class="keyword">if</span>(!w1) w1 = solve();</span><br><span class="line">    <span class="keyword">if</span>(!w2) w2 = solve();</span><br><span class="line">    <span class="keyword">if</span>(w1 * d1 != w2 * d2) f = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> w1 + w2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">//cin.tie(0);</span></span><br><span class="line">    <span class="comment">//cout.tie(0);</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">        freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        f = <span class="literal">true</span>;</span><br><span class="line">        solve();</span><br><span class="line">        <span class="keyword">if</span>(f) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">if</span>(t) <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -440,6 +440,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/24/Linear algebra-Dot product/" rel="prev" title="直观理解线性代数-点积">
+                直观理解线性代数-点积 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -525,7 +529,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -547,7 +551,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
