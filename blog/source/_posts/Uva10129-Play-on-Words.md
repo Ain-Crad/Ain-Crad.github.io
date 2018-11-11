@@ -8,7 +8,7 @@ tags:
 - DFS
 ---
 输入n个单词，是否可以把所有这些单词排成一个序列，使得每个单词的第一个字母和上一个单词的最后一个字母相同。
-
+<!--more-->
 ## 链接
 [Uva10129-Play on Words](https://vjudge.net/problem/UVA-10129)
 
