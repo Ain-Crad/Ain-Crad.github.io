@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="总结,mathjax,hexo插入数学公式," />
+  <meta name="keywords" content="二叉树," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻这里记录一下在mathjax里踩到的坑。mathjax的安装配置和使用大家可以参照Steven’s space的博文，不再赘述了。">
-<meta name="keywords" content="总结,mathjax,hexo插入数学公式">
+<meta name="description" content="看图写树。把类似如图所示的树用”(A(B()C(E()F())D(G())))”的形式输出出来。在奇怪的地方卡了好久= =，记录一下。 链接Uva10562-Undraw the trees 题解直接递归输出。主要说一下自己的卡点：最开始代码34行部分写的是r = y，WA到怀疑人生，后来突然想到把字符串读入字符数组中时是覆盖操作，也就是说如果新读入的字符串的长度比已经缓存的要短的话，之前的字符串">
+<meta name="keywords" content="二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo中mathjax使用坑点">
-<meta property="og:url" content="http://yoursite.com/2018/04/09/hexo-mathjax/index.html">
+<meta property="og:title" content="Uva10562-Undraw the trees">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/Uva10562-Undraw the trees/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻这里记录一下在mathjax里踩到的坑。mathjax的安装配置和使用大家可以参照Steven’s space的博文，不再赘述了。">
+<meta property="og:description" content="看图写树。把类似如图所示的树用”(A(B()C(E()F())D(G())))”的形式输出出来。在奇怪的地方卡了好久= =，记录一下。 链接Uva10562-Undraw the trees 题解直接递归输出。主要说一下自己的卡点：最开始代码34行部分写的是r = y，WA到怀疑人生，后来突然想到把字符串读入字符数组中时是覆盖操作，也就是说如果新读入的字符串的长度比已经缓存的要短的话，之前的字符串">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-09T15:47:10.373Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/13/Uva10562-Undraw%20the%20trees/tree.png">
+<meta property="og:updated_time" content="2018-11-13T00:10:11.837Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo中mathjax使用坑点">
-<meta name="twitter:description" content="刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻这里记录一下在mathjax里踩到的坑。mathjax的安装配置和使用大家可以参照Steven’s space的博文，不再赘述了。">
+<meta name="twitter:title" content="Uva10562-Undraw the trees">
+<meta name="twitter:description" content="看图写树。把类似如图所示的树用”(A(B()C(E()F())D(G())))”的形式输出出来。在奇怪的地方卡了好久= =，记录一下。 链接Uva10562-Undraw the trees 题解直接递归输出。主要说一下自己的卡点：最开始代码34行部分写的是r = y，WA到怀疑人生，后来突然想到把字符串读入字符数组中时是覆盖操作，也就是说如果新读入的字符串的长度比已经缓存的要短的话，之前的字符串">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/13/Uva10562-Undraw%20the%20trees/tree.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/09/hexo-mathjax/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/Uva10562-Undraw the trees/"/>
 
 
 
 
 
-  <title>hexo中mathjax使用坑点 | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Uva10562-Undraw the trees | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -293,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/hexo-mathjax/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/Uva10562-Undraw the trees/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Aincrad">
@@ -310,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo中mathjax使用坑点</h1>
+          <h1 class="post-title" itemprop="name headline">Uva10562-Undraw the trees</h1>
         
 
         <div class="post-meta">
@@ -322,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T15:29:50+08:00">
-                2018-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T07:33:42+08:00">
+                2018-11-13
               </time>
             
 
@@ -345,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Messy-article/" itemprop="url" rel="index">
-                    <span itemprop="name">Messy article</span>
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
                   </a>
                 </span>
 
@@ -362,7 +364,7 @@
 
           
           
-             <span id="/2018/04/09/hexo-mathjax/" class="leancloud_visitors" data-flag-title="hexo中mathjax使用坑点">
+             <span id="/2018/11/13/Uva10562-Undraw the trees/" class="leancloud_visitors" data-flag-title="Uva10562-Undraw the trees">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -393,21 +395,10 @@
       
 
       
-        <p>刚刚开始自己的博客之旅，开始真是无比艰难啊，各种被坑。过程中博客需要插入数学公式，下载了mathjax插件(安装之后就可以使用Latex定义的宏写数学公式了)，结果被坑惨(也不算是mathjax的锅，markdown自己也要背)，卡了2个小时，气愤(╯‵□′)╯︵┻━┻<br>这里记录一下在mathjax里踩到的坑。<br>mathjax的安装配置和使用大家可以参照<a href="http://stevenshi.me/2017/06/26/hexo-insert-formula/" target="_blank" rel="noopener">Steven’s space的博文</a>，不再赘述了。<br><a id="more"></a></p>
-<h2 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h2><p>markdown本身的特殊符号和Latex中的符号会出现冲突。</p>
-<ul>
-<li>下划线_在markdown中是斜体，但是Latex中下划线是下标的意思，所以这里会冲突。</li>
-<li>双斜线\\在markdown中会被转义为\，所以Latex的\\换行功能也会不正常。</li>
-<li>乘法符号*在markdown中是粗体＝＝(就是在这被卡了)，所以Latex在写两个数相乘时不能直接写<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a*b$</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>以上情况都会导致无法在mathjax中渲染出来。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>手动转义：<br>比如需要在公式中写乘法*可以写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a\*b$</span><br></pre></td></tr></table></figure></p>
-<p>下标写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a\_1$</span><br></pre></td></tr></table></figure></p>
-<p>换行写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\\\\$</span><br></pre></td></tr></table></figure></p>
-<p>解决，散花。</p>
-<p>更多解决方法可以参考<a href="http://shomy.top/2016/10/22/hexo-markdown-mathjax/" target="_blank" rel="noopener">hexo下mathjax的转义问题</a></p>
-
+        <p>看图写树。把类似如图所示的树用”(A(B()C(E()F())D(G())))”的形式输出出来。在奇怪的地方卡了好久= =，记录一下。<br><img src="/2018/11/13/Uva10562-Undraw the trees/tree.png" alt="tree"></p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://vjudge.net/problem/UVA-10562" target="_blank" rel="noopener">Uva10562-Undraw the trees</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>直接递归输出。主要说一下自己的卡点：最开始代码34行部分写的是r = y，WA到怀疑人生，后来突然想到把字符串读入字符数组中时是覆盖操作，也就是说如果新读入的字符串的长度比已经缓存的要短的话，之前的字符串会有残留。例如，buf[10] = “abcdef”，然后再读入新的字符串”xyz”后，buf中的内容是”xyz0ef”（其中0表示字符串结束标志’\0’）,自己也就是坑在了这个地方。解决方法有两种，一种是让r = l，然后遍历到’\0’时结束,也就是注释的那种写法；另一种是每次都memset一下= =（经历这次事件后一定每次都记得memset…）。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Author : Aincrad</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Date : Tue 13 Nov 08:09:46 CST 2018</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">200</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">char</span> mp[maxn][maxn];</span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c = mp[x][y];</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; c &lt;&lt; <span class="string">"("</span>;</span><br><span class="line">	<span class="keyword">if</span>(x + <span class="number">1</span> &lt; n &amp;&amp; mp[x + <span class="number">1</span>][y] == <span class="string">'|'</span>)&#123;</span><br><span class="line">		<span class="keyword">int</span> l = y;</span><br><span class="line">		<span class="keyword">while</span>(l &gt; <span class="number">0</span> &amp;&amp; mp[x + <span class="number">2</span>][l - <span class="number">1</span>] == <span class="string">'-'</span>) l--;</span><br><span class="line">		<span class="keyword">int</span> r = l;</span><br><span class="line">		<span class="keyword">while</span>(mp[x + <span class="number">2</span>][r] == <span class="string">'-'</span> &amp;&amp; mp[x + <span class="number">3</span>][r] != <span class="string">'\0'</span>) r++;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt; r; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!<span class="built_in">isspace</span>(mp[x + <span class="number">3</span>][i]))&#123;</span><br><span class="line">				dfs(x + <span class="number">3</span>, i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		while(mp[x + 2][l] == '-' &amp;&amp; mp[x + 3][l] != '\0')&#123;</span></span><br><span class="line"><span class="comment">			if(!isspace(mp[x + 3][l])) dfs(x + 3, l);</span></span><br><span class="line"><span class="comment">			l++;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">")"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">		freopen(<span class="string">"../in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">	<span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="built_in">memset</span>(mp, <span class="number">0</span>, <span class="keyword">sizeof</span>(mp));</span><br><span class="line">		n = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"("</span>;</span><br><span class="line">		<span class="keyword">while</span>(fgets(mp[n], maxn, <span class="built_in">stdin</span>))&#123;</span><br><span class="line">			<span class="keyword">if</span>(mp[n][<span class="number">0</span>] == <span class="string">'#'</span>) <span class="keyword">break</span>;</span><br><span class="line">			n++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(n)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxn; i++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(mp[<span class="number">0</span>][i] != <span class="string">' '</span>)&#123;</span><br><span class="line">					dfs(<span class="number">0</span>, i);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">")"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -424,11 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/总结/" rel="tag"># 总结</a>
-          
-            <a href="/tags/mathjax/" rel="tag"># mathjax</a>
-          
-            <a href="/tags/hexo插入数学公式/" rel="tag"># hexo插入数学公式</a>
+            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
           
         </div>
       
@@ -441,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/09/HDU2050/" rel="next" title="HDU2050-线切割平面问题-思维+简单dp">
-                <i class="fa fa-chevron-left"></i> HDU2050-线切割平面问题-思维+简单dp
+              <a href="/2018/11/12/Uva10129-Play-on-Words/" rel="next" title="Uva10129-Play on Words">
+                <i class="fa fa-chevron-left"></i> Uva10129-Play on Words
               </a>
             
           </div>
@@ -450,10 +437,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/13/vultr/" rel="prev" title="ubuntu下vultr服务器搭建">
-                ubuntu下vultr服务器搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -610,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#坑点"><span class="nav-number">1.</span> <span class="nav-text">坑点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

@@ -6,8 +6,9 @@ categories:
 tags:
 - 二叉树
 ---
-看图写树。把类似如图所示的树用"(A(B()C(E()F())D(G())))"的形式输出出来。在奇怪的地方卡了好久= =，记录一下。
+看图写树。把类似如图所示的树用"$(A(B()C(E()F())D(G())))$"的形式输出出来。在奇怪的地方卡了好久= =，记录一下。
 ![tree](/tree.png)
+<!--more-->
 ## 链接
 [Uva10562-Undraw the trees](https://vjudge.net/problem/UVA-10562)
 
