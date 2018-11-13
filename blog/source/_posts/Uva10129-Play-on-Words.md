@@ -1,5 +1,5 @@
 ---
-title: Uva10129-Play on Words
+title: Uva10129-Play on Words-欧拉路
 date: 2018-11-12 07:25:48
 categories:
 - ACM
