@@ -2,7 +2,7 @@
 title: STL中自定义比较函数和重载运算符总结
 date: 2018-08-07 22:13:16
 categories:
-- ACM
+- C++
 tags:
 - STL
 ---

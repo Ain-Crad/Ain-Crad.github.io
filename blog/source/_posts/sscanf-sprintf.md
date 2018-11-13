@@ -2,7 +2,7 @@
 title: sscanf & sprintf
 date: 2018-09-15 22:32:35
 categories:
-- ACM
+- C++
 tags:
 - 总结
 ---

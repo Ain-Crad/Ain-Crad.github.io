@@ -2,7 +2,7 @@
 title: 直观理解线性代数-点积
 date: 2018-10-24 21:56:50
 categories:
-- Messy article
+- Math
 tags:
 - 总结
 - Liner algebra

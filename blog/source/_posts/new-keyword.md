@@ -2,7 +2,7 @@
 title: new keyword
 date: 2018-09-20 13:21:31
 categories:
-- ACM
+- C++
 tags:
 - C++
 ---

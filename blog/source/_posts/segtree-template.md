@@ -2,7 +2,7 @@
 title: 线段树单点更新模板
 date: 2018-05-06 21:47:10
 categories:
-- ACM
+- Template
 tags:
 - 线段树单点更新
 ---

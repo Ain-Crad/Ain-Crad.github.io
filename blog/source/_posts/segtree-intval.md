@@ -2,7 +2,7 @@
 title: 线段树区间更新模板
 date: 2018-05-08 00:08:11
 categories:
-- ACM
+- Template
 tags:
 - 线段树区间更新
 ---
