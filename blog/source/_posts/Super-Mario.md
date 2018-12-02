@@ -8,7 +8,7 @@ tags:
 ---
 偶然发现一个博主分享的开源NES游戏模拟器，安装后只要再去下载rom游戏就可以重温小时候的小霸王游戏机上的游戏！安装之后迫不及待的下载了超级马里奥，还是当年的感觉！激动(≧▽≦)
 ![SuperMario](/SuperMario.png)
-
+<!--more-->
 ## 参考链接
 [WTF Daily Blog](http://blog.topspeedsnail.com/archives/4249)
 感谢博主！下面只列出了开源的NES游戏模拟器，更多类型的模拟器请转到博主博客原文。
