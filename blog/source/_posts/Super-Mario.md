@@ -13,6 +13,8 @@ tags:
 [WTF Daily Blog](http://blog.topspeedsnail.com/archives/4249)
 感谢博主！下面只列出了开源的NES游戏模拟器，更多类型的模拟器请转到博主博客原文。
 
+[NES游戏下载地址](http://nesyouxi.net/)
+
 ## NES模拟器
 
 ### FCEUX
