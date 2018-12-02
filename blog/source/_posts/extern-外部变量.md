@@ -7,7 +7,7 @@ tags:
 - C语言
 ---
 前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。
-
+<!--more-->
 ## 参考链接
 [when to use extern in C++](https://stackoverflow.com/questions/10422034/when-to-use-extern-in-c)
 
