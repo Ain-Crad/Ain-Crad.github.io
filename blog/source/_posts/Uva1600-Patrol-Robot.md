@@ -7,7 +7,7 @@ tags:
 - BFS
 ---
 一个$ m \times n $的长方形场地，0表示可走格子，1表示障碍物。求从 $(1，1)$ 到 $(m，n)$的最短路径。其中可以走存在障碍物的格子，但不能在障碍物上连续走k步。
-
+<!--more-->
 ## 链接
 [Uva1600-Patrol Robot](https://vjudge.net/problem/UVA-1600)
 
