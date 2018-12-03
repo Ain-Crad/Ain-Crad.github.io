@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。 参考链接when to use extern in C++ externextern用于多文件编程时，不同源文件之间共享变量。我们在头文件中声明外部变量，这样所有包含该头文件的的源文件就都有了这个外部变量的声明，而我们只需要在其中一个源文件中定义一次。 extern int x告诉编译器有一个叫x的int型">
+<meta name="description" content="前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。">
 <meta name="keywords" content="C语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="extern-外部变量">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/extern-外部变量/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。 参考链接when to use extern in C++ externextern用于多文件编程时，不同源文件之间共享变量。我们在头文件中声明外部变量，这样所有包含该头文件的的源文件就都有了这个外部变量的声明，而我们只需要在其中一个源文件中定义一次。 extern int x告诉编译器有一个叫x的int型">
+<meta property="og:description" content="前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-02T23:54:56.173Z">
+<meta property="og:updated_time" content="2018-12-02T23:59:32.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="extern-外部变量">
-<meta name="twitter:description" content="前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。 参考链接when to use extern in C++ externextern用于多文件编程时，不同源文件之间共享变量。我们在头文件中声明外部变量，这样所有包含该头文件的的源文件就都有了这个外部变量的声明，而我们只需要在其中一个源文件中定义一次。 extern int x告诉编译器有一个叫x的int型">
+<meta name="twitter:description" content="前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。">
 
 
 
@@ -393,7 +393,7 @@
       
 
       
-        <p>前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。</p>
+        <p>前两天被同学问起extern的用法，才发现自己对extern的用法也不清晰，囧，整理一下。<br><a id="more"></a></p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://stackoverflow.com/questions/10422034/when-to-use-extern-in-c" target="_blank" rel="noopener">when to use extern in C++</a></p>
 <h2 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h2><p>extern用于多文件编程时，不同源文件之间共享变量。我们在头文件中声明外部变量，这样所有包含该头文件的的源文件就都有了这个外部变量的<strong>声明</strong>，而我们只需要在<strong>其中一个</strong>源文件中<strong>定义</strong>一次。</p>
 <p><code>extern int x</code>告诉编译器有一个叫<code>x</code>的<code>int</code>型变量在某个地方，正如之前<a href="https://ain-crad.github.io/2018/12/02/C%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A-h%E5%92%8C-c%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">C语言编译连接过程</a>里说的那样，此时编译器并不关心<code>x</code>的具体实现，即不关心<code>x</code>定义在哪个源文件中。编译器只需要知道这个变量的类型和名字，就知道了该如何使用它。编译完成生成之后，链接器会将所有<strong>引用</strong><code>x</code>的地方定向到<strong>定义</strong>它的某一个源文件中。<br>为了使上述过程顺利进行，<code>x</code>必须要在某个源文件中被定义为<strong>全局变量</strong>，并且不能包含<code>static</code>关键字。</p>
