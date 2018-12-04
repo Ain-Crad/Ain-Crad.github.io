@@ -10,7 +10,7 @@ tags:
 吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。
 ![balance](/balance.png)
 如图，把7改成3天平平衡。
-
+<!--more-->
 ## 链接
 题目链接[Uva12166-Equilibrium Mobile](https://vjudge.net/problem/UVA-12166)
 
