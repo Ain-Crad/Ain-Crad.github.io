@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。中间图为点阵表示：四分树：任务是在这两种表示法之间进行转换。 链接Uva806-Spatial Structures 题目描述进一步说明一下，四分树中NW，NE，SW，SE分别用1、2、3、4表示。其">
+<meta name="description" content="有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。中间图为点阵表示：四分树：任务是在这两种表示法之间进行转换。">
 <meta name="keywords" content="四分树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Uva806-Spatial Structures-四分树">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/Uva806-Spatial-Structures/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。中间图为点阵表示：四分树：任务是在这两种表示法之间进行转换。 链接Uva806-Spatial Structures 题目描述进一步说明一下，四分树中NW，NE，SW，SE分别用1、2、3、4表示。其">
+<meta property="og:description" content="有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。中间图为点阵表示：四分树：任务是在这两种表示法之间进行转换。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/04/Uva806-Spatial-Structures/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/04/Uva806-Spatial-Structures/2.png">
-<meta property="og:updated_time" content="2018-12-04T13:19:49.605Z">
+<meta property="og:updated_time" content="2018-12-04T13:26:34.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Uva806-Spatial Structures-四分树">
-<meta name="twitter:description" content="有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。中间图为点阵表示：四分树：任务是在这两种表示法之间进行转换。 链接Uva806-Spatial Structures 题目描述进一步说明一下，四分树中NW，NE，SW，SE分别用1、2、3、4表示。其">
+<meta name="twitter:description" content="有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。中间图为点阵表示：四分树：任务是在这两种表示法之间进行转换。">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/04/Uva806-Spatial-Structures/1.png">
 
 
@@ -396,7 +396,7 @@
       
 
       
-        <p>有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。<br>黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。<br>中间图为点阵表示：<br><img src="/2018/12/04/Uva806-Spatial-Structures/1.png" alt="1"><br>四分树：<br><img src="/2018/12/04/Uva806-Spatial-Structures/2.png" alt="2"><br>任务是在这两种表示法之间进行转换。</p>
+        <p>有幸做World Final的题，，做了一下午= =，刷新我的单题代码长度了，怕了怕了。<br>黑白图像有两种表示方法，点阵表示和路径表示。路径表示法首先需要把图像转化为四分树，然后记录所有黑结点到根的路径。<br>中间图为点阵表示：<br><img src="/2018/12/04/Uva806-Spatial-Structures/1.png" alt="1"><br>四分树：<br><img src="/2018/12/04/Uva806-Spatial-Structures/2.png" alt="2"><br>任务是在这两种表示法之间进行转换。<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://vjudge.net/problem/UVA-806" target="_blank" rel="noopener">Uva806-Spatial Structures</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>进一步说明一下，四分树中NW，NE，SW，SE分别用1、2、3、4表示。其实它们的代表是把图像四分后的左上、右上、左下和右下部分。把得到的路径数字串看成是五进制的，转化为十进制后排序。例如上面的树在转化，排序后的结果是：9 14 17 22 23 44 63 69 88 94 113。<br>要求给定一串数字路径还原点阵形式，或给定点阵写出所有黑结点的数字路径并排序输出。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>题目本身难度不是很大，只不过有很多细节需要注意。自己就被Presentation Error了好久= =。点阵转路径的时候，递归进行四分，如果子区域全白或全黑，跳出递归，边递归边统计路径，全黑时就把路径转成十进制存起来。路径转点阵的过程类似，可以用队列维护数字串，每取出一个就重新规划区域，直到队列为空，把当前区域全部涂黑。<br><em>除去输出格式的问题，还有一个需要注意的是，若初始图像全白，则路径用空串来表示，需要特殊处理，同时意味着读入路径数据的时候要用getline。</em></p>
