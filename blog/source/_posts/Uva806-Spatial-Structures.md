@@ -13,6 +13,7 @@ tags:
 四分树：
 ![2](/2.png)
 任务是在这两种表示法之间进行转换。
+<!--more-->
 
 ## 链接
 [Uva806-Spatial Structures](https://vjudge.net/problem/UVA-806)
