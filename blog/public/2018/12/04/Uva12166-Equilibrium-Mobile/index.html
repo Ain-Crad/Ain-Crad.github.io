@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。如图，把7改成3天平平衡。 链接题目链接Uva12166-Equilibrium Mobile 参考链接crazysillynerd’s csdn blog 题解想要修改砝码使天平平衡，需要找其中一个砝码作为基准，用它来调整整个天平。假设">
+<meta name="description" content="吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。如图，把7改成3天平平衡。">
 <meta name="keywords" content="思维,二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Uva12166-Equilibrium Mobile-思维+二叉树">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/Uva12166-Equilibrium-Mobile/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。如图，把7改成3天平平衡。 链接题目链接Uva12166-Equilibrium Mobile 参考链接crazysillynerd’s csdn blog 题解想要修改砝码使天平平衡，需要找其中一个砝码作为基准，用它来调整整个天平。假设">
+<meta property="og:description" content="吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。如图，把7改成3天平平衡。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/04/Uva12166-Equilibrium-Mobile/balance.png">
-<meta property="og:updated_time" content="2018-12-04T03:14:57.368Z">
+<meta property="og:updated_time" content="2018-12-04T03:16:10.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Uva12166-Equilibrium Mobile-思维+二叉树">
-<meta name="twitter:description" content="吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。如图，把7改成3天平平衡。 链接题目链接Uva12166-Equilibrium Mobile 参考链接crazysillynerd’s csdn blog 题解想要修改砝码使天平平衡，需要找其中一个砝码作为基准，用它来调整整个天平。假设">
+<meta name="twitter:description" content="吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。如图，把7改成3天平平衡。">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/04/Uva12166-Equilibrium-Mobile/balance.png">
 
 
@@ -395,7 +395,7 @@
       
 
       
-        <p>吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。<br><img src="/2018/12/04/Uva12166-Equilibrium-Mobile/balance.png" alt="balance"><br>如图，把7改成3天平平衡。</p>
+        <p>吹爆思维好题！给定一个深度不超过16的二叉树，代表一个天平，天平两端可能是递归的子天平也可能是砝码。每个砝码的质量已知，求至少修改多少个砝码的质量才能让天平平衡。<br><img src="/2018/12/04/Uva12166-Equilibrium-Mobile/balance.png" alt="balance"><br>如图，把7改成3天平平衡。<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>题目链接<a href="https://vjudge.net/problem/UVA-12166" target="_blank" rel="noopener">Uva12166-Equilibrium Mobile</a></p>
 <p>参考链接<a href="https://blog.csdn.net/crazysillynerd/article/details/43876123" target="_blank" rel="noopener">crazysillynerd’s csdn blog</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>想要修改砝码使天平平衡，需要找其中一个砝码作为基准，用它来调整整个天平。假设基准砝码的质量为w，它在二叉树中的深度为d，则用它调整后的整个天平的重量为$w * pow(2，d)$。<br>可能存在一些砝码，当以他们为基准时，调整后天平的总重量相同。那么这些砝码的数量就代表了保持不变的砝码数量，总砝码数量减去保持不变的砝码数量就是需要修改的砝码数量。<br>用DFS构建二叉树，对每一个叶节点计算调整后的天平总重量；用STL中的map来维护不同总重量所代表的砝码个数。</p>
