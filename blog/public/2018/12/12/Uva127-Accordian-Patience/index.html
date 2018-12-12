@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="STL,stack," />
+  <meta name="keywords" content="链表,栈," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="最近在看刘汝佳老师的《算法竞赛入门经典（第2版）》，收获很大，很多知识都在上面查漏补缺，书上有一道STL的例题，用到了stack、vector、map、set，而且“化集合为ID”的思路很好，记录一下。">
-<meta name="keywords" content="STL,stack">
+<meta name="description" content="一副扑克牌（52张），按照从左往右的顺序，若当前扑克牌和它的左一或左三扑克牌的数字或花色相同，就把它移动到那张牌的上方，移动后如果继续满足条件则继续移动。左一和左三同时满足时，左三优先。当有某个位置的牌为空时，要及时把这个位置消除。从这道题里不仅实战了一把数组模拟链表，还发现了一个大佬的博客，嚯嚯。收获了感动，坚定了继续坚持下去的信念。 链接题目链接Uva127-“Accordian Patien">
+<meta name="keywords" content="链表,栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Uva12096-The SetStack Computer-STL">
-<meta property="og:url" content="http://yoursite.com/2018/08/09/Uva12096-The-SetStack-Computer-STL/index.html">
+<meta property="og:title" content="Uva127-Accordian Patience-链表">
+<meta property="og:url" content="http://yoursite.com/2018/12/12/Uva127-Accordian-Patience/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="最近在看刘汝佳老师的《算法竞赛入门经典（第2版）》，收获很大，很多知识都在上面查漏补缺，书上有一道STL的例题，用到了stack、vector、map、set，而且“化集合为ID”的思路很好，记录一下。">
+<meta property="og:description" content="一副扑克牌（52张），按照从左往右的顺序，若当前扑克牌和它的左一或左三扑克牌的数字或花色相同，就把它移动到那张牌的上方，移动后如果继续满足条件则继续移动。左一和左三同时满足时，左三优先。当有某个位置的牌为空时，要及时把这个位置消除。从这道题里不仅实战了一把数组模拟链表，还发现了一个大佬的博客，嚯嚯。收获了感动，坚定了继续坚持下去的信念。 链接题目链接Uva127-“Accordian Patien">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-10T02:10:42.000Z">
+<meta property="og:updated_time" content="2018-12-12T03:04:28.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Uva12096-The SetStack Computer-STL">
-<meta name="twitter:description" content="最近在看刘汝佳老师的《算法竞赛入门经典（第2版）》，收获很大，很多知识都在上面查漏补缺，书上有一道STL的例题，用到了stack、vector、map、set，而且“化集合为ID”的思路很好，记录一下。">
+<meta name="twitter:title" content="Uva127-Accordian Patience-链表">
+<meta name="twitter:description" content="一副扑克牌（52张），按照从左往右的顺序，若当前扑克牌和它的左一或左三扑克牌的数字或花色相同，就把它移动到那张牌的上方，移动后如果继续满足条件则继续移动。左一和左三同时满足时，左三优先。当有某个位置的牌为空时，要及时把这个位置消除。从这道题里不仅实战了一把数组模拟链表，还发现了一个大佬的博客，嚯嚯。收获了感动，坚定了继续坚持下去的信念。 链接题目链接Uva127-“Accordian Patien">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/09/Uva12096-The-SetStack-Computer-STL/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/12/Uva127-Accordian-Patience/"/>
 
 
 
 
 
-  <title>Uva12096-The SetStack Computer-STL | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Uva127-Accordian Patience-链表 | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/Uva12096-The-SetStack-Computer-STL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/Uva127-Accordian-Patience/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Aincrad">
@@ -310,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Uva12096-The SetStack Computer-STL</h1>
+          <h1 class="post-title" itemprop="name headline">Uva127-Accordian Patience-链表</h1>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T22:44:02+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T10:25:11+08:00">
+                2018-12-12
               </time>
             
 
@@ -362,7 +362,7 @@
 
           
           
-             <span id="/2018/08/09/Uva12096-The-SetStack-Computer-STL/" class="leancloud_visitors" data-flag-title="Uva12096-The SetStack Computer-STL">
+             <span id="/2018/12/12/Uva127-Accordian-Patience/" class="leancloud_visitors" data-flag-title="Uva127-Accordian Patience-链表">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -393,27 +393,11 @@
       
 
       
-        <p>最近在看刘汝佳老师的《算法竞赛入门经典（第2版）》，收获很大，很多知识都在上面查漏补缺，书上有一道STL的例题，用到了stack、vector、map、set，而且“化集合为ID”的思路很好，记录一下。<br><a id="more"></a></p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3248" target="_blank" rel="noopener">Uva12096-The SetStack Computer</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有一个专门为了集合运算而设计的“集合栈”计算机。该机器有一个初始为空的栈，并且支持一下操作。</p>
-<ul>
-<li>PUSH:空集“{}”入栈。</li>
-<li>DUP:把当前栈顶元素复制一份后再入栈。</li>
-<li>UNION:出栈两个集合，然后把二者的并集入栈。</li>
-<li>INTERSECT:出栈两个集合，然后把出栈的集合加入到后出栈的集合中，把结果入栈。</li>
-</ul>
-<p>每次操作后，输出栈顶集合的大小（即元素个数）。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>本题的集合并不是简单的整数集合或者字符串集合，而是集合的集合。为了方便为每个不同的集合分配一个唯一的ID，则每个集合都可以表示成所包含元素的ID的集合，这样就可以用STL的set<int> 来表示了，而整个栈则是一个stack<int>。map用来把集合映射成ID，vector则根据ID取集合。</int></int></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Author : Aincrad</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Date : Thu  9 Aug 16:19:36 CST 2018</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; Set;</span><br><span class="line"><span class="built_in">map</span>&lt;Set, <span class="keyword">int</span>&gt; mp;</span><br><span class="line"><span class="built_in">vector</span>&lt;Set&gt; vec;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ID</span><span class="params">(Set st)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(mp.count(st)) <span class="keyword">return</span> mp[st];</span><br><span class="line">    vec.push_back(st);</span><br><span class="line">    <span class="keyword">return</span> mp[st] = vec.size() - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">//cin.tie(0);</span></span><br><span class="line">    <span class="comment">//cout.tie(0);</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">        <span class="comment">//freopen("in.txt", "r", stdin);</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stc;</span><br><span class="line">        <span class="built_in">string</span> s;</span><br><span class="line">        vec.clear();</span><br><span class="line">        mp.clear();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">            <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">'P'</span>) stc.push(ID(Set ()));</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">'D'</span>) stc.push(stc.top());</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                Set st1 = vec[stc.top()]; stc.pop();</span><br><span class="line">                Set st2 = vec[stc.top()]; stc.pop();</span><br><span class="line">                Set st;</span><br><span class="line">                <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">'U'</span>) set_union(st1.begin(), st1.end(), st2.begin(), st2.end(), inserter(st, st.begin()));</span><br><span class="line">                <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">'I'</span>) set_intersection(st1.begin(), st1.end(), st2.begin(), st2.end(), inserter(st, st.begin()));</span><br><span class="line">                <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">'A'</span>) &#123;st = st2; st.insert(ID(st1));&#125;</span><br><span class="line">                stc.push(ID(st));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; vec[stc.top()].size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"***"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="并集"><a href="#并集" class="headerlink" title="并集"></a>并集</h3><p>对两个集合取交集可以使用std::set_union，该函数需要两对迭代器，以及一个输出迭代器。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st1;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st2;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">set_union(st1.begin(), st1.end(), st2.begin(), st2.end(), inserter(st, st.begin()));</span><br></pre></td></tr></table></figure></p>
-<h3 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h3><p>对两个集合取交集可以使用std::set_intersection，该函数需要两对迭代器，以及一个输出迭代器。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st1;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st2;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">set_intersection(st1.begin(), st1.end(), st2.begin(), st2.end(), inserter(st, st.begin()));</span><br></pre></td></tr></table></figure></p>
-<p>类似的还有：</p>
-<ul>
-<li>set_difference:差集，从第一个区间去除第二个区间的元素。</li>
-<li>set_merge:合并，与set_union不同，set_merge不会去除重复的元素（不能用于set，可用于vector）。</li>
-</ul>
-<p>注意：set_union和set_intersection等也可用于vector，但必须是排好序的vector。</p>
-
+        <p>一副扑克牌（52张），按照从左往右的顺序，若当前扑克牌和它的左一或左三扑克牌的数字或花色相同，就把它移动到那张牌的上方，移动后如果继续满足条件则继续移动。左一和左三同时满足时，左三优先。当有某个位置的牌为空时，要及时把这个位置消除。<br>从这道题里不仅实战了一把数组模拟链表，还发现了一个大佬的博客，嚯嚯。收获了感动，坚定了继续坚持下去的信念。</p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>题目链接<a href="https://vjudge.net/problem/UVA-127" target="_blank" rel="noopener">Uva127-“Accordian Patience”</a></p>
+<p>参考链接<a href="https://blog.csdn.net/shuangde800/article/details/7703781#commentBox" target="_blank" rel="noopener">shuangde800的博客</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>52个位置的牌堆分别用一个栈来维护。因为有消除牌堆的过程，所以会有频繁的移动，用链表来维护牌堆之间的关系效率比较高。代码里用两个数组next_idx和front_idx模拟了双向链表。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Author : Aincrad</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Date : Tue 11 Dec 20:19:53 CST 2018</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="built_in">string</span>&gt; d[<span class="number">60</span>];</span><br><span class="line"><span class="keyword">int</span> next_idx[<span class="number">60</span>];</span><br><span class="line"><span class="keyword">int</span> front_idx[<span class="number">60</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(next_idx, <span class="number">-1</span>, <span class="keyword">sizeof</span>(next_idx));</span><br><span class="line">    <span class="built_in">memset</span>(front_idx, <span class="number">-1</span>, <span class="keyword">sizeof</span>(front_idx));</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="built_in">string</span>&gt; stk;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">52</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="string">"#"</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        stk.push(s);</span><br><span class="line">        d[i] = stk;</span><br><span class="line">        stk.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//judge if we can move 3 steps</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ok_3</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> last3;</span><br><span class="line">    last3 = front_idx[front_idx[front_idx[i]]];</span><br><span class="line">    <span class="comment">//if(last3 &lt; 0) return false;</span></span><br><span class="line">    <span class="keyword">if</span>(d[last3].top()[<span class="number">0</span>] == d[i].top()[<span class="number">0</span>] || d[last3].top()[<span class="number">1</span>] == d[i].top()[<span class="number">1</span>])&#123;</span><br><span class="line">        d[last3].push(d[i].top());</span><br><span class="line">        d[i].pop();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//judge if we can move 1 step</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ok_1</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> last1;</span><br><span class="line">    last1 = front_idx[i];</span><br><span class="line">    <span class="comment">//if(last1 &lt; 0) return false;</span></span><br><span class="line">    <span class="keyword">if</span>(d[last1].top()[<span class="number">0</span>] == d[i].top()[<span class="number">0</span>] || d[last1].top()[<span class="number">1</span>] == d[i].top()[<span class="number">1</span>])&#123;</span><br><span class="line">        d[last1].push(d[i].top());</span><br><span class="line">        d[i].pop();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="number">-1</span>; i = next_idx[i], cnt++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span>(ok_3(i)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">if</span>(ok_1(i)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//erase empty position</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="number">-1</span>; i = next_idx[i])&#123;</span><br><span class="line">        <span class="keyword">if</span>(d[i].empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> l = front_idx[i];</span><br><span class="line">            <span class="keyword">int</span> r = next_idx[i];</span><br><span class="line">            next_idx[l] = r;</span><br><span class="line">            front_idx[r] = l;</span><br><span class="line">            next_idx[i] = front_idx[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE    </span></span><br><span class="line">        freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(input())&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">51</span>; i++)&#123;</span><br><span class="line">            next_idx[i] = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">53</span>; i++)&#123;</span><br><span class="line">            front_idx[i] = i - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(move())&#123;</span><br><span class="line">            erase();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="number">-1</span>; i = next_idx[i])&#123;</span><br><span class="line">            ans.push_back(d[i].size());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> len = ans.size();</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"1 pile remaining: "</span> &lt;&lt; ans[<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; len &lt;&lt; <span class="string">" piles remaining:"</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> x : ans)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; x;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -430,9 +414,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/STL/" rel="tag"># STL</a>
+            <a href="/tags/链表/" rel="tag"># 链表</a>
           
-            <a href="/tags/stack/" rel="tag"># stack</a>
+            <a href="/tags/栈/" rel="tag"># 栈</a>
           
         </div>
       
@@ -445,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/08/stringstream/" rel="next" title="stringstream-类型转换&&字符分割">
-                <i class="fa fa-chevron-left"></i> stringstream-类型转换&&字符分割
+              <a href="/2018/12/09/循环小数化为分数的方法/" rel="next" title="循环小数化为分数的方法">
+                <i class="fa fa-chevron-left"></i> 循环小数化为分数的方法
               </a>
             
           </div>
@@ -454,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/11/pick-numbers/" rel="prev" title="pick numbers-DFS">
-                pick numbers-DFS <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +594,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并集"><span class="nav-number">5.1.</span> <span class="nav-text">并集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交集"><span class="nav-number">5.2.</span> <span class="nav-text">交集</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
