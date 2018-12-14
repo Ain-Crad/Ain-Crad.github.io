@@ -7,7 +7,7 @@ tags:
 - 二叉树
 ---
 根据一棵树的BFS和DFS序列还原这颗树的结构。关于树的一种新的类型的题，mark。
-
+<!--more-->
 ## 链接
 题目链接[Uva10410-Tree Reconstruction](https://vjudge.net/problem/UVA-10410)
 参考链接[20143605--pcx's Blog](https://www.cnblogs.com/20143605--pcx/p/4859424.html)和[Chengrui's Blog](https://wcr1996.com/2015/02/24/uva-10410-tree-reconstruction/)
@@ -41,6 +41,8 @@ int main(){
     #endif
 
     while(cin >> n){
+        while(!dfs.empty()) dfs.pop();
+        
         int x;
         for(int i = 0; i < n; i++){
             cin >> x;
