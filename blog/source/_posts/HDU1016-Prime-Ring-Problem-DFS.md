@@ -3,6 +3,7 @@ title: HDU1016-Prime Ring Problem-DFS
 date: 2018-08-12 23:16:27
 categories:
 - ACM
+- DFS
 tags:
 - DFS
 ---

@@ -3,6 +3,7 @@ title: Uva11853-Painball-全局+DFS
 date: 2018-11-20 10:53:30
 categories:
 - ACM
+- DFS
 tags:
 - DFS
 - 全局思想

@@ -3,6 +3,7 @@ title: Uva12166-Equilibrium Mobile-思维+二叉树
 date: 2018-12-04 10:40:03
 categories:
 - ACM
+- 树
 tags:
 - 思维
 - 二叉树

@@ -3,6 +3,7 @@ title: Uva12096-The SetStack Computer-STL
 date: 2018-08-09 22:44:02
 categories:
 - ACM
+- map
 tags:
 - stack
 - STL

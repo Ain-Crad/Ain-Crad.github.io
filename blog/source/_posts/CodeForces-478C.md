@@ -3,6 +3,7 @@ title: CodeForces-478C-Table Decorations
 date: 2018-08-28 14:21:27
 categories:
 - ACM
+- 思维
 tags:
 - 思维
 ---

@@ -3,6 +3,7 @@ title: Uva10562-Undraw the trees
 date: 2018-11-13 07:33:42
 categories:
 - ACM
+- 树
 tags:
 - 二叉树
 ---

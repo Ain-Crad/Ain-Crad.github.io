@@ -3,6 +3,7 @@ title: POJ1970-The Game-DFS
 date: 2018-08-14 19:39:48
 categories:
 - ACM
+- DFS
 tags:
 - POJ
 - DFS

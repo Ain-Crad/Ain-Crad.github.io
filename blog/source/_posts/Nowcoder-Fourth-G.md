@@ -3,6 +3,7 @@ title: 牛客暑期ACM多校训练营(第四场)G题-Maxinum Mode-思维+map
 date: 2018-07-29 20:06:46
 categories:
 - ACM
+- 思维
 tags:
 - 逆向思维
 ---

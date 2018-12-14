@@ -3,6 +3,7 @@ title: Uva1600-Patrol Robot-BFS
 date: 2018-12-03 09:20:27
 categories:
 - ACM
+- BFS
 tags:
 - BFS
 ---

@@ -3,6 +3,7 @@ title: Uva1599-Ideal Path-双向BFS
 date: 2018-11-18 10:49:44
 categories:
 - ACM
+- BFS
 tags:
 - BFS
 ---

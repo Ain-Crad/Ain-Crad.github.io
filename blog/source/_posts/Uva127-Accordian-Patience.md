@@ -3,6 +3,7 @@ title: Uva127-Accordian Patience-链表
 date: 2018-12-12 10:25:11
 categories:
 - ACM
+- 链表
 tags:
 - 链表
 - 栈

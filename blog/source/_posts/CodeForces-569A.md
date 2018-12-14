@@ -3,6 +3,7 @@ title: 'CodeForces-569A-Music'
 date: 2018-08-28 15:15:59
 categories:
 - ACM
+- 思维
 tags:
 - 思维
 ---

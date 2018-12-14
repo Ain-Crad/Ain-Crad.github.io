@@ -2,9 +2,10 @@
 title: Uva10410-Tree Reconstruction-树还原
 date: 2018-12-14 20:02:42
 categories:
-- 二叉树
+- ACM
+- 树
 tags:
-- 二叉树
+- 树
 ---
 根据一棵树的BFS和DFS序列还原这颗树的结构。关于树的一种新的类型的题，mark。
 <!--more-->

@@ -3,6 +3,7 @@ title: Uva806-Spatial Structures-四分树
 date: 2018-12-04 20:48:34
 categories:
 - ACM
+- 树
 tags:
 - 四分树
 ---

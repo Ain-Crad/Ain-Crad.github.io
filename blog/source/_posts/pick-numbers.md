@@ -3,6 +3,7 @@ title: pick numbers-DFS
 date: 2018-08-11 17:23:02
 categories:
 - ACM
+- DFS
 tags:
 - DFS
 ---

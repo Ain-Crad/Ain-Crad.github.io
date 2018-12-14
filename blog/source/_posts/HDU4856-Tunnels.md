@@ -3,6 +3,7 @@ title: HDU4856-Tunnels-BFS+状态压缩DP
 date: 2018-05-16 14:03:19
 categories:
 - ACM
+- 动态规划
 tags:
 - HDU
 - 状态压缩DP

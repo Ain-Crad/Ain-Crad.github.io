@@ -3,6 +3,7 @@ title: 'Codeforces-#498Div3-C-前&&后缀和'
 date: 2018-07-31 23:08:57
 categories:
 - ACM
+- 前缀和
 tags:
 - 前缀和
 - 后缀和
