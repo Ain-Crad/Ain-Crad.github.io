@@ -59,7 +59,7 @@ $ sudo chmod 766 /usr/local/bin/ssr
 $ ssr install
 $ ssr config
 ```
-配置和服务器端保持一直即可，下面给出示例，只需配置server、server_port、password、method、protocol、obfs这几项
+配置和服务器端保持一致即可，下面给出示例，只需配置server、server_port、password、method、protocol、obfs这几项
 ```
     "server": "11.22.33.44",
     "server_ipv6": "::",
