@@ -74,10 +74,10 @@ int main(){
 ```C++
 struct node{
     int x, y;
-    bool operator <(node a) const { //必须加const
+    bool operator <(const node& a) const { //必须加const
         return x > a.x;
     }
-    //bool operator >(node a) const { //必须加const
+    //bool operator >(const node& a) const { //必须加const
     //    return x < a.x;
     //}
 };
