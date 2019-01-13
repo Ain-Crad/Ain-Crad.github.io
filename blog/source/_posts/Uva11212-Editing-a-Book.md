@@ -1,5 +1,5 @@
 ---
-title: Uva11212-Editing a Book
+title: Uva11212-Editing a Book-IDA*
 date: 2019-01-12 09:20:13
 categories:
 - ACM

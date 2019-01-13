@@ -1,5 +1,5 @@
 ---
-title: Uva1343-The Rotation Game
+title: Uva1343-The Rotation Game-IDA*
 date: 2019-01-13 11:13:57
 categories:
 - ACM
