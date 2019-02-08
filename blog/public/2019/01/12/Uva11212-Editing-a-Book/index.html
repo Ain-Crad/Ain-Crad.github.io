@@ -82,15 +82,15 @@
 <meta name="description" content="有$n（1 &amp;lt; n &amp;lt; 10）$个段落初始按一定顺序排列，要求通过“剪切”和“粘贴”操作把这n个段落调整为按编号1，2，…，n顺序排列。其中每次可以同时剪几个连续的段落，求最少的操作步数。">
 <meta name="keywords" content="迭代加深">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Uva11212-Editing a Book">
+<meta property="og:title" content="Uva11212-Editing a Book-IDA*">
 <meta property="og:url" content="http://yoursite.com/2019/01/12/Uva11212-Editing-a-Book/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:description" content="有$n（1 &amp;lt; n &amp;lt; 10）$个段落初始按一定顺序排列，要求通过“剪切”和“粘贴”操作把这n个段落调整为按编号1，2，…，n顺序排列。其中每次可以同时剪几个连续的段落，求最少的操作步数。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/01/12/Uva11212-Editing-a-Book/prune.png">
-<meta property="og:updated_time" content="2019-01-12T02:45:55.829Z">
+<meta property="og:updated_time" content="2019-01-13T09:31:31.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Uva11212-Editing a Book">
+<meta name="twitter:title" content="Uva11212-Editing a Book-IDA*">
 <meta name="twitter:description" content="有$n（1 &amp;lt; n &amp;lt; 10）$个段落初始按一定顺序排列，要求通过“剪切”和“粘贴”操作把这n个段落调整为按编号1，2，…，n顺序排列。其中每次可以同时剪几个连续的段落，求最少的操作步数。">
 <meta name="twitter:image" content="http://yoursite.com/2019/01/12/Uva11212-Editing-a-Book/prune.png">
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>Uva11212-Editing a Book | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Uva11212-Editing a Book-IDA* | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Uva11212-Editing a Book</h1>
+          <h1 class="post-title" itemprop="name headline">Uva11212-Editing a Book-IDA*</h1>
         
 
         <div class="post-meta">
@@ -371,11 +371,21 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/12/Uva11212-Editing-a-Book/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/12/Uva11212-Editing-a-Book/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-             <span id="/2019/01/12/Uva11212-Editing-a-Book/" class="leancloud_visitors" data-flag-title="Uva11212-Editing a Book">
+             <span id="/2019/01/12/Uva11212-Editing-a-Book/" class="leancloud_visitors" data-flag-title="Uva11212-Editing a Book-IDA*">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -449,8 +459,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/13/Uva1343-The-Rotation-Game/" rel="prev" title="Uva1343-The Rotation Game">
-                Uva1343-The Rotation Game <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/13/Uva1343-The-Rotation-Game/" rel="prev" title="Uva1343-The Rotation Game-IDA*">
+                Uva1343-The Rotation Game-IDA* <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -482,9 +492,7 @@
 
   
     <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDMwNS8xNjgzMg=="></div>
     </div>
-
   
 
 
@@ -537,7 +545,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -559,7 +567,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -787,26 +795,37 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-
-
-
-
-
-
-
-
-
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz',
+        appKey: 'NIP5Gqn2qVviUE2rp4ajjUUW',
+        placeholder: 'Write your comments here',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

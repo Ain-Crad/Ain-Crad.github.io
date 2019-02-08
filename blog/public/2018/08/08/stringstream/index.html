@@ -358,6 +358,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/08/stringstream/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/08/stringstream/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -471,9 +481,7 @@
 
   
     <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDMwNS8xNjgzMg=="></div>
     </div>
-
   
 
 
@@ -526,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +556,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -776,26 +784,37 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-
-
-
-
-
-
-
-
-
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz',
+        appKey: 'NIP5Gqn2qVviUE2rp4ajjUUW',
+        placeholder: 'Write your comments here',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
