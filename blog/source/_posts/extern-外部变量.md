@@ -2,7 +2,7 @@
 title: extern-外部变量
 date: 2018-12-03 06:56:26
 categories:
-- Summary
+- C++
 tags:
 - C语言
 ---
@@ -36,7 +36,10 @@ print.c
 #include "print.h"
 
 int global_x;   //global_x的具体定义的位置
-printf("%d\n", global_x);
+
+void print_global_x(){
+    printf("%d\n", global_x);
+}
 ```
 
 main.c

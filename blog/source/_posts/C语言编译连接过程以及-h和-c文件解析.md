@@ -2,7 +2,7 @@
 title: C语言编译器工作原理以及.h和.c文件解析
 date: 2018-12-02 12:41:00
 categories:
-- Summary
+- C++
 tags:
 - C语言
 ---
