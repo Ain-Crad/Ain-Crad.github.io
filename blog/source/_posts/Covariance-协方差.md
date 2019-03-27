@@ -1,5 +1,5 @@
 ---
-title: 协方差-Covariance
+title: Covariance-协方差
 date: 2019-03-27 10:26:57
 categories:
 - Math
