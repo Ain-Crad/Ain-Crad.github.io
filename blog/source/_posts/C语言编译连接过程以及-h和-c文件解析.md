@@ -8,10 +8,6 @@ tags:
 ---
 在进行多文件编程的时候，虽然很多IDE都可以帮我们完成预处理、编译、链接等过程，但深入理解编译器的这几个过程可以避免很多"undefined"，"undeclared"以及"redefined"的问题。而比较好的实践方式是自己写Makefile（IDE实际上完成的就是帮我们弄清文件依赖关系，然后生成一个Makefile，调用编译器去编译链接生成可执行文件）。
 <!--more-->
-## 参考链接
-[C语言中.h和.c文件解析（很精彩）](https://www.cnblogs.com/laojie4321/archive/2012/03/30/2425015.html)
-[Purpose of #ifndef and #define](https://community.arduboy.com/t/purpose-of-ifndef-and-define/3592/2)
-
 ## 编译器工作原理
 1.预处理阶段：
 实际上是处理的是"define"，"include"等宏命令，进行宏替换。例如#include "xx.h"实际意思是把当前这一行删掉，把xx.h中的内容原封不动的插入在当前行位置。
@@ -167,3 +163,7 @@ A：不必，因为头文件只是其中的内容被#include宏命令替换，�
 Q：.c文件必须包含自己的.h文件吗？
 A：不一定，在最初解释编译器工作原理的例子中add.c就可以不包含add.h文件，因为add.h中只是对add函数的声明，而add.c不需要这个声明也可以编译通过。
 ```
+
+## 参考链接
+[C语言中.h和.c文件解析（很精彩）](https://www.cnblogs.com/laojie4321/archive/2012/03/30/2425015.html)
+[Purpose of #ifndef and #define](https://community.arduboy.com/t/purpose-of-ifndef-and-define/3592/2)
