@@ -99,8 +99,8 @@ menu:
   archives: /archives/ || archive
   links: /links/ || users
   #schedule: /schedule/ || calendar
-  sitemap: /sitemap.xml || sitemap
-  commonweal: /404/ || heartbeat
+  #sitemap: /sitemap.xml || sitemap
+  #commonweal: /404/ || heartbeat
 
 # Enable/Disable menu icons.
 menu_icons:
@@ -129,7 +129,7 @@ scheme: Pisces
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: https://github.com/Ain-Crad || github
-  #E-Mail: mailto:851056505@qq.com || envelope
+  E-Mail: mailto:aincrad@126.com || envelope
   #Google: https://plus.google.com/yourname || google
   Twitter: https://twitter.com/Iron_Lv || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
