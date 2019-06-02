@@ -35,7 +35,7 @@ $ ssh root@你的主机IP地址
 之后输入你的主机密码进行登录(可以在主机信息页面直接复制，粘贴到终端里时不会显示，但已存在,直接回车即可)。
 登录成功后使用一键配置脚本进行配置
 ```
-$ wget -N --no-check-certificate https://softs.fun/Bash/ssr.sh && chmod +x ssr.sh && bash ssr.sh
+$ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && bash ssr.sh
 ```
 终端中会出现如下界面，输入１选择安装shadowsocksR
 ![p7](/p7.png)
