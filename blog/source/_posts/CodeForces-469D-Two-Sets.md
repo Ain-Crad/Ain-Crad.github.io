@@ -8,6 +8,7 @@ tags:
 - 思维
 - 贪心
 ---
+　　CodeForces-469D-Two Sets 贪心求解
 <!--more-->
 # 题目链接
 　　[CodeForces-496D-Two Sets](http://codeforces.com/problemset/problem/469/D)
