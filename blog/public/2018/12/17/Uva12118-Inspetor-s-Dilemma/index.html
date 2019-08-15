@@ -395,7 +395,8 @@
 
       
         <p>V个城市之间两两相连，给定E条需要走的边，走过一条边需要时间T。求走完所有的E条边需要的最少时间。E条边不一定在一个连通图中。<br>竟然卡在<code>ifndef ONLINE_JUDGE</code>上好久，单词<code>ONLINE</code>手滑打成了<code>ONLIEN</code>，= =。吐血。</p>
-<p><em>紫书第六章结束</em><br><a id="more"></a></p>
+<p><em>紫书第六章结束</em></p>
+<a id="more"></a>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>题目链接<a href="https://vjudge.net/problem/UVA-12118" target="_blank" rel="noopener">Uva12118-Inspetor’s Dilemma</a><br>参考<a href="https://blog.csdn.net/xiao_k666/article/details/79209697" target="_blank" rel="noopener">SingleK’s Blog</a>精简了自己的代码。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为E条边不一定在一个连通图中，所以首先DFS遍历连通块，统计每一个连通块中度数为奇数的结点个数。若能满足构成欧拉路的条件，则一次“一笔画”就可以走完当前连通块中的边。若不能构成欧拉路（奇度数结点个数大于2），则通过加边的方式，使其可以构成欧拉路。n个连通块之间还需要n - 1条边连接。<br>所以最后的所需要走过的边是E，加上添加边的个数，再加上连通块个数减1。</p>
 <p><em>最后不要忘记乘以T得到总耗时 = =，以及当给定E为0时，结果会出现负数，要特判。</em></p>
@@ -523,7 +524,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -545,7 +546,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

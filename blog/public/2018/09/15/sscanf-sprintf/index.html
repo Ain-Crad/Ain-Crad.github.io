@@ -383,12 +383,16 @@
       
 
       
-        <p>关于$sscanf$和$sprintf$用法的总结。<br><a id="more"></a></p>
-<h2 id="sscanf"><a href="#sscanf" class="headerlink" title="sscanf"></a>sscanf</h2><p>int sscanf（const char <em> str，const char </em> format，…）从字符串中读取格式化的输入。</p>
+        <p>关于$sscanf$和$sprintf$用法的总结。</p>
+<a id="more"></a>
+<h2 id="sscanf"><a href="#sscanf" class="headerlink" title="sscanf"></a>sscanf</h2><p>int sscanf（const char * str，const char * format，…）从字符串中读取格式化的输入。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> day, year;</span><br><span class="line">   <span class="keyword">char</span> weekday[<span class="number">20</span>], month[<span class="number">20</span>], dtm[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line">   <span class="built_in">strcpy</span>( dtm, <span class="string">"Saturday March 25 1989"</span> );</span><br><span class="line">   <span class="built_in">sscanf</span>( dtm, <span class="string">"%s %s %d  %d"</span>, weekday, month, &amp;day, &amp;year );</span><br><span class="line"></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%s %d, %d = %s\n"</span>, month, day, year, weekday );</span><br><span class="line">    </span><br><span class="line">   <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">March 25, 1989 = Saturday</span><br></pre></td></tr></table></figure>
-<h2 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf"></a>sprintf</h2><p>int sprintf（char <em> str，const char </em> format，…）将格式化的输出发送到str指向的字符串。</p>
+
+<h2 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf"></a>sprintf</h2><p>int sprintf（char * str，const char * format，…）将格式化的输出发送到str指向的字符串。</p>
 <h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">char</span> str[<span class="number">80</span>];</span><br><span class="line"></span><br><span class="line">   <span class="built_in">sprintf</span>(str, <span class="string">"Value of Pi = %f"</span>, M_PI);</span><br><span class="line">   <span class="built_in">puts</span>(str);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Value of Pi = 3.141593</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -513,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -535,7 +539,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

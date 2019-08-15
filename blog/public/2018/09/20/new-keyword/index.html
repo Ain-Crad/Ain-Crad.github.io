@@ -383,9 +383,11 @@
       
 
       
-        <p>使用$new$关键字和不使用$new$关键字创建对象的异同及优劣对比。<br><a id="more"></a></p>
+        <p>使用$new$关键字和不使用$new$关键字创建对象的异同及优劣对比。</p>
+<a id="more"></a>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://stackoverflow.com/questions/655065/when-should-i-use-the-new-keyword-in-c" target="_blank" rel="noopener">When should I use the new keyword in C++</a><br>顺便安利一波<a href="https://stackoverflow.com/" target="_blank" rel="noopener">Stack Overflow</a> |･ω･｀)</p>
 <h2 id="使用new关键字"><a href="#使用new关键字" class="headerlink" title="使用new关键字"></a>使用new关键字</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass* myClass = <span class="keyword">new</span> Myclass();</span><br><span class="line">myClass-&gt;MyField = <span class="string">"Hello World!"</span>;</span><br></pre></td></tr></table></figure>
+
 <p>特点：</p>
 <ol>
 <li>为创建的对象在自由存储区分配内存。</li>
@@ -393,6 +395,7 @@
 <li>在使用$delete$之前被分配的内存空间持续存在（意味着用$new$关键字创建的对象可以作为指针被函数返回）。</li>
 </ol>
 <h2 id="不使用new关键字"><a href="#不使用new关键字" class="headerlink" title="不使用new关键字"></a>不使用new关键字</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass myClass;</span><br><span class="line">myClass.MyField = <span class="string">"Hello World!"</span>;</span><br></pre></td></tr></table></figure>
+
 <p>特点：</p>
 <ol>
 <li>为创建的对象在堆栈段分配内存。</li>
@@ -531,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -553,7 +556,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

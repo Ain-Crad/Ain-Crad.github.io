@@ -394,7 +394,8 @@
       
 
       
-        <p>给定一个数n，求从$x$计算到$x^n$至少需要多少步，允许得到的各中间变量之间进行乘法和除法。<br><a id="more"></a></p>
+        <p>给定一个数n，求从$x$计算到$x^n$至少需要多少步，允许得到的各中间变量之间进行乘法和除法。</p>
+<a id="more"></a>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>题目链接：<a href="https://vjudge.net/problem/UVA-1374" target="_blank" rel="noopener">Uva1374-Power Calculus</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>看到这道题，最开始想到的是快速幂的计算方法。但是快速幂计算其实是分为“计算过程数据”和“有效过程数据相乘”两部分构成的，步数不一定最少，而且，这道题目中允许除法的运算。所以不能将快速幂的计算方法的过程步骤作为最少步数的结果。<br>采用递归的方式进行搜索，由于具体的步数即深度不清楚，所以适合采用迭代加深搜索来做。同时将<code>maxVal * pow(2, maxd - d)</code>与n的大小关系作为剪枝的条件。其中maxVal为当前中间变量构成的序列中的最大值。若上式的值仍小于n，那么在当前的深度限制下不可能达到n值，需要进行剪枝。</p>
 <p><strong>用位运算<code>maxVal &lt;&lt; maxd - d</code>的方式来代替<code>maxVal * pow(2, maxd - d)</code>的运算方式有助于提升速度。</strong></p>
@@ -522,7 +523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -544,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

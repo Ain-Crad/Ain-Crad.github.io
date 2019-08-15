@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="![discrete](/discrete.png)   光栅化算法　　光栅化渲染技术是一种十分常用的3D场景渲染技术。它同时也是GPU生成3D图形所采用的技术。　　光栅化的过程分为两个主要步骤：先将空间中的物体投影(透视投影)到相机平面上；再遍历图像中的每一个像素，检测是否在物体的投影区域内，如果在的话就用相应颜色填充该像素(Figure 1)。      ![Figure 1](/f">
 <meta name="keywords" content="Rasterization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="光栅化渲染(1)-算法总述">
 <meta property="og:url" content="http://yoursite.com/2019/08/10/光栅化渲染-1-算法总述/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="![discrete](/discrete.png)   光栅化算法　　光栅化渲染技术是一种十分常用的3D场景渲染技术。它同时也是GPU生成3D图形所采用的技术。　　光栅化的过程分为两个主要步骤：先将空间中的物体投影(透视投影)到相机平面上；再遍历图像中的每一个像素，检测是否在物体的投影区域内，如果在的话就用相应颜色填充该像素(Figure 1)。      ![Figure 1](/f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-10T15:47:30.457Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/光栅化渲染-1-算法总述/discrete.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/光栅化渲染-1-算法总述/figure1.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/光栅化渲染-1-算法总述/figure2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/光栅化渲染-1-算法总述/figure3.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/光栅化渲染-1-算法总述/figure4.png">
+<meta property="og:updated_time" content="2019-08-14T14:17:47.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(1)-算法总述">
-<meta name="twitter:description" content="![discrete](/discrete.png)   光栅化算法　　光栅化渲染技术是一种十分常用的3D场景渲染技术。它同时也是GPU生成3D图形所采用的技术。　　光栅化的过程分为两个主要步骤：先将空间中的物体投影(透视投影)到相机平面上；再遍历图像中的每一个像素，检测是否在物体的投影区域内，如果在的话就用相应颜色填充该像素(Figure 1)。      ![Figure 1](/f">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/10/光栅化渲染-1-算法总述/discrete.png">
 
 
 
@@ -394,33 +397,23 @@
       
 
       
-        <div align="center" style="line-height:2px">
-    ![discrete](/discrete.png)
-</div>
+        <p><img src="/2019/08/10/光栅化渲染-1-算法总述/discrete.png" alt="discrete"></p>
+<a id="more"></a>
 
-<h1 id="光栅化算法"><a href="#光栅化算法" class="headerlink" title="光栅化算法"></a>光栅化算法</h1><p>　　光栅化渲染技术是一种十分常用的3D场景渲染技术。它同时也是GPU生成3D图形所采用的技术。<br>　　光栅化的过程分为两个主要步骤：先将空间中的物体投影(透视投影)到相机平面上；再遍历图像中的每一个像素，检测是否在物体的投影区域内，如果在的话就用相应颜色填充该像素(Figure 1)。</p>
-<div align="center" style="line-height:2px">
-    ![Figure 1](/figure1.png) <br>
-    Figure 1
-</div>
-　　*以上过程以三角面片为基本操作对象，三角面片由于几何求解方便一般作为构成3D物体的基本图元(Figure 2)。*
-<div align="center" style="line-height:2px">
-    ![Figure 2](/figure2.jpg) <br>
-    Figure 2
-</div>
+<p>　　<em>如图，光栅化也可以看做是针对由像素构成的平面的一种离散化。</em></p>
+<h1 id="光栅化算法"><a href="#光栅化算法" class="headerlink" title="光栅化算法"></a>光栅化算法</h1><p>　　光栅化渲染技术是一种十分常用的3D场景渲染技术。它同时也是GPU生成3D图形所采用的技术。<br>　　光栅化的过程分为两个主要步骤：先将空间中的物体投影(透视投影)到成像平面上；再遍历图像中的每一个像素，检测是否在物体的投影区域内，如果在的话就用相应颜色填充该像素(Figure 1)。<br><img src="/2019/08/10/光栅化渲染-1-算法总述/figure1.png" alt="Figure 1"></p>
+<center>Figure 1</center>
 
-<h1 id="Z-Buffer"><a href="#Z-Buffer" class="headerlink" title="Z-Buffer"></a>Z-Buffer</h1><p>　　当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们需要借助<code>z-buffer</code>来确定这种情况下像素用来显示哪个三角形的颜色（以及其它属性）。(Figure 3)</p>
-<div align="center" style="line-height:2px">
-    ![Figure 3](/figure3.png) <br>
-    Figure 3
-</div>
-　　``z-buffer``其实就是一个二维矩阵，用来存储每个像素对应空间物体上某一点的深度。这样就可以在重叠的情况下找出距离相机最近的一点，用于像素的着色或其它属性操作。
+<p>　　<em>以上过程以三角面片为基本操作对象，三角面片由于几何求解方便一般作为构成3D物体的基本图元(Figure 2)。</em></p>
+<p><img src="/2019/08/10/光栅化渲染-1-算法总述/figure2.jpg" alt="Figure 2"></p>
+<center>Figure 2</center>
 
-<h1 id="光栅化原理图"><a href="#光栅化原理图" class="headerlink" title="光栅化原理图"></a>光栅化原理图</h1><p>　　其中<code>image-buffer</code>是一个二维数组，在之后的例子中用来保存每一个像素的颜色信息(RGB)，最后渲染结果以ppm（一种图片格式）的形式保存到本地。</p>
-<div align="center" style="line-height:2px">
-    ![Figure 4](/figure4.png) <br>
-    Figure 4
-</div>
+<h1 id="Z-Buffer"><a href="#Z-Buffer" class="headerlink" title="Z-Buffer"></a>Z-Buffer</h1><p>　　当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们需要借助<code>z-buffer</code>来确定这种情况下像素用来显示哪个三角形的颜色（以及其它属性）。(Figure 3)<br><img src="/2019/08/10/光栅化渲染-1-算法总述/figure3.png" alt="Figure 3"></p>
+<center>Figure 3</center>
+
+<p>　　<code>z-buffer</code>其实就是一个二维矩阵，用来存储每个像素对应空间物体上某一点的深度。这样就可以在重叠的情况下找出距离相机最近的一点，用于像素的着色或其它属性操作。</p>
+<h1 id="光栅化原理图"><a href="#光栅化原理图" class="headerlink" title="光栅化原理图"></a>光栅化原理图</h1><p>　　其中<code>image-buffer</code>是一个二维数组，在之后的例子中用来保存每一个像素的颜色信息(RGB)，最后渲染结果以ppm（一种图片格式）的形式保存到本地。<br><img src="/2019/08/10/光栅化渲染-1-算法总述/figure4.png" alt="Figure 4"></p>
+<center>Figure 4</center>
 
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>　　<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm" target="_blank" rel="noopener">Scratchpixel-Rasterization: a Practical Implementation</a></p>
 
@@ -462,6 +455,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/11/光栅化渲染-2-透视投影/" rel="prev" title="光栅化渲染(2)-透视投影">
+                光栅化渲染(2)-透视投影 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -543,7 +540,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -565,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

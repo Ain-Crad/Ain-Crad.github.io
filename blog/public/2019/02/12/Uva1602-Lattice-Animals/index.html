@@ -396,7 +396,8 @@
       
 
       
-        <p>给定$n，w，h$，求在$n \times n$的网格中，最多能放入几种宽和高不超过$w和h$的连通块。其中一个连通块经过平移、旋转和翻转得到的连通块不属于新的连通块。<br><img src="/2019/02/12/Uva1602-Lattice-Animals/pic.png" alt="pic"><br><a id="more"></a></p>
+        <p>给定$n，w，h$，求在$n \times n$的网格中，最多能放入几种宽和高不超过$w和h$的连通块。其中一个连通块经过平移、旋转和翻转得到的连通块不属于新的连通块。<br><img src="/2019/02/12/Uva1602-Lattice-Animals/pic.png" alt="pic"></p>
+<a id="more"></a>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>题目链接：<a href="https://vjudge.net/problem/UVA-1602" target="_blank" rel="noopener">Uva1602-Lattice Animals</a><br>参考链接：<a href="https://blog.csdn.net/u014800748/article/details/47400557" target="_blank" rel="noopener">XDU_Skyline’s Blog</a>，<a href="https://github.com/aoapc-book/aoapc-bac2nd/blob/master/ch7/UVa1602.cpp" target="_blank" rel="noopener">Rujia Liu’s Github Repository</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分为两部分，一部分为搜索，另一部分为判重。<br>搜索可以采用BFS也可以采用DFS。示例代码里采用了BFS。<br>判重部分，因为一个连通块经过平移、旋转和翻转后得到的连通块不属于新的连通块，所以在判断一个连通块是否重复时首先要对其<strong>每一种可能的形态</strong>进行判断。<br>对于<strong>平移操作</strong>，我们考虑将连通块进行<strong>标准化</strong>normalize，即统计连通块的x方向和y方向的最小值minX和minY，然后将连通块中的每一个单元格都<strong>减去矢量(minX，minY)</strong>得到标准化后的连通块。<br>对于<strong>旋转操作</strong>，假设一个单元格的<strong>坐标为(x，y),</strong>表示逆时针旋转90°的旋转矩阵为<br>$$<br> \begin{bmatrix}<br>   0 &amp; -1 \\<br>   1 &amp; 0<br>  \end{bmatrix}<br>$$<br>所以该单元格<strong>逆时针旋转90°之后的坐标为(-y, x)。</strong>对连通块中的每一个单元格都执行此操作就得到了旋转后的连通块。<em>旋转之后的连通块还要进行一次normalize操作再判重。</em><br>对于<strong>翻转操作</strong>，可以沿x轴翻转也可以沿y轴翻转。其对应的<strong>坐标变换是(x，y)-&gt;(-x，y)。</strong>(以沿y轴翻转为例)。翻转之后还要进行一圈的旋转判重，事实上沿x轴进行翻转后再旋转180°就可以得到沿y轴翻转后的图形，所以不需要再分开讨论这两种不同的翻转情况。<em>同样翻转之后的连通块也要进行normalize操作后再判重。</em></p>
 <p>以上是思路部分，关于具体的实现，搜索部分采用BFS，判重部分利用STL中的set判重。单元格通过一个结构体存储x和y坐标来表示，联通块通过set存储其各个单元格来表示。<em>连通块之所以用set表示，而不是vector，是因为set会自动排序，这样就避免了因插入顺序不同导致的判重失败问题。</em></p>
@@ -526,7 +527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +549,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

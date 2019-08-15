@@ -396,7 +396,8 @@
       
 
       
-        <p>输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。<br><img src="/2018/09/22/Uva839-二叉树的递归处理/tree.png" alt="example"><br><a id="more"></a></p>
+        <p>输入一个树状天平，根据力矩相等原则判断是否平衡。即判断是否满足$W_lD_l=W_rD_r$。<br><img src="/2018/09/22/Uva839-二叉树的递归处理/tree.png" alt="example"></p>
+<a id="more"></a>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://vjudge.net/problem/UVA-839" target="_blank" rel="noopener">Uva839-Not so Mobile</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>题目输入采用递归（先序）方式：每个天平的格式为$W_l$，$D_l$，$W_r$，$D_r$，当$W_l$或$W_r$为$0$时，表示该“砝码”实际是一个子天平，接下来会进一步描述这个子天平。当$W_l=W_r=0$时，会先描述左子天平，然后是右子天平。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为题目的输入就采取了递归方式定义，所以编写一个递归过程读取输入同时进行处理比较合适。在递归的过程中判断子天平是否满足平衡并自下向上不断的更新$W$为$0$的节点（更新为其左子砝码重量$W_l$和右子砝码重量$W_r$之和）。可以定义一个标志变量来标明整个过程是否一直都满足平衡条件。</p>
@@ -526,7 +527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +549,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

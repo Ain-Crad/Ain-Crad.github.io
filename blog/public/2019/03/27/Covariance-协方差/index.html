@@ -383,12 +383,15 @@
       
 
       
-        <p><em>填坑数学系列</em><br>总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。<br><a id="more"></a></p>
+        <p><em>填坑数学系列</em><br>总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。</p>
+<a id="more"></a>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>协方差用在概率论和统计学中于衡量两个变量的总体误差(<a href="https://www.wikiwand.com/zh-hans/%E5%8D%8F%E6%96%B9%E5%B7%AE" target="_blank" rel="noopener">Wikiwand</a>)。<br>简单来说协方差用来描述两个随机变量之间具有什么样的关系。</p>
 <h2 id="数学定义"><a href="#数学定义" class="headerlink" title="数学定义"></a>数学定义</h2><p>和方差的数学定义类似：$$Var(X)=\frac{\sum_{i=1}^n(x_i-\overline{x})(x_i-\overline{x})}{n-1}$$<br>协方差的数学定义：$$Cov(X,Y)=\frac{\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})}{n-1}$$<br>通过向量表示为：$$Cov(X,Y)=\frac{\vec{x}\cdot\vec{y}}{n-1}$$</p>
 <p>可以发现协方差看起来很像<strong>点积</strong>。</p>
 <p><em>除以n-1表示无偏估计,一般我们可以直接除以样本数量n(有偏估计)</em></p>
-<h2 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h2><p>协方差可以理解为通过<strong>点积</strong>来计算关系。举一个实际应用的例子。<br>假设有A，B，C，D，E，F六本书，甲、乙两个人对它们的评分(满分5分)如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　    A  B  C  D  E  F</span><br><span class="line">甲    4  3  3  0  5  3</span><br><span class="line">乙    4  2  4  0  4  4</span><br></pre></td></tr></table></figure></p>
+<h2 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h2><p>协方差可以理解为通过<strong>点积</strong>来计算关系。举一个实际应用的例子。<br>假设有A，B，C，D，E，F六本书，甲、乙两个人对它们的评分(满分5分)如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　    A  B  C  D  E  F</span><br><span class="line">甲    4  3  3  0  5  3</span><br><span class="line">乙    4  2  4  0  4  4</span><br></pre></td></tr></table></figure>
+
 <p>甲的信息可以用向量$\vec{x} = (4,3,3,0,5,3)^T$来表示。<br>乙的信息可以用向量$\vec{y} = (4,2,4,0,4,4)^T$来表示。<br>甲和乙的协方差经过计算可得(有偏计算)：$$Cov(X,Y)=2.4$$<br>这个值可以表示甲、乙之间的关系，但是由于点积结果受到向量长度的影响，所以我们最好把<strong>协方差进行归一化</strong>，具体的做法是将得到的协方差(未除以样本总数n均值化之前)除以变量各自的标准差。<br>$$r=\frac{\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})}{\sqrt{\sum_{i=1}^n(x_i-\overline{x})^2}\sqrt{\sum_{i=1}^n(y_i-\overline{y})^2}}$$<br>这被称作两个变量样本的<strong>相关系数</strong>，其实就是两向量夹角的<strong>余弦</strong>：$$\cos\theta=\frac{\vec{x}\cdot\vec{y}}{||\vec{x}||||\vec{y}||}$$<br>上面的例子通过计算相关系数得到：$$r=\cos\theta\approx0.86$$<br>余弦范围为[-1，1]，所以结果表明两者之间应该挺有正向关系的，可以考虑把甲喜欢的书推荐给乙。</p>
 <h2 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h2><p>协方差反映的是两个变量之间的相关性，协方差矩阵反映的是所有变量两两之间的关系。具体来说，包含两个特征变量的矩阵：<br>$$<br>Z=<br> \begin{bmatrix}<br>   1 &amp; 2 \\<br>   3 &amp; 6 \\<br>   4 &amp; 5 \\<br>   5 &amp; 2 \\<br>  \end{bmatrix}<br>$$<br>其中两个特征X，Y分别为：<br>$$<br>X=<br> \begin{bmatrix}<br>   1 \\<br>   3 \\<br>   4 \\<br>   5 \\<br>  \end{bmatrix}<br>，<br>Y=<br> \begin{bmatrix}<br>   2 \\<br>   6 \\<br>   2 \\<br>   2 \\<br>  \end{bmatrix}<br>$$<br>此时协方差矩阵为：<br>$$<br>Cov(Z)=<br> \begin{bmatrix}<br>   Cov(X,X) &amp; Cov(X,Y) \\<br>   Cov(Y,X) &amp; Cov(Y,Y) \\<br> \end{bmatrix}<br>$$</p>
 <p><em>注：自己和自己的协方差等于自己的方差</em></p>
@@ -518,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -540,7 +543,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
