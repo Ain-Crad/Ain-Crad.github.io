@@ -90,11 +90,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/perspective.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure1.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure2.png">
-<meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/visible.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure3.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure4.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure5.png">
-<meta property="og:updated_time" content="2019-08-14T14:17:38.544Z">
+<meta property="og:updated_time" content="2019-08-15T04:23:56.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(2)-透视投影">
 <meta name="twitter:description" content="画家用透视投影的方法作画，以获得接近真实三维物体的视觉效果。">
@@ -421,7 +420,7 @@
 
 <p>$$<br>P_{screen}.x = \cfrac{near * P_{camera}.x}{-P_{camera}.z} \\<br>P_{screen}.y = \cfrac{near * P_{camera}.y}{-P_{camera}.z}<br>$$</p>
 <p>　　假设图片的尺寸为 $W * H$，那么投影后的坐标与该点可见性的关系如下：</p>
-<p><img src="/2019/08/11/光栅化渲染-2-透视投影/visible.png" alt="visible"></p>
+<p>$$<br>visible=<br>\begin{cases}<br>    yes &amp; |P_{screen}.x| &lt;= \cfrac{W}{2} \quad \text{or} \quad |P_{screen}.y| &lt;= \cfrac{H}{2} \\<br>    no &amp; \text{otherwise}<br>\end{cases}<br>$$</p>
 <h1 id="坐标系变换"><a href="#坐标系变换" class="headerlink" title="坐标系变换"></a>坐标系变换</h1><p>　　我们的目标是获得投影点的像素坐标，所以要对坐标系进行变换，由成像平面坐标系变为光栅坐标系。<br>　　相机成像平面上一点 $P_{screen}$ (Figure 3)<br><img src="/2019/08/11/光栅化渲染-2-透视投影/figure3.png" alt="figure 3"></p>
 <center>Figure 3</center>
 
@@ -441,9 +440,9 @@
 <p>　　公式各项同时乘以 $2$ 再减去 $1$：</p>
 <p>$$<br>-1 &lt; 2 * \cfrac{x-l}{r-l} - 1 &lt; 1<br>$$</p>
 <p>　　化简得：</p>
-<p>$$<br>-1 &lt; \cfrac{2x}{r-l}-\cfrac{r+l}{r-l} &lt; 1，即P_{normalized}.x = \cfrac{2*P_{screen}.x}{r-l}-\cfrac{r+l}{r-l}<br>$$</p>
+<p>$$<br>-1 &lt; \cfrac{2x}{r-l}-\cfrac{r+l}{r-l} &lt; 1，即 \quad P_{normalized}.x = \cfrac{2*P_{screen}.x}{r-l}-\cfrac{r+l}{r-l}<br>$$</p>
 <p>　　同理可得：</p>
-<p>$$<br>-1 &lt; \cfrac{2y}{t-b}-\cfrac{t+b}{t-b} &lt; 1，即P_{normalized}.y = \cfrac{2*P_{screen}.y}{t-b}-\cfrac{t+b}{t-b}<br>$$</p>
+<p>$$<br>-1 &lt; \cfrac{2y}{t-b}-\cfrac{t+b}{t-b} &lt; 1，即 \quad P_{normalized}.y = \cfrac{2*P_{screen}.y}{t-b}-\cfrac{t+b}{t-b}<br>$$</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>　　<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/computing-pixel-coordinates-of-3d-point/mathematics-computing-2d-coordinates-of-3d-points" target="_blank" rel="noopener">Scratchpixel-Mathematics of Computing the 2D Coordinates of a 3D Point</a><br>　　<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/projection-stage" target="_blank" rel="noopener">Scratchpixel-The Projection Stage</a></p>
 
       
@@ -484,6 +483,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/15/光栅化渲染-3-光栅化/" rel="prev" title="光栅化渲染(3)-光栅化">
+                光栅化渲染(3)-光栅化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -565,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
