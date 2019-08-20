@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:description" content="之前的博客C语言编译器工作原理以及.h和.c文件解析中比较详细的介绍了编译器的工作原理，以及它是如何处理多文件编译问题的。但是在工程项目比较庞大以及需要链接外部库的时候，手动编写Makefile往往比较繁琐，一个比较好的解决方式是使用CMake工具自动生成工程项目的Makefile。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-20T13:05:23.315Z">
+<meta property="og:updated_time" content="2019-08-20T14:52:54.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learn CMake(1)--HelloWorld">
 <meta name="twitter:description" content="之前的博客C语言编译器工作原理以及.h和.c文件解析中比较详细的介绍了编译器的工作原理，以及它是如何处理多文件编译问题的。但是在工程项目比较庞大以及需要链接外部库的时候，手动编写Makefile往往比较繁琐，一个比较好的解决方式是使用CMake工具自动生成工程项目的Makefile。">
@@ -385,11 +385,11 @@
       
         <p>之前的博客<a href="https://ain-crad.github.io/2018/12/02/C%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A-h%E5%92%8C-c%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">C语言编译器工作原理以及.h和.c文件解析</a>中比较详细的介绍了编译器的工作原理，以及它是如何处理多文件编译问题的。但是在工程项目比较庞大以及需要链接外部库的时候，手动编写Makefile往往比较繁琐，一个比较好的解决方式是使用CMake工具自动生成工程项目的Makefile。</p>
 <a id="more"></a>
-<h2 id="CMake介绍"><a href="#CMake介绍" class="headerlink" title="CMake介绍"></a>CMake介绍</h2><p>CMake是一个开源的跨平台自动化构建系统。它可以产生不同系统平台的构建文件(e.g., 类Unix系统的Makefile，Window系统的.vcproj)。可以方便的用于工程项目的管理。</p>
+<h1 id="CMake介绍"><a href="#CMake介绍" class="headerlink" title="CMake介绍"></a>CMake介绍</h1><p>CMake是一个开源的跨平台自动化构建系统。它可以产生不同系统平台的构建文件(e.g., 类Unix系统的Makefile，Window系统的.vcproj)。可以方便的用于工程项目的管理。</p>
 <p><em>大部分内容来自<a href="http://derekmolloy.ie/hello-world-introductions-to-cmake/" target="_blank" rel="noopener">Introduction to CMake by Example</a></em></p>
-<h2 id="CMake-安装-Ubuntu"><a href="#CMake-安装-Ubuntu" class="headerlink" title="CMake 安装(Ubuntu)"></a>CMake 安装(Ubuntu)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install cmake    //install CMake</span><br><span class="line">$ cmake -version    //check version of CMake</span><br></pre></td></tr></table></figure>
+<h1 id="CMake-安装-Ubuntu"><a href="#CMake-安装-Ubuntu" class="headerlink" title="CMake 安装(Ubuntu)"></a>CMake 安装(Ubuntu)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install cmake    //install CMake</span><br><span class="line">$ cmake -version    //check version of CMake</span><br></pre></td></tr></table></figure>
 
-<h2 id="The-Hello-World-Example"><a href="#The-Hello-World-Example" class="headerlink" title="The Hello World Example"></a>The Hello World Example</h2><p>首先创建一个HelloWorld.cpp文件，包含以下代码:</p>
+<h1 id="The-Hello-World-Example"><a href="#The-Hello-World-Example" class="headerlink" title="The Hello World Example"></a>The Hello World Example</h1><p>首先创建一个HelloWorld.cpp文件，包含以下代码:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World!"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在相同目录下创建一个CMakeLists.txt文件(存放CMake命令的标准文件)，包含一下内容:</p>
@@ -414,13 +414,13 @@
 <p>会在终端中打印出以下信息：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
 
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>执行<code>cmake .</code>命令后我们发现多出的一些文件会使得整个工程看起来比较混乱，而我们只需要用到其中的Makefile文件。所以比较推荐的做法是，在同一目录下新建一个<code>build</code>文件夹用来存放cmake命令之后产生的文件，而当我们不需要这些文件的时候只需要将build文件夹下的文件删除。下面是具体的命令：</p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>执行<code>cmake .</code>命令后我们发现多出的一些文件会使得整个工程看起来比较混乱，而我们只需要用到其中的Makefile文件。所以比较推荐的做法是，在同一目录下新建一个<code>build</code>文件夹用来存放cmake命令之后产生的文件，而当我们不需要这些文件的时候只需要将build文件夹下的文件删除。下面是具体的命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake ..</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
 
 <p>清除cmake文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rm -rf build/*</span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然只编译一个HelloWorld.cpp我们完全没有必要使用CMake，但我们通过这个例子解释了CMake的一些基本操作，可以用于后面更复杂的例子。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虽然只编译一个HelloWorld.cpp我们完全没有必要使用CMake，但我们通过这个例子解释了CMake的一些基本操作，可以用于后面更复杂的例子。</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="http://derekmolloy.ie/hello-world-introductions-to-cmake/" target="_blank" rel="noopener">Introduction to CMake by Example</a><br><a href="http://jermmy.xyz/2017/04/25/2017-4-25-learn-cmake-1/" target="_blank" rel="noopener">Jermmy’s Lazy Blog–cmake学习笔记</a></p>
 
       
@@ -623,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake介绍"><span class="nav-number">1.</span> <span class="nav-text">CMake介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake-安装-Ubuntu"><span class="nav-number">2.</span> <span class="nav-text">CMake 安装(Ubuntu)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Hello-World-Example"><span class="nav-number">3.</span> <span class="nav-text">The Hello World Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number"></span> <span class="nav-text">参考链接</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CMake介绍"><span class="nav-number">1.</span> <span class="nav-text">CMake介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CMake-安装-Ubuntu"><span class="nav-number">2.</span> <span class="nav-text">CMake 安装(Ubuntu)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Hello-World-Example"><span class="nav-number">3.</span> <span class="nav-text">The Hello World Example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">6.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>

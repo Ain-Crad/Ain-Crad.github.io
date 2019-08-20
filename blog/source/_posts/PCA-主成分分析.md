@@ -10,11 +10,11 @@ tags:
 ![pca](/pca.jpeg)
 *图片来源[Jermmy's Lazy Blog-PCA，到底在做什么](http://jermmy.xyz/2017/12/14/2017-12-15-PCA-another-view/)*
 <!--more-->
-## 概念
+# 概念
 [Wikiwand](https://www.wikiwand.com/zh-hans/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90)：主成分分析(PCA)是一种分析、简化数据集的技术。经常用于减少数据集的维数，同时保持数据集中的对方差贡献最大的特征。
 简单来说，PCA可以将数据进行压缩，并且是在尽量少的丢失信息的情况下进行压缩，方便加速对数据的处理速度。
 
-## 算法流程
+# 算法流程
 ```
     样本数据中心化、标准化 //变量减去均值，再除以标准差
 
@@ -35,7 +35,7 @@ $$
 D_{PCA}(k\times{m})=B^T(k\times{n})\cdot{D(n\times{m})}
 $$
 
-## PCA的意义
+# PCA的意义
 PCA的意义要从协方差矩阵说起，协方差矩阵表示各个变量之间的关系，包括各自变量之间的方差。将Cov在以其特征向量为基向量构成的空间中的来观察：
 $$
 A^{-1}CovA=
@@ -54,7 +54,7 @@ $$
 
 *如最开始的图中，在三维数据中找到两个独立的主特征，并将三维数据投影降维到了二维平面上实现数据降维。*
 
-## 参考
+# 参考
 [Jermmy's Lazy Blog-PCA，到底在做什么](http://jermmy.xyz/2017/12/14/2017-12-15-PCA-another-view/)
 [3Blue1Brown线性代数的本质-9-基变换](https://www.bilibili.com/video/av6500834/?spm_id_from=333.788.videocard.2)
 [3Blue1Brown线性代数的本质-10-特征向量和特征值](https://www.bilibili.com/video/av6540378/?spm_id_from=333.788.videocard.1)

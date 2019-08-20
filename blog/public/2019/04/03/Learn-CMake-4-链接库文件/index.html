@@ -88,7 +88,7 @@
 <meta property="og:description" content="很多时候我们都要在程序中链接外部库文件，不论是我们自己创建的，还是第三方的（例如OpenCV）。这里介绍如何使用CMake来方便的在项目中链接库文件。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/03/Learn-CMake-4-链接库文件/lena_color.png">
-<meta property="og:updated_time" content="2019-08-20T13:05:23.315Z">
+<meta property="og:updated_time" content="2019-08-20T14:52:04.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learn CMake(4)--链接库文件">
 <meta name="twitter:description" content="很多时候我们都要在程序中链接外部库文件，不论是我们自己创建的，还是第三方的（例如OpenCV）。这里介绍如何使用CMake来方便的在项目中链接库文件。">
@@ -387,7 +387,7 @@
       
         <p>很多时候我们都要在程序中链接外部库文件，不论是我们自己创建的，还是第三方的（例如OpenCV）。这里介绍如何使用CMake来方便的在项目中链接库文件。</p>
 <a id="more"></a>
-<h2 id="链接自己的创建的库文件"><a href="#链接自己的创建的库文件" class="headerlink" title="链接自己的创建的库文件"></a>链接自己的创建的库文件</h2><p>沿用上一个示例中创建的库文件，文件目录：</p>
+<h1 id="链接自己的创建的库文件"><a href="#链接自己的创建的库文件" class="headerlink" title="链接自己的创建的库文件"></a>链接自己的创建的库文件</h1><p>沿用上一个示例中创建的库文件，文件目录：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">aincrad@Inspiron:~/Desktop/HelloWorld$ tree</span><br><span class="line">.</span><br><span class="line">├── CMakeLists.txt</span><br><span class="line">├── include</span><br><span class="line">│   └── HelloWorld.h</span><br><span class="line">├── lib</span><br><span class="line">│   ├── libHelloWorld.a</span><br><span class="line">│   └── libHelloWorld.so</span><br><span class="line">└── src</span><br><span class="line">    └── main.cpp</span><br><span class="line"></span><br><span class="line">3 directories, 5 files</span><br></pre></td></tr></table></figure>
 
 <p>将库文件放在了lib文件夹中，因为有了库文件所以我们不再需要HelloWorld.cpp。</p>
@@ -397,7 +397,7 @@
 <p>源文件main.cpp中的内容：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"../include/HelloWorld.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    HelloWorld hi;</span><br><span class="line">    hi.sayHello();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="链接第三方库文件"><a href="#链接第三方库文件" class="headerlink" title="链接第三方库文件"></a>链接第三方库文件</h2><p>CMake提供了一个<code>find_package()</code>命令来搜寻这些依赖库。比如，如果我们需要链接OpenCV库文件，可以加入以下几条命令：</p>
+<h1 id="链接第三方库文件"><a href="#链接第三方库文件" class="headerlink" title="链接第三方库文件"></a>链接第三方库文件</h1><p>CMake提供了一个<code>find_package()</code>命令来搜寻这些依赖库。比如，如果我们需要链接OpenCV库文件，可以加入以下几条命令：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED)</span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">$&#123;OpenCV_INCLUDE_DIRS&#125;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>然后在<code>add_executable()</code>之后链接库文件：</p>
@@ -411,7 +411,7 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(OpenCV_DIR /home/aincrad/opencv/_build)</span><br></pre></td></tr></table></figure>
 
 <p>其中第二个参数是对应库在自己计算机上的路径。</p>
-<h2 id="OpenCV示例"><a href="#OpenCV示例" class="headerlink" title="OpenCV示例"></a>OpenCV示例</h2><p>文件目录：</p>
+<h1 id="OpenCV示例"><a href="#OpenCV示例" class="headerlink" title="OpenCV示例"></a>OpenCV示例</h1><p>文件目录：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">aincrad@Inspiron:~/Desktop/opencv$ tree</span><br><span class="line">.</span><br><span class="line">├── CMakeLists.txt</span><br><span class="line">├── lena_color.png</span><br><span class="line">└── main.cpp</span><br><span class="line"></span><br><span class="line">0 directories, 3 files</span><br></pre></td></tr></table></figure>
 
 <p>CMakeLists.txt中的内容：</p>
@@ -424,7 +424,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake ..</span><br><span class="line">$ make</span><br><span class="line">$ ./img ../lena_color.png</span><br></pre></td></tr></table></figure>
 
 <p>显示出lena的图片：<br><img src="/2019/04/03/Learn-CMake-4-链接库文件/lena_color.png" alt="lena"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://derekmolloy.ie/hello-world-introductions-to-cmake/" target="_blank" rel="noopener">Introduction to CMake by Example</a><br><a href="http://jermmy.xyz/2017/04/26/2017-4-26-learn-cmake-3/" target="_blank" rel="noopener">Jermmy’s Lazy Blog–cmake学习笔记</a><br><a href="https://docs.opencv.org/3.3.0/db/df5/tutorial_linux_gcc_cmake.html" target="_blank" rel="noopener">Using OpenCV with gcc and CMake</a><br><a href="https://blog.csdn.net/u011092188/article/details/61425924" target="_blank" rel="noopener">CMake如何查找链接库—find_package的使用方法</a><br><a href="https://www.jianshu.com/p/46e9b8a6cb6a" target="_blank" rel="noopener">CMake之find_package</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="http://derekmolloy.ie/hello-world-introductions-to-cmake/" target="_blank" rel="noopener">Introduction to CMake by Example</a><br><a href="http://jermmy.xyz/2017/04/26/2017-4-26-learn-cmake-3/" target="_blank" rel="noopener">Jermmy’s Lazy Blog–cmake学习笔记</a><br><a href="https://docs.opencv.org/3.3.0/db/df5/tutorial_linux_gcc_cmake.html" target="_blank" rel="noopener">Using OpenCV with gcc and CMake</a><br><a href="https://blog.csdn.net/u011092188/article/details/61425924" target="_blank" rel="noopener">CMake如何查找链接库—find_package的使用方法</a><br><a href="https://www.jianshu.com/p/46e9b8a6cb6a" target="_blank" rel="noopener">CMake之find_package</a></p>
 
       
     </div>
@@ -626,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接自己的创建的库文件"><span class="nav-number">1.</span> <span class="nav-text">链接自己的创建的库文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接第三方库文件"><span class="nav-number">2.</span> <span class="nav-text">链接第三方库文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV示例"><span class="nav-number">3.</span> <span class="nav-text">OpenCV示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#链接自己的创建的库文件"><span class="nav-number">1.</span> <span class="nav-text">链接自己的创建的库文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接第三方库文件"><span class="nav-number">2.</span> <span class="nav-text">链接第三方库文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV示例"><span class="nav-number">3.</span> <span class="nav-text">OpenCV示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>

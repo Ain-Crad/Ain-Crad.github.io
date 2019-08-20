@@ -12,14 +12,14 @@ _我发现IDA\*好像因为深度限制以及估价函数的存在而不需要�
 ![game](/game.png)
 <!--more-->
 
-## 链接
+# 链接
 题目链接：[Uva1343-The Rotation Game](https://vjudge.net/problem/UVA-1343)
 参考链接：[Rujia Liu's repository](https://github.com/aoapc-book/aoapc-bac2nd/blob/master/ch7/UVa1343.cpp)
 
-## 题解
+# 题解
 一开始想用BFS进行状态空间搜索，但是状态数总共有``24!/(8!*8!*8!) = 9465511770``种情况，而且我也不知道怎样构造哈希比较合适=　=。刘汝佳老师的IDA\*实现方法代码简单清晰，而且很自然的满足了题目中的步数最少，字典序最小的要求。__而且我发现IDA\*好像因为深度的限制和估价函数的存在而不需要考虑判重的问题。__
 
-## 代码
+# 代码
 ```C++
 /*
  *

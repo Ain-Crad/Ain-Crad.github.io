@@ -12,12 +12,12 @@ tags:
 ![balance](/balance.png)
 如图，把7改成3天平平衡。
 <!--more-->
-## 链接
+# 链接
 题目链接[Uva12166-Equilibrium Mobile](https://vjudge.net/problem/UVA-12166)
 
 参考链接[crazysillynerd's csdn blog](https://blog.csdn.net/crazysillynerd/article/details/43876123)
 
-## 题解
+# 题解
 想要修改砝码使天平平衡，需要找其中一个砝码作为基准，用它来调整整个天平。假设基准砝码的质量为w，它在二叉树中的深度为d，则用它调整后的整个天平的重量为$w * pow(2，d)$。
 可能存在一些砝码，当以他们为基准时，调整后天平的总重量相同。那么这些砝码的数量就代表了保持不变的砝码数量，总砝码数量减去保持不变的砝码数量就是需要修改的砝码数量。
 用DFS构建二叉树，对每一个叶节点计算调整后的天平总重量；用STL中的map来维护不同总重量所代表的砝码个数。

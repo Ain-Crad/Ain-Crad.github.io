@@ -9,7 +9,7 @@ tags:
 线段树区间更新中比较重要的一个概念是延迟标记，即lazy思想，当要对某一个区间中的所有节点进行更新时，先找到包含该区间所有节点的那一个（或多个）节点，只对它（们）进行更新，同时保存更新的值lazy。当进行区间查询时，若查询的区间的大小在lazy标记区间之内则直接返回，否则将lazy值向下进行传递，直到包含查询的区间。通过这种方式，可以用更新整个区间的值来代替更新区间中的每一个节点，从而避免了很多不必要的操作，提高了效率。说起来可能比较抽象，详见代码。
 [参考链接](https://www.zybuluo.com/lychee123/note/731591)
 <!-- more -->
-## 基于区间和的线段树区间更新模板
+# 基于区间和的线段树区间更新模板
 ```C++
 struct SegTree{
     int vl, vr;
@@ -74,7 +74,7 @@ long long query(int k, int l, int r){
 }
 
 ```
-## 例题实现
+# 例题实现
 [POJ-3468--A Simple Problem with Integers](http://acm.hdu.edu.cn/showproblem.php?pid=1754)
 AC代码
 ```C++

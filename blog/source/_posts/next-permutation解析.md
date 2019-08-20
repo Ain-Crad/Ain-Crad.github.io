@@ -8,10 +8,10 @@ tags:
 ---
 next_permutation是C++的STL中提供的一个库函数，声明在algorithm头文件中，用来求下一个排列。好奇内部是怎么实现的，在Stack Overflow上看到了精彩的回答。
 <!--more-->
-## 链接
+# 链接
 参考链接[std::next_permutation Implementation Explanation](https://stackoverflow.com/questions/11483060/stdnext-permutation-implementation-explanation)
 
-## 内部实现
+# 内部实现
 ```C++
 
 template<typename It>
@@ -55,7 +55,7 @@ bool next_permutation(It begin, It end)
 
 ```
 
-## 解析
+# 解析
 ```
 1 2 3 4
 1 2 4 3

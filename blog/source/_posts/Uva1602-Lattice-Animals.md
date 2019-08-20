@@ -11,11 +11,11 @@ tags:
 给定$n，w，h$，求在$n \times n$的网格中，最多能放入几种宽和高不超过$w和h$的连通块。其中一个连通块经过平移、旋转和翻转得到的连通块不属于新的连通块。
 ![pic](/pic.png)
 <!--more-->
-## 链接
+# 链接
 题目链接：[Uva1602-Lattice Animals](https://vjudge.net/problem/UVA-1602)
 参考链接：[XDU_Skyline's Blog](https://blog.csdn.net/u014800748/article/details/47400557)，[Rujia Liu's Github Repository](https://github.com/aoapc-book/aoapc-bac2nd/blob/master/ch7/UVa1602.cpp)
 
-## 题解
+# 题解
 分为两部分，一部分为搜索，另一部分为判重。
 搜索可以采用BFS也可以采用DFS。示例代码里采用了BFS。
 判重部分，因为一个连通块经过平移、旋转和翻转后得到的连通块不属于新的连通块，所以在判断一个连通块是否重复时首先要对其**每一种可能的形态**进行判断。
@@ -32,7 +32,7 @@ $$
 
 以上是思路部分，关于具体的实现，搜索部分采用BFS，判重部分利用STL中的set判重。单元格通过一个结构体存储x和y坐标来表示，联通块通过set存储其各个单元格来表示。*连通块之所以用set表示，而不是vector，是因为set会自动排序，这样就避免了因插入顺序不同导致的判重失败问题。*
 
-## 代码
+# 代码
 ```C++
 /*
  *

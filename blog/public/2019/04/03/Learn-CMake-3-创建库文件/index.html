@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:description" content="介绍如何用CMake编译生成动态链接库和静态链接库。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-20T13:05:23.315Z">
+<meta property="og:updated_time" content="2019-08-20T14:52:13.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learn CMake(3)--创建库文件">
 <meta name="twitter:description" content="介绍如何用CMake编译生成动态链接库和静态链接库。">
@@ -385,8 +385,8 @@
       
         <p>介绍如何用CMake编译生成动态链接库和静态链接库。</p>
 <a id="more"></a>
-<h2 id="静态库和动态库的区别"><a href="#静态库和动态库的区别" class="headerlink" title="静态库和动态库的区别"></a>静态库和动态库的区别</h2><p><a href="https://ain-crad.github.io/2019/04/03/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-STATIC-%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-SHARED/" target="_blank" rel="noopener">静态链接库(STATIC)和动态链接库(SHARED)</a></p>
-<h2 id="建立动态链接库-so-dll"><a href="#建立动态链接库-so-dll" class="headerlink" title="建立动态链接库(.so/.dll)"></a>建立动态链接库(.so/.dll)</h2><p>我们把上一个示例中的HelloWorld类编译成动态链接库。<br>文件目录如下：</p>
+<h1 id="静态库和动态库的区别"><a href="#静态库和动态库的区别" class="headerlink" title="静态库和动态库的区别"></a>静态库和动态库的区别</h1><p><a href="https://ain-crad.github.io/2019/04/03/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-STATIC-%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-SHARED/" target="_blank" rel="noopener">静态链接库(STATIC)和动态链接库(SHARED)</a></p>
+<h1 id="建立动态链接库-so-dll"><a href="#建立动态链接库-so-dll" class="headerlink" title="建立动态链接库(.so/.dll)"></a>建立动态链接库(.so/.dll)</h1><p>我们把上一个示例中的HelloWorld类编译成动态链接库。<br>文件目录如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aincrad@Inspiron:~/Desktop/HelloWorld$ tree</span><br><span class="line">.</span><br><span class="line">├── CMakeLists.txt</span><br><span class="line">├── include</span><br><span class="line">│   └── HelloWorld.h</span><br><span class="line">└── src</span><br><span class="line">    └── HelloWorld.cpp</span><br><span class="line"></span><br><span class="line">2 directories, 3 files</span><br></pre></td></tr></table></figure>
 
 <p>由于目标是建立库，而不是生成可执行文件，所以我们不需要<code>main.cpp</code>。</p>
@@ -405,8 +405,8 @@
 <p>成功编译后会在build文件夹里生成库文件libHelloWorld.so，使用<code>sudo make install</code>安装成功后的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aincrad@Inspiron:~/Desktop/HelloWorld/build$ sudo make install</span><br><span class="line">[100%] Built target HelloWorld</span><br><span class="line">Install the project...</span><br><span class="line">-- Install configuration: <span class="string">"Release"</span></span><br><span class="line">-- Installing: /usr/lib/libHelloWorld.so</span><br></pre></td></tr></table></figure>
 
-<h2 id="建立静态链接库-a-lib"><a href="#建立静态链接库-a-lib" class="headerlink" title="建立静态链接库(.a/.lib)"></a>建立静态链接库(.a/.lib)</h2><p>编译静态库和编译动态库的方式几乎完全一样，唯一的区别就是把<code>add_library()</code>中的<code>SHARED</code>参数改成<code>STATIC</code>。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://derekmolloy.ie/hello-world-introductions-to-cmake/" target="_blank" rel="noopener">Introduction to CMake by Example</a><br><a href="http://jermmy.xyz/2017/04/26/2017-4-26-learn-cmake-3/" target="_blank" rel="noopener">Jermmy’s Lazy Blog–cmake学习笔记</a></p>
+<h1 id="建立静态链接库-a-lib"><a href="#建立静态链接库-a-lib" class="headerlink" title="建立静态链接库(.a/.lib)"></a>建立静态链接库(.a/.lib)</h1><p>编译静态库和编译动态库的方式几乎完全一样，唯一的区别就是把<code>add_library()</code>中的<code>SHARED</code>参数改成<code>STATIC</code>。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="http://derekmolloy.ie/hello-world-introductions-to-cmake/" target="_blank" rel="noopener">Introduction to CMake by Example</a><br><a href="http://jermmy.xyz/2017/04/26/2017-4-26-learn-cmake-3/" target="_blank" rel="noopener">Jermmy’s Lazy Blog–cmake学习笔记</a></p>
 
       
     </div>
@@ -608,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态库和动态库的区别"><span class="nav-number">1.</span> <span class="nav-text">静态库和动态库的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立动态链接库-so-dll"><span class="nav-number">2.</span> <span class="nav-text">建立动态链接库(.so/.dll)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立静态链接库-a-lib"><span class="nav-number">3.</span> <span class="nav-text">建立静态链接库(.a/.lib)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#静态库和动态库的区别"><span class="nav-number">1.</span> <span class="nav-text">静态库和动态库的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立动态链接库-so-dll"><span class="nav-number">2.</span> <span class="nav-text">建立动态链接库(.so/.dll)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立静态链接库-a-lib"><span class="nav-number">3.</span> <span class="nav-text">建立静态链接库(.a/.lib)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>

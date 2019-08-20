@@ -8,10 +8,10 @@ tags:
 ---
 介绍如何用CMake编译生成动态链接库和静态链接库。
 <!--more-->
-## 静态库和动态库的区别
+# 静态库和动态库的区别
 [静态链接库(STATIC)和动态链接库(SHARED)](https://ain-crad.github.io/2019/04/03/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-STATIC-%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-SHARED/)
 
-## 建立动态链接库(.so/.dll)
+# 建立动态链接库(.so/.dll)
 我们把上一个示例中的HelloWorld类编译成动态链接库。
 文件目录如下：
 ```bash
@@ -68,9 +68,9 @@ Install the project...
 -- Installing: /usr/lib/libHelloWorld.so
 ```
 
-## 建立静态链接库(.a/.lib)
+# 建立静态链接库(.a/.lib)
 编译静态库和编译动态库的方式几乎完全一样，唯一的区别就是把``add_library()``中的``SHARED``参数改成``STATIC``。
 
-## 参考链接
+# 参考链接
 [Introduction to CMake by Example](http://derekmolloy.ie/hello-world-introductions-to-cmake/)
 [Jermmy's Lazy Blog--cmake学习笔记](http://jermmy.xyz/2017/04/26/2017-4-26-learn-cmake-3/)

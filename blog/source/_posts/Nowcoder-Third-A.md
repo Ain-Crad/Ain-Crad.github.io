@@ -10,7 +10,7 @@ tags:
 ---
 DP果然是最弱的，记录路径更是十分懵，在多校训练营里被虐的抬不起头，，，算了，只要不死，就会更强(赛亚人的特性其实也就是人的特性)
 <!-- more -->
-## 题目描述
+# 题目描述
 Eddy was a contestant participating in ACM ICPC contests. ACM is short for Algorithm, Coding, Math. Since in the ACM contest, the most important knowledge is about algorithm, followed by coding(implementation ability), then math. However, in the ACM ICPC World Finals 2018, Eddy failed to solve a physics equation, which pushed him away from a potential medal.
 
 Since then on, Eddy found that physics is actually the most important thing in the contest. Thus, he wants to form a team to guide the following contestants to conquer the PACM contests(PACM is short for Physics, Algorithm, Coding, Math). 
@@ -53,7 +53,7 @@ You can output index in any order as long as each index appears at most once. If
 输出：
 0
 
-## 代码
+# 代码
 ``` C++
 #include <bits/stdc++.h>
 
@@ -134,11 +134,11 @@ int main(){
     return 0;
 }
 ```
-## 坑点
+# 坑点
 数据d的类型要是short类型，int类型会爆内存，char类型会数据溢出．
 
-## 背包记录路径问题总结
-### 方法一核心代码
+# 背包记录路径问题总结
+## 方法一核心代码
 ``` C++
     for(int i = 0; i < n; i++){
         for(int j = 0; j <= W; j++){
@@ -158,7 +158,7 @@ int main(){
         }
     }
 ```
-### 方法二核心代码
+## 方法二核心代码
 ``` C++
     for(int i = 0; i < n; i++){
         for(int j = 0; j <= W; j++){

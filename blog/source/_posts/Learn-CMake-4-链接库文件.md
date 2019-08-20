@@ -8,7 +8,7 @@ tags:
 ---
 很多时候我们都要在程序中链接外部库文件，不论是我们自己创建的，还是第三方的（例如OpenCV）。这里介绍如何使用CMake来方便的在项目中链接库文件。
 <!--more-->
-## 链接自己的创建的库文件
+# 链接自己的创建的库文件
 沿用上一个示例中创建的库文件，文件目录：
 ```bash
 aincrad@Inspiron:~/Desktop/HelloWorld$ tree
@@ -55,7 +55,7 @@ int main(int argc, char* argv[]){
 }
 ```
 
-## 链接第三方库文件
+# 链接第三方库文件
 CMake提供了一个``find_package()``命令来搜寻这些依赖库。比如，如果我们需要链接OpenCV库文件，可以加入以下几条命令：
 ```cmake
 find_package(OpenCV REQUIRED)
@@ -78,7 +78,7 @@ set(OpenCV_DIR /home/aincrad/opencv/_build)
 ```
 其中第二个参数是对应库在自己计算机上的路径。
 
-## OpenCV示例
+# OpenCV示例
 文件目录：
 ```bash
 aincrad@Inspiron:~/Desktop/opencv$ tree
@@ -137,7 +137,7 @@ $ ./img ../lena_color.png
 显示出lena的图片：
 ![lena](/lena_color.png)
 
-## 参考链接
+# 参考链接
 [Introduction to CMake by Example](http://derekmolloy.ie/hello-world-introductions-to-cmake/)
 [Jermmy's Lazy Blog--cmake学习笔记](http://jermmy.xyz/2017/04/26/2017-4-26-learn-cmake-3/)
 [Using OpenCV with gcc and CMake](https://docs.opencv.org/3.3.0/db/df5/tutorial_linux_gcc_cmake.html)

@@ -10,9 +10,9 @@ tags:
 ---
 最近在看刘汝佳老师的《算法竞赛入门经典（第2版）》，收获很大，很多知识都在上面查漏补缺，书上有一道STL的例题，用到了stack、vector、map、set，而且“化集合为ID”的思路很好，记录一下。
 <!-- more -->
-## 链接
+# 链接
 [Uva12096-The SetStack Computer](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3248)
-## 题目描述
+# 题目描述
 有一个专门为了集合运算而设计的“集合栈”计算机。该机器有一个初始为空的栈，并且支持一下操作。
 - PUSH:空集“{}”入栈。
 - DUP:把当前栈顶元素复制一份后再入栈。
@@ -21,9 +21,9 @@ tags:
 
 每次操作后，输出栈顶集合的大小（即元素个数）。
 
-## 题解
+# 题解
 本题的集合并不是简单的整数集合或者字符串集合，而是集合的集合。为了方便为每个不同的集合分配一个唯一的ID，则每个集合都可以表示成所包含元素的ID的集合，这样就可以用STL的set<int> 来表示了，而整个栈则是一个stack<int>。map用来把集合映射成ID，vector则根据ID取集合。
-## 代码
+# 代码
 ```C++
 /*
  *
@@ -85,8 +85,8 @@ int main(){
     return 0;
 }
 ```
-## 补充
-### 并集
+# 补充
+## 并集
 对两个集合取交集可以使用std::set_union，该函数需要两对迭代器，以及一个输出迭代器。
 ```C++
 set<int> st1;
@@ -94,7 +94,7 @@ set<int> st2;
 set<int> st;
 set_union(st1.begin(), st1.end(), st2.begin(), st2.end(), inserter(st, st.begin()));
 ```
-### 交集
+## 交集
 对两个集合取交集可以使用std::set_intersection，该函数需要两对迭代器，以及一个输出迭代器。
 ```C++
 set<int> st1;

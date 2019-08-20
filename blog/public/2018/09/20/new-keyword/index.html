@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:description" content="使用$new$关键字和不使用$new$关键字创建对象的异同及优劣对比。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-20T13:05:23.346Z">
+<meta property="og:updated_time" content="2019-08-20T14:50:51.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="new keyword">
 <meta name="twitter:description" content="使用$new$关键字和不使用$new$关键字创建对象的异同及优劣对比。">
@@ -385,8 +385,8 @@
       
         <p>使用$new$关键字和不使用$new$关键字创建对象的异同及优劣对比。</p>
 <a id="more"></a>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://stackoverflow.com/questions/655065/when-should-i-use-the-new-keyword-in-c" target="_blank" rel="noopener">When should I use the new keyword in C++</a><br>顺便安利一波<a href="https://stackoverflow.com/" target="_blank" rel="noopener">Stack Overflow</a> |･ω･｀)</p>
-<h2 id="使用new关键字"><a href="#使用new关键字" class="headerlink" title="使用new关键字"></a>使用new关键字</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass* myClass = <span class="keyword">new</span> Myclass();</span><br><span class="line">myClass-&gt;MyField = <span class="string">"Hello World!"</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://stackoverflow.com/questions/655065/when-should-i-use-the-new-keyword-in-c" target="_blank" rel="noopener">When should I use the new keyword in C++</a><br>顺便安利一波<a href="https://stackoverflow.com/" target="_blank" rel="noopener">Stack Overflow</a> |･ω･｀)</p>
+<h1 id="使用new关键字"><a href="#使用new关键字" class="headerlink" title="使用new关键字"></a>使用new关键字</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass* myClass = <span class="keyword">new</span> Myclass();</span><br><span class="line">myClass-&gt;MyField = <span class="string">"Hello World!"</span>;</span><br></pre></td></tr></table></figure>
 
 <p>特点：</p>
 <ol>
@@ -394,7 +394,7 @@
 <li>之后需要使用$delete$手动释放分配的内存（否则会造成内存泄露）。</li>
 <li>在使用$delete$之前被分配的内存空间持续存在（意味着用$new$关键字创建的对象可以作为指针被函数返回）。</li>
 </ol>
-<h2 id="不使用new关键字"><a href="#不使用new关键字" class="headerlink" title="不使用new关键字"></a>不使用new关键字</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass myClass;</span><br><span class="line">myClass.MyField = <span class="string">"Hello World!"</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="不使用new关键字"><a href="#不使用new关键字" class="headerlink" title="不使用new关键字"></a>不使用new关键字</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass myClass;</span><br><span class="line">myClass.MyField = <span class="string">"Hello World!"</span>;</span><br></pre></td></tr></table></figure>
 
 <p>特点：</p>
 <ol>
@@ -402,14 +402,14 @@
 <li>不需要使用$delete$来手动释放。</li>
 <li>调用结束时内存空间被清除（意味着用这种方式创建的对象不能作为指针来被函数返回）。</li>
 </ol>
-<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><p>可执行文件由正文段、数据段、和$BSS$段组成。</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>可执行文件由正文段、数据段、和$BSS$段组成。</p>
 <ul>
 <li>正文段（$Text Segment$）:用于储存指令。</li>
 <li>数据段（$Data Segment$）:用于储存已初始化的全局变量。</li>
 <li>$BSS$段（$BSS Segment$）:用于储存未赋值的全局变量所需的空间。</li>
 </ul>
 <p>调用栈不储存在可执行文件中，而是在运行时创建。调用栈所在的段称为<strong>堆栈段</strong>（$Stack Segment$）。<br>调用栈：调用栈描述的是函数之间的调用关系。它由多个栈帧（$Stack Frame$）组成，每个栈帧对应着一个未运行完的函数。栈帧中保存了该函数的<strong>返回地址</strong>和<strong>局部变量</strong>，因而不仅能在执行完毕后找到正确的返回地址，还很自然地保证不同函数间的局部变量互不相干－－因为不同函数对应着不同的栈帧。<br>堆栈段的空间相对于自由空间十分有限（具体大小和操作系统相关，大概几十$M$）。所以建议把较大的数组放在$main$函数外，因为局部变量也是放在堆栈段的。栈溢出（$Segmentation fault$）不一定是递归调用太多，也可能是局部变量太大。只要总大小超过了允许的范围，就会产生栈溢出。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果不想时刻担心要调用$delete$释放内存，那么就不要使用$new$关键字。<br>如果需要在一个函数中返回对象的指针，那么就一定要使用$new$关键字（局部变量的方式会在函数调用结束时清除分配的空间）。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>如果不想时刻担心要调用$delete$释放内存，那么就不要使用$new$关键字。<br>如果需要在一个函数中返回对象的指针，那么就一定要使用$new$关键字（局部变量的方式会在函数调用结束时清除分配的空间）。</p>
 
       
     </div>
@@ -611,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用new关键字"><span class="nav-number">2.</span> <span class="nav-text">使用new关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不使用new关键字"><span class="nav-number">3.</span> <span class="nav-text">不使用new关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展"><span class="nav-number">4.</span> <span class="nav-text">拓展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用new关键字"><span class="nav-number">2.</span> <span class="nav-text">使用new关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不使用new关键字"><span class="nav-number">3.</span> <span class="nav-text">不使用new关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拓展"><span class="nav-number">4.</span> <span class="nav-text">拓展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

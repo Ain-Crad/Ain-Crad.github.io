@@ -8,7 +8,7 @@ tags:
 ---
 随着工程的不断扩大，我们会将工程分成不同的子模块，每个子模块用一个子文件夹管理。传统的编译方法是在每一个子目录下创建一个Makefile，然后这些Makefile由父目录中的Makefile调用。使用CMake可以有效的简化这种情况。
 <!--more-->
-## A Project with Directories
+# A Project with Directories
 我们把HelloWorld封装成一个类，头文件``HelloWorld.h``放在``include``文件夹里，源文件``HelloWorld.cpp``和``main.cpp``放在``src``文件夹里。(文件中具体代码在最后给出)。目录结构如下：
 ```bash
 aincrad@Inspiron:~/Desktop/HelloWorld$ tree
@@ -57,7 +57,7 @@ $ ./hello
 Hello World!
 ```
 
-## 文件中代码
+# 文件中代码
 **HelloWorld.h**
 ```c++
 #ifndef _HelloWorld_H
@@ -93,6 +93,6 @@ int main(int argc, char* argv[]){
 }
 ```
 
-## 参考链接
+# 参考链接
 [Introduction to CMake by Example](http://derekmolloy.ie/hello-world-introductions-to-cmake/)
 [Jermmy's Lazy Blog--cmake学习笔记](http://jermmy.xyz/2017/04/26/2017-4-26-learn-cmake-2/)

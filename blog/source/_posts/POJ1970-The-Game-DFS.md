@@ -12,17 +12,17 @@ tags:
 在一个$19×19$的棋盘上有一局五子棋的棋局，要求判断是白棋获胜还是黑棋获胜，并输出获胜一方获胜棋子部分的最左上一个棋子的位置．
 相比其它迷宫问题稍微变化了一点点，多了一个方向因素，通过这道题对迷宫问题和DFS有了更进一步的理解．
 <!-- more -->
-## 链接
+# 链接
 [POJ1970-The Game](http://poj.org/problem?id=1970)
-## 原题描述
+# 原题描述
 A game of Renju is played on a 19*19 board by two players. One player uses black stones and the other uses white stones. The game begins in an empty board and two players alternate in placing black stones and white stones. Black always goes first. There are 19 horizontal lines and 19 vertical lines in the board and the stones are placed on the intersections of the lines. 
 Horizontal lines are marked 1, 2, ..., 19 from up to down and vertical lines are marked 1, 2, ..., 19 from left to right. 
 ![example](/Renju.png)
 The objective of this game is to put five stones of the same color consecutively along a horizontal, vertical, or diagonal line. So, black wins in the above figure. But, a player does not win the game if more than five stones of the same color were put consecutively. 
 Given a configuration of the game, write a program to determine whether white has won or black has won or nobody has won yet. There will be no input data where the black and the white both win at the same time. Also there will be no input data where the white or the black wins in more than one place. 
-## 题解
+# 题解
 相比于其它迷宫问题的搜索，这个问题要求每一次DFS始终沿一个方向进行搜索判断，判断出一方的某一个方向上的棋子个数等于5时该方获胜，所以在DFS函数上加上一个控制方向的参数，并把方向的选择放在DFS外部（main函数中）．还有一个需要注意的地方是连续棋子个数大于5的情况不算获胜．
-## 代码
+# 代码
 ```C++
 /*
  *

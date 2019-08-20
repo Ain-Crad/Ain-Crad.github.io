@@ -12,7 +12,7 @@ tags:
 这里记录一下在mathjax里踩到的坑。
 mathjax的安装配置和使用大家可以参照[Steven's space的博文](http://stevenshi.me/2017/06/26/hexo-insert-formula/)，不再赘述了。
 <!-- more -->
-## 坑点
+# 坑点
 markdown本身的特殊符号和Latex中的符号会出现冲突。
 - 下划线\_在markdown中是斜体，但是Latex中下划线是下标的意思，所以这里会冲突。
 - 双斜线\\\\在markdown中会被转义为\，所以Latex的\\\\换行功能也会不正常。
@@ -22,7 +22,7 @@ $a*b$
 ```
 以上情况都会导致无法在mathjax中渲染出来。
 
-## 解决方法
+# 解决方法
 手动转义：
 比如需要在公式中写乘法*可以写成
 ```
