@@ -6,7 +6,7 @@ categories:
 tags:
 - STL
 ---
-之前一直搞不太懂自定义比较函数和重载运算符的概念，只会依葫芦画瓢的实现功能，渐渐的觉得这样不太好，虽然细节是魔鬼，但有些东西还是搞明白一点比较好。部分内容转载自[Ohazyi Zone's blog](https://www.ohazyi.com/c_cmp/)
+STL中自定义比较函数和重载运算符总结。部分内容转载自[Ohazyi Zone's blog](https://www.ohazyi.com/c_cmp/)
 <!-- more -->
 # sort
 ## 自定义比较函数
