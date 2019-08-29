@@ -20,6 +20,7 @@ tags:
 
 ## 示意图
 ![static](/static.png)
+
 *图片来源：[Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)*
 
 # 动态链接库
@@ -34,6 +35,7 @@ tags:
 
 ## 示意图
 ![shared](/shared.png)
+
 *图片来源：[Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)*
 
 # 总结
@@ -41,4 +43,5 @@ tags:
 
 # 参考链接
 [Stack Overflow--Difference between static and shared libraries](https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries)
+
 [Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)

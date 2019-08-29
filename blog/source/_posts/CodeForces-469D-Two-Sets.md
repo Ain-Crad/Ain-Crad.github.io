@@ -8,19 +8,19 @@ tags:
 - 思维
 - 贪心
 ---
-　　CodeForces-469D-Two Sets 贪心求解
+CodeForces-469D-Two Sets 贪心求解
 <!--more-->
 # 题目链接
-　　[CodeForces-496D-Two Sets](http://codeforces.com/problemset/problem/469/D)
+[CodeForces-496D-Two Sets](http://codeforces.com/problemset/problem/469/D)
 
 # 题意
-　　有 $n$ 个不同的整数，要把它们分到 $A$ 和 $B$ 两个集合中。要求满足以下两个条件：
+有 $n$ 个不同的整数，要把它们分到 $A$ 和 $B$ 两个集合中。要求满足以下两个条件：
 - 如果 $x$ 属于集合 $A$，那么 $a-x$ 也必须属于集合$A$。
 - 如果 $x$ 属于集合 $B$，那么 $b-x$ 也必须属于集合$B$。
 
 # 题解
-　　贪心法。首先对这 $n$ 个不同的整数进行排序，顺序进行判断，假设 $b > a$，那么对于 $x$ 来说，先判断 $b-x$ 是否存在，之后再判断 $a-x$ 是否存在。因为 $b > a$，所以 $b-x>a-x$，应该优先将较大的一方也就是 $b-x$　与 $x$ 配对，因为由于序列递增若先将 $a-x$ 与 $x$，配对，那么 $b-x$ 此后将没有机会再次配对。
-　　查找 $b-x$ 和 $a-x$ 时使用二分搜索，这也是将数列进行排序的意义。
+贪心法。首先对这 $n$ 个不同的整数进行排序，顺序进行判断，假设 $b > a$，那么对于 $x$ 来说，先判断 $b-x$ 是否存在，之后再判断 $a-x$ 是否存在。因为 $b > a$，所以 $b-x>a-x$，应该优先将较大的一方也就是 $b-x$　与 $x$ 配对，因为由于序列递增若先将 $a-x$ 与 $x$，配对，那么 $b-x$ 此后将没有机会再次配对。
+查找 $b-x$ 和 $a-x$ 时使用二分搜索，这也是将数列进行排序的意义。
 
 # 代码
 ```C++
@@ -112,4 +112,4 @@ int main(){
 ```
 
 # 参考链接
-　　[Two Sets My greedy solution~~](http://codeforces.com/blog/entry/13880)
+[Two Sets My greedy solution~~](http://codeforces.com/blog/entry/13880)
