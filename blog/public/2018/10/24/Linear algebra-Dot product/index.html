@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:description" content="我们都知道两个向量 $\vec{a}$，$\vec{b}$ 的点积可以想象为 $\vec{a}$ 朝 $\vec{b}$ 方向上的投影长度乘以 $\vec{b}$ 的长度。其中结果的正负代表方向，两个向量成锐角则大于$0$，成钝角则小于$0$。可是为什么可以这样做呢，这要从线性代数的本质说起。致敬3Blue1Brown，一个热爱数学，并教你如何从直观上去理解数学的团队，将只停留在数值运算和公式的线">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-20T14:51:44.588Z">
+<meta property="og:updated_time" content="2019-08-29T03:37:40.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="直观理解线性代数-点积">
 <meta name="twitter:description" content="我们都知道两个向量 $\vec{a}$，$\vec{b}$ 的点积可以想象为 $\vec{a}$ 朝 $\vec{b}$ 方向上的投影长度乘以 $\vec{b}$ 的长度。其中结果的正负代表方向，两个向量成锐角则大于$0$，成钝角则小于$0$。可是为什么可以这样做呢，这要从线性代数的本质说起。致敬3Blue1Brown，一个热爱数学，并教你如何从直观上去理解数学的团队，将只停留在数值运算和公式的线">
@@ -392,38 +392,22 @@
 <div style="width: 300px; margin: auto">
     ![1.gif](/1.gif)
 </div>
-我们假设图中的两个向量分别为 $\vec{a}$ 和 $\vec{b}$， 我们可以发现点积的运算和将向量 $\vec{a}$ 转置为 $1*4$ 的矩阵再和 $\vec{b}$ 做相乘的结果是一样的。从这里入手我们来分析一下矩阵相乘和投影的关系。
-**投影：**
-任取坐标系中的一条直线作为投影直线，同时在这条直线上取一个单位向量 $\vec{u}$，设它的坐标为$(u_x，u_y)$。
+
+<p>我们假设图中的两个向量分别为 $\vec{a}$ 和 $\vec{b}$， 我们可以发现点积的运算和将向量 $\vec{a}$ 转置为 $1<em>4$ 的矩阵再和 $\vec{b}$ 做相乘的结果是一样的。从这里入手我们来分析一下矩阵相乘和投影的关系。<br>*</em>投影：**<br>任取坐标系中的一条直线作为投影直线，同时在这条直线上取一个单位向量 $\vec{u}$，设它的坐标为$(u_x，u_y)$。</p>
 <div style="width: 500px; margin: auto">
     ![2.gif](/2.gif)
 </div>
-投影是一种线性变换，矩阵的意义就是表示线性变换，所以这个二维空间中的任意一个向量在这条直线上的投影变换都可以用一个矩阵表示出来，至于这个矩阵是什么，我们只需要考虑基向量的变换。(***至于为什么矩阵的意义是线性变换以及为什么用矩阵描述一个变换只需要考虑基向量的变换请移步[线性代数的本质](https://www.bilibili.com/video/av5977466/?spm_id_from=333.788.videocard.8)***)
+
+<p>投影是一种线性变换，矩阵的意义就是表示线性变换，所以这个二维空间中的任意一个向量在这条直线上的投影变换都可以用一个矩阵表示出来，至于这个矩阵是什么，我们只需要考虑基向量的变换。(<strong><em>至于为什么矩阵的意义是线性变换以及为什么用矩阵描述一个变换只需要考虑基向量的变换请移步<a href="https://www.bilibili.com/video/av5977466/?spm_id_from=333.788.videocard.8" target="_blank" rel="noopener">线性代数的本质</a></em></strong>)</p>
 <div style="width: 500px; margin: auto">
     ![3.gif](/3.gif)
 </div>
-上图运用对称性得到基向量 $\vec{i}$ 和 $\vec{j}$ 在直线上的投影分别为$u_x$ 和 $u_y$，所以这个投影变换的矩阵也就是
-$$
- \begin{bmatrix}
-   u_x & u_y
-  \end{bmatrix}
-$$
-所以二维空间中任一向量 $\begin{bmatrix} x \\\\ y \end{bmatrix}$ 在单位向量 $\vec{u}$ 所在直线上的投影值为
-$$
- \left[
- \begin{matrix}
-   u_x & u_y
-  \end{matrix}
-  \right]
-  \left[
-  \begin{matrix}
-   x \\\\
-   y
-  \end{matrix}
-  \right]
-$$
-**把矩阵$\begin{bmatrix} u_x & u_y \end{bmatrix}$转置一下，就变成了点积的定义，这也就是为什么向量的点积可以和几何投影对应起来。**
 
+<p>上图运用对称性得到基向量 $\vec{i}$ 和 $\vec{j}$ 在直线上的投影分别为$u_x$ 和 $u_y$，所以这个投影变换的矩阵也就是</p>
+<p>$$<br> \begin{bmatrix}<br>   u_x &amp; u_y<br>  \end{bmatrix}<br>$$</p>
+<p>所以二维空间中任一向量 $\begin{bmatrix} x \\ y \end{bmatrix}$ 在单位向量 $\vec{u}$ 所在直线上的投影值为</p>
+<p>$$<br> \left[<br> \begin{matrix}<br>   u_x &amp; u_y<br>  \end{matrix}<br>  \right]<br>  \left[<br>  \begin{matrix}<br>   x \\<br>   y<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p><strong>把矩阵$\begin{bmatrix} u_x &amp; u_y \end{bmatrix}$转置一下，就变成了点积的定义，这也就是为什么向量的点积可以和几何投影对应起来。</strong></p>
 <p>上面是以单位向量 $\vec{u}$ 为例，如果 $\vec{u}$ 不是单位向量怎么理解呢？<br>其实也很简单，把 $\vec{u}$ 归一化成单位向量 $\vec{u_0}$，前面提取出一个系数 $c$，这个系数也就是 $\vec{u}$ 的长度。那么空间中任意向量 $\begin{bmatrix} x \\ y \end{bmatrix}$ 和 $\vec{u}$ 的点积可以先看做 $\begin{bmatrix} x \\ y \end{bmatrix}$ 和 $\vec{u_0}$ 的点积，也就是上面的投影过程，最后再乘以 $c$，也就是 $\vec{u}$ 的长度。<br>完美对应。</p>
 
       

@@ -6,8 +6,10 @@ categories:
 tags:
 - STL
 ---
+
 STL中自定义比较函数和重载运算符总结。部分内容转载自[Ohazyi Zone's blog](https://www.ohazyi.com/c_cmp/)
 <!-- more -->
+
 # sort
 ## 自定义比较函数
 ```C++
@@ -28,6 +30,7 @@ int main(){
 }
 ```
 注：自定义比较函数的形式同样也适用于pair类型数据排序。
+
 ## 重载运算符<
 ```C++
 //示例
@@ -70,6 +73,7 @@ int main(){
 }
 ```
 注：同样重载运算符的操作不能用于pair类型数据的排序，只能作用于结构体或类对象。
+
 ## 重载运算符< (运算符重载函数放到结构体内)
 ```C++
 struct node{
@@ -89,6 +93,7 @@ int main(){
 }
 ```
 注：同上。
+
 ## 自定义比较函数
 ```C++
 struct node{
@@ -114,6 +119,7 @@ int main(){
 }
 ```
 注：同样适用于pair类型数据排序。
+
 # 其它
 ```C++
 set<int, greater<int> > st; //按照从大到小，默认是less<int>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="填坑数学系列总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。">
+<meta name="description" content="填坑数学系列 总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。">
 <meta name="keywords" content="Covariance">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Covariance-协方差">
 <meta property="og:url" content="http://yoursite.com/2019/03/27/Covariance-协方差/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="填坑数学系列总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。">
+<meta property="og:description" content="填坑数学系列 总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-20T14:55:02.167Z">
+<meta property="og:updated_time" content="2019-08-29T03:40:16.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Covariance-协方差">
-<meta name="twitter:description" content="填坑数学系列总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。">
+<meta name="twitter:description" content="填坑数学系列 总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。">
 
 
 
@@ -383,8 +383,10 @@
       
 
       
-        <p><em>填坑数学系列</em><br>总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。</p>
+        <p><em>填坑数学系列</em></p>
+<p>总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。</p>
 <a id="more"></a>
+
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>协方差用在概率论和统计学中于衡量两个变量的总体误差(<a href="https://www.wikiwand.com/zh-hans/%E5%8D%8F%E6%96%B9%E5%B7%AE" target="_blank" rel="noopener">Wikiwand</a>)。<br>简单来说协方差用来描述两个随机变量之间具有什么样的关系。</p>
 <h1 id="数学定义"><a href="#数学定义" class="headerlink" title="数学定义"></a>数学定义</h1><p>和方差的数学定义类似：$$Var(X)=\frac{\sum_{i=1}^n(x_i-\overline{x})(x_i-\overline{x})}{n-1}$$<br>协方差的数学定义：$$Cov(X,Y)=\frac{\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})}{n-1}$$<br>通过向量表示为：$$Cov(X,Y)=\frac{\vec{x}\cdot\vec{y}}{n-1}$$</p>
 <p>可以发现协方差看起来很像<strong>点积</strong>。</p>
@@ -393,10 +395,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　    A  B  C  D  E  F</span><br><span class="line">甲    4  3  3  0  5  3</span><br><span class="line">乙    4  2  4  0  4  4</span><br></pre></td></tr></table></figure>
 
 <p>甲的信息可以用向量$\vec{x} = (4,3,3,0,5,3)^T$来表示。<br>乙的信息可以用向量$\vec{y} = (4,2,4,0,4,4)^T$来表示。<br>甲和乙的协方差经过计算可得(有偏计算)：$$Cov(X,Y)=2.4$$<br>这个值可以表示甲、乙之间的关系，但是由于点积结果受到向量长度的影响，所以我们最好把<strong>协方差进行归一化</strong>，具体的做法是将得到的协方差(未除以样本总数n均值化之前)除以变量各自的标准差。<br>$$r=\frac{\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})}{\sqrt{\sum_{i=1}^n(x_i-\overline{x})^2}\sqrt{\sum_{i=1}^n(y_i-\overline{y})^2}}$$<br>这被称作两个变量样本的<strong>相关系数</strong>，其实就是两向量夹角的<strong>余弦</strong>：$$\cos\theta=\frac{\vec{x}\cdot\vec{y}}{||\vec{x}||||\vec{y}||}$$<br>上面的例子通过计算相关系数得到：$$r=\cos\theta\approx0.86$$<br>余弦范围为[-1，1]，所以结果表明两者之间应该挺有正向关系的，可以考虑把甲喜欢的书推荐给乙。</p>
-<h1 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h1><p>协方差反映的是两个变量之间的相关性，协方差矩阵反映的是所有变量两两之间的关系。具体来说，包含两个特征变量的矩阵：<br>$$<br>Z=<br> \begin{bmatrix}<br>   1 &amp; 2 \\<br>   3 &amp; 6 \\<br>   4 &amp; 5 \\<br>   5 &amp; 2 \\<br>  \end{bmatrix}<br>$$<br>其中两个特征X，Y分别为：<br>$$<br>X=<br> \begin{bmatrix}<br>   1 \\<br>   3 \\<br>   4 \\<br>   5 \\<br>  \end{bmatrix}<br>，<br>Y=<br> \begin{bmatrix}<br>   2 \\<br>   6 \\<br>   2 \\<br>   2 \\<br>  \end{bmatrix}<br>$$<br>此时协方差矩阵为：<br>$$<br>Cov(Z)=<br> \begin{bmatrix}<br>   Cov(X,X) &amp; Cov(X,Y) \\<br>   Cov(Y,X) &amp; Cov(Y,Y) \\<br> \end{bmatrix}<br>$$</p>
+<h1 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h1><p>协方差反映的是两个变量之间的相关性，协方差矩阵反映的是所有变量两两之间的关系。具体来说，包含两个特征变量的矩阵：</p>
+<p>$$<br>Z=<br> \begin{bmatrix}<br>   1 &amp; 2 \\<br>   3 &amp; 6 \\<br>   4 &amp; 5 \\<br>   5 &amp; 2 \\<br>  \end{bmatrix}<br>$$</p>
+<p>其中两个特征X，Y分别为：</p>
+<p>$$<br>X=<br> \begin{bmatrix}<br>   1 \\<br>   3 \\<br>   4 \\<br>   5 \\<br>  \end{bmatrix}<br>，<br>Y=<br> \begin{bmatrix}<br>   2 \\<br>   6 \\<br>   2 \\<br>   2 \\<br>  \end{bmatrix}<br>$$</p>
+<p>此时协方差矩阵为：</p>
+<p>$$<br>Cov(Z)=<br> \begin{bmatrix}<br>   Cov(X,X) &amp; Cov(X,Y) \\<br>   Cov(Y,X) &amp; Cov(Y,Y) \\<br> \end{bmatrix}<br>$$</p>
 <p><em>注：自己和自己的协方差等于自己的方差</em></p>
 <h1 id="协方差矩阵的作用"><a href="#协方差矩阵的作用" class="headerlink" title="协方差矩阵的作用"></a>协方差矩阵的作用</h1><p>协方差矩阵经常被用来计算特征之间的某种联系，机器学习中的用于降维的主成分分析(PCA)就用到了协方差矩阵。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhihu.com/question/20852004/answer/287792087" target="_blank" rel="noopener">如何通俗易懂地解释协方差和相关系数的概念</a><br><a href="http://jermmy.xyz/2017/03/19/2017-3-19-covariance-matrix/" target="_blank" rel="noopener">协方差矩阵-Jermmy’s Lazy Blog</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhihu.com/question/20852004/answer/287792087" target="_blank" rel="noopener">如何通俗易懂地解释协方差和相关系数的概念</a></p>
+<p><a href="http://jermmy.xyz/2017/03/19/2017-3-19-covariance-matrix/" target="_blank" rel="noopener">协方差矩阵-Jermmy’s Lazy Blog</a></p>
 
       
     </div>
