@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/depth.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/figure1.png">
-<meta property="og:updated_time" content="2019-08-29T02:05:55.012Z">
+<meta property="og:updated_time" content="2019-08-29T02:19:29.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(4)-深度检测">
 <meta name="twitter:description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer　　在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。　　z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每">
@@ -402,7 +402,7 @@
 <center>Figure 1</center>
 
 <p>　　我们的目标是由投影平面上三角形的重心坐标来推出空间三角形的重心坐标。在<a href="https://ain-crad.github.io/2019/08/11/%E5%85%89%E6%A0%85%E5%8C%96%E6%B8%B2%E6%9F%93-2-%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1/" target="_blank" rel="noopener">透视投影</a>部分我们得到了投影坐标：</p>
-<p>$$<br>&amp; P_{screen}.x = \cfrac{near * P_{camera}.x}{-P_{camera}.z} \\<br>&amp; P_{screen}.y = \cfrac{near * P_{camera}.y}{-P_{camera}.z} \\<br>&amp; P_{screen}.z = -P_{camera}.z<br>$$</p>
+<p>$$<br> &amp; P_{screen}.x = \cfrac{near * P_{camera}.x}{-P_{camera}.z} \\<br> &amp; P_{screen}.y = \cfrac{near * P_{camera}.y}{-P_{camera}.z} \\<br> &amp; P_{screen}.z = -P_{camera}.z<br>$$</p>
 <p>　　<em>注意与之前不同的是，投影之后我们仍然保留空间点的z坐标，利用它们还原计算空间三角形的重心坐标。</em>
 　　</p>
 
