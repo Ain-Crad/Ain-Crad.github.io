@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/03/静态链接库-STATIC-和动态链接库-SHARED/static.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/03/静态链接库-STATIC-和动态链接库-SHARED/shared.png">
-<meta property="og:updated_time" content="2019-08-20T14:39:56.487Z">
+<meta property="og:updated_time" content="2019-08-29T03:26:53.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="静态链接库(STATIC)和动态链接库(SHARED)">
 <meta name="twitter:description" content="静态链接库、动态链接库的区别和特点。">
@@ -395,7 +395,8 @@
 <li>正是因为第二个特点程序会将静态库中代码整合成为程序的一部分，所以使得生成的程序<strong>移植十分方便</strong>。因为程序在运行时已经和库之间没有联系。</li>
 <li>静态库更新时，使用它的应用程序需要<strong>重新编译</strong>。</li>
 </ul>
-<h2 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h2><p><img src="/2019/04/03/静态链接库-STATIC-和动态链接库-SHARED/static.png" alt="static"><br><em>图片来源：<a href="https://www.cnblogs.com/skynet/p/3372855.html" target="_blank" rel="noopener">Tyler’s Blog-C++静态库与动态库</a></em></p>
+<h2 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h2><p><img src="/2019/04/03/静态链接库-STATIC-和动态链接库-SHARED/static.png" alt="static"></p>
+<p><em>图片来源：<a href="https://www.cnblogs.com/skynet/p/3372855.html" target="_blank" rel="noopener">Tyler’s Blog-C++静态库与动态库</a></em></p>
 <h1 id="动态链接库"><a href="#动态链接库" class="headerlink" title="动态链接库"></a>动态链接库</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>动态链接库是以.so为后缀的文件(windows下以.dll为后缀，OS X下以.dylib为后缀)。和库相关的所有代码都在这个文件中，它在程序<strong>运行</strong>时被<strong>引用</strong>。如果一个程序使用动态编译，它只会<strong>引用</strong>需要的那部分代码，不会将库中代码和自身整合在一起。</p>
 <h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>动态库是在程序<strong>运行</strong>时被链接的。</li>
@@ -403,9 +404,11 @@
 <li>动态库更新时，<strong>不需要重新编译</strong>使用它的应用程序。</li>
 <li>动态库会<strong>增加额外的程序运行时间</strong>，因为需要在运行时链接库中相关代码。</li>
 </ul>
-<h2 id="示意图-1"><a href="#示意图-1" class="headerlink" title="示意图"></a>示意图</h2><p><img src="/2019/04/03/静态链接库-STATIC-和动态链接库-SHARED/shared.png" alt="shared"><br><em>图片来源：<a href="https://www.cnblogs.com/skynet/p/3372855.html" target="_blank" rel="noopener">Tyler’s Blog-C++静态库与动态库</a></em></p>
+<h2 id="示意图-1"><a href="#示意图-1" class="headerlink" title="示意图"></a>示意图</h2><p><img src="/2019/04/03/静态链接库-STATIC-和动态链接库-SHARED/shared.png" alt="shared"></p>
+<p><em>图片来源：<a href="https://www.cnblogs.com/skynet/p/3372855.html" target="_blank" rel="noopener">Tyler’s Blog-C++静态库与动态库</a></em></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>静态链接库和动态链接库有各自的特点，一般情况下为了节省内存资源我们会比较多的使用动态库，但是在需要保证应用程序不受外部依赖限制的时候我们会使用静态库。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries" target="_blank" rel="noopener">Stack Overflow–Difference between static and shared libraries</a><br><a href="https://www.cnblogs.com/skynet/p/3372855.html" target="_blank" rel="noopener">Tyler’s Blog-C++静态库与动态库</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries" target="_blank" rel="noopener">Stack Overflow–Difference between static and shared libraries</a></p>
+<p><a href="https://www.cnblogs.com/skynet/p/3372855.html" target="_blank" rel="noopener">Tyler’s Blog-C++静态库与动态库</a></p>
 
       
     </div>

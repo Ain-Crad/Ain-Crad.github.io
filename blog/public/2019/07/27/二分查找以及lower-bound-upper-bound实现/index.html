@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/27/二分查找以及lower-bound-upper-bound实现/BinarySearch.jpeg">
-<meta property="og:updated_time" content="2019-08-20T13:05:23.362Z">
+<meta property="og:updated_time" content="2019-08-29T03:22:04.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Binary Search以及lower_bound &amp; upper_bound实现">
 <meta name="twitter:image" content="http://yoursite.com/2019/07/27/二分查找以及lower-bound-upper-bound实现/BinarySearch.jpeg">
@@ -384,19 +384,20 @@
       
         <p><img src="/2019/07/27/二分查找以及lower-bound-upper-bound实现/BinarySearch.jpeg" alt="BinarySearch"></p>
 <a id="more"></a>
-<h1 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h1><p>　　在数组 $A$ 的 $[x, y)$ 区间中查找值 $v$，并返回其位置下标，若不存在则返回 $-1$。</p>
+
+<h1 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h1><p>在数组 $A$ 的 $[x, y)$ 区间中查找值 $v$，并返回其位置下标，若不存在则返回 $-1$。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span>(x &lt; y)&#123;</span><br><span class="line">        m = x + (y - x) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(A[m] == v) <span class="keyword">return</span> m;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(A[m] &gt; v) y = m;</span><br><span class="line">        <span class="keyword">else</span> x = m + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h1><p>　　当 $v$ 存在时返回它出现的第一个位置；如果不存在，返回这样一个下标 $i$：在此处插入 $v$ 后序列仍然有序。</p>
+<h1 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h1><p>当 $v$ 存在时返回它出现的第一个位置；如果不存在，返回这样一个下标 $i$：在此处插入 $v$ 后序列仍然有序。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lower_bound</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span>(x &lt; y)&#123;</span><br><span class="line">        m = x + (y - x) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(A[m] &gt;= v) y = m;</span><br><span class="line">        <span class="keyword">else</span> x = m + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>　　最后的返回值不仅可能是 $x, x + 1, x + 2, …, y - 1$ 中的一个，还可能是 $y$，如果 $v$ 大于 $A[y-1]$ 就只能插入这里了。这样，这样尽管查找区间是左闭右开区间 $[x, y)$，返回值的候选区间却是闭区间 $[x, y]$。</p>
+<p>最后的返回值不仅可能是 $x, x + 1, x + 2, …, y - 1$ 中的一个，还可能是 $y$，如果 $v$ 大于 $A[y-1]$ 就只能插入这里了。这样，这样尽管查找区间是左闭右开区间 $[x, y)$，返回值的候选区间却是闭区间 $[x, y]$。</p>
 <ul>
 <li>A[m] = v：至少已经找到一个v，而左边可能还有，因此区间变为[x, m]。</li>
 <li>A[m] &gt; v：所求位置不可能在后面，但有可能是m，因此区间变为[x, m]。</li>
 <li>A[m] &lt; v：m和前面都不可行，因此区间变为[m + 1, y]。</li>
 </ul>
-<h1 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h1><p>　　当 $v$ 存在时返回它出现的最后一个位置的后面一个位置；如果不存在，返回这样一个下标 $i$：在此处插入 $v$ 后序列仍然有序。</p>
+<h1 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h1><p>当 $v$ 存在时返回它出现的最后一个位置的后面一个位置；如果不存在，返回这样一个下标 $i$：在此处插入 $v$ 后序列仍然有序。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">upper_bound</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span>(x &lt; y)&#123;</span><br><span class="line">        m = x + (y - x) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(A[m] &gt; v) y = m;</span><br><span class="line">        <span class="keyword">else</span> x = m + <span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>《算法竞赛入门经典（第2版）》</p>
