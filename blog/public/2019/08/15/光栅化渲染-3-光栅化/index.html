@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/15/光栅化渲染-3-光栅化/figure6.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/15/光栅化渲染-3-光栅化/figure7.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/15/光栅化渲染-3-光栅化/result.png">
-<meta property="og:updated_time" content="2019-08-29T04:39:27.914Z">
+<meta property="og:updated_time" content="2019-08-29T04:54:35.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(3)-光栅化">
 <meta name="twitter:description" content="通过检测图像中的像素是否处在投影后的三角形中，来赋予像素相应的颜色的属性，是光栅化算法的主要思路。">
@@ -379,8 +379,8 @@
 <li>首先要找到所有落在三角形投影范围内的像素。</li>
 <li>为以上位置的像素赋予相应的颜色。</li>
 </ul>
-<p><strong>Edge Function</strong>可以很好的解决第一个问题，快速判断一个像素是否在三角投影区域内。第二个问题也被成为<strong>shading</strong>（着色）。</p>
-<h1 id="The-Edge-Function"><a href="#The-Edge-Function" class="headerlink" title="The Edge Function"></a>The Edge Function</h1><p>Edge Function 由 Juan Pineda 在 1988 年发表的一篇名为 <strong>A parallel Algorithm for Polygon Rasterization</strong> 的论文中提出。</p>
+<p><em>Edge Function</em>可以很好的解决第一个问题，快速判断一个像素是否在三角投影区域内。第二个问题也被成为<em>shading</em>（着色）。</p>
+<h1 id="The-Edge-Function"><a href="#The-Edge-Function" class="headerlink" title="The Edge Function"></a>The Edge Function</h1><p>Edge Function 由 Juan Pineda 在 1988 年发表的一篇名为 <em>A parallel Algorithm for Polygon Rasterization</em> 的论文中提出。</p>
 <p>三角形的一边可以看作是分割二维平面的一条线(Figure 1)，Pineda 的方法的主要思路是找到一个方程，用它来测试任一给定点 $P(x, y)$ 处于分割线的哪一侧：</p>
 <ul>
 <li>当点 $P$ 位于分割线的左侧时，方程返回一个负值。</li>
