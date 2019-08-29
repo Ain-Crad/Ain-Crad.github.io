@@ -9,6 +9,7 @@ tags:
 最近在做一道DP的题时发现数据范围竟然是1e18，这样的话只能用log(n)复杂度的算法来实现了，于是从队长那里了解到了矩阵快速幂。在这里记录一下快速幂以及其它矩阵处理的模板。
 矩阵快速幂模板参考自[eecrazy](https://github.com/eecrazy/ACM/blob/master/%E6%95%B0%E8%AE%BA/poj3233%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82.cpp)
 <!-- more -->
+
 # 常数快速幂
 ```C++
 typedef long long ll;

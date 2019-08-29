@@ -8,14 +8,17 @@ tags:
 ---
 使用$new$关键字和不使用$new$关键字创建对象的异同及优劣对比。
 <!--more-->
+
 # 参考链接
 [When should I use the new keyword in C++](https://stackoverflow.com/questions/655065/when-should-i-use-the-new-keyword-in-c)
+
 顺便安利一波[Stack Overflow](https://stackoverflow.com/) |･ω･｀)
 # 使用new关键字
 ```C++
 MyClass* myClass = new Myclass();
 myClass->MyField = "Hello World!";
 ```
+
 特点：
 1. 为创建的对象在自由存储区分配内存。
 2. 之后需要使用$delete$手动释放分配的内存（否则会造成内存泄露）。
@@ -26,6 +29,7 @@ myClass->MyField = "Hello World!";
 MyClass myClass;
 myClass.MyField = "Hello World!";
 ```
+
 特点：
 1. 为创建的对象在堆栈段分配内存。
 2. 不需要使用$delete$来手动释放。

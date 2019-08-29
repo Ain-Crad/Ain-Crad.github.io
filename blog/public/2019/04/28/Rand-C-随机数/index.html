@@ -88,7 +88,7 @@
 <meta property="og:description" content="C++随机数发生器。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/28/Rand-C-随机数/random.jpg">
-<meta property="og:updated_time" content="2019-08-29T03:23:09.572Z">
+<meta property="og:updated_time" content="2019-08-29T03:29:24.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rand-C++随机数">
 <meta name="twitter:description" content="C++随机数发生器。">
@@ -385,8 +385,10 @@
       
 
       
-        <p>C++随机数发生器。<br><img src="/2019/04/28/Rand-C-随机数/random.jpg" alt="random"></p>
+        <p><img src="/2019/04/28/Rand-C-随机数/random.jpg" alt="random"></p>
+<p><em>C++随机数发生器。</em></p>
 <a id="more"></a>
+
 <h1 id="rand"><a href="#rand" class="headerlink" title="rand()"></a>rand()</h1><p>生成随机整数的核心函数是<code>cstdlib</code>中的<code>rand()</code>，它生成一个闭区间 [0, RAND_MAX] 内的均匀随机数（均匀的含义是：该区间内每个整数被随机获取的概率相同），其中<code>RAND_MAX</code>是定义在cstdlib中的一个宏变量，在不同环境下的值可能不同，但是保证至少为$32767(2^{15} - 1)$。<br><em>严格地说，这里的随机数是“伪随机数”，因为它也是由数学公式计算出来的，不过在算法领域，多数情况下可以把它当作真正的随机数。</em></p>
 <h1 id="产生-0-n-之间的整数"><a href="#产生-0-n-之间的整数" class="headerlink" title="产生[0, n]之间的整数"></a>产生[0, n]之间的整数</h1><p>可以用<code>rand() % n</code>的方式产生区间 $[0, n - 1]$ 内的一个随机整数。但是一方面这会破坏产生的整数分布的均匀性，另一方面只要<code>n</code>大于 <code>RAND_MAX</code>这种方法就不能得到期望的结果。由于<code>RAND_MAX</code>可能只有 32767 这么小，所以在使用这种方法的时候要小心。<br>另一个方法是执行<code>rand()</code>后先除以<code>RAND_MAX</code>，得到 $[0, 1]$ 之间的随机实数，扩大<code>n</code>倍后四舍五入，得到 $[0, n]$ 之间的均匀整数。</p>
 <h1 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h1><p>需要随机数的程序在最开始时一般会执行一次<code>srand(time(NULL))</code>，目的是初始化“随机数种子”。简单来说，种子是生成随机数的计算依据。<strong>种子相同，计算出来的“随机数”序列总是相同</strong>。譬如运行下面的程序：</p>

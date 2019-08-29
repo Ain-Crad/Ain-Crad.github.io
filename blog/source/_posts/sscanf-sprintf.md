@@ -8,8 +8,10 @@ tags:
 ---
 关于$sscanf$和$sprintf$用法的总结。
 <!--more-->
+
 # sscanf
-int sscanf（const char * str，const char * format，...）从字符串中读取格式化的输入。
+```int sscanf（const char * str，const char * format，...）```从字符串中读取格式化的输入。
+
 ## Example
 ```C
 #include <stdio.h>
@@ -32,8 +34,10 @@ int main () {
 ```
 March 25, 1989 = Saturday
 ```
+
 # sprintf
-int sprintf（char * str，const char * format，...）将格式化的输出发送到str指向的字符串。
+```int sprintf（char * str，const char * format，...）```将格式化的输出发送到str指向的字符串。
+
 ## Example
 ```C
 #include <stdio.h>
