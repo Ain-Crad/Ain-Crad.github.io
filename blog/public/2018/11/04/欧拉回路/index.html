@@ -88,7 +88,7 @@
 <meta property="og:description" content="有一条名为Pregel的河流经过Konigsberg城。城中有7座桥，把河中的两个岛与河岸连接起来。当地居民热衷于一个难题：是否存在一条线路，可以不重复的走遍7座桥。这就是著名的七桥问题。它由大数学家欧拉首先提出，并给出完美的解答，所以这样的一条路也叫欧拉道路。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/04/欧拉回路/Elur.png">
-<meta property="og:updated_time" content="2019-08-20T14:39:35.143Z">
+<meta property="og:updated_time" content="2019-08-29T04:45:11.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="欧拉路">
 <meta name="twitter:description" content="有一条名为Pregel的河流经过Konigsberg城。城中有7座桥，把河中的两个岛与河岸连接起来。当地居民热衷于一个难题：是否存在一条线路，可以不重复的走遍7座桥。这就是著名的七桥问题。它由大数学家欧拉首先提出，并给出完美的解答，所以这样的一条路也叫欧拉道路。">
@@ -387,8 +387,11 @@
       
         <p>有一条名为Pregel的河流经过Konigsberg城。城中有7座桥，把河中的两个岛与河岸连接起来。当地居民热衷于一个难题：是否存在一条线路，可以不重复的走遍7座桥。这就是著名的七桥问题。它由大数学家欧拉首先提出，并给出完美的解答，所以这样的一条路也叫欧拉道路。<br><img src="/2018/11/04/欧拉回路/Elur.png" alt="Elur"></p>
 <a id="more"></a>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>《算法竞赛入门经典（2）》<br>Ps：图片来自<a href="https://www.wikiwand.com/zh-hans/%E6%9F%AF%E5%B0%BC%E6%96%AF%E5%A0%A1%E4%B8%83%E6%A1%A5%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">维基百科</a></p>
-<h1 id="欧拉路（欧拉回路）"><a href="#欧拉路（欧拉回路）" class="headerlink" title="欧拉路（欧拉回路）"></a>欧拉路（欧拉回路）</h1><p>将七桥问题用图论的形式表达：能否从无向图中的一个结点出发走出一条道路，每条边恰好经过一次。<br>可以发现，除起点和终点外其它点的“进”和“出”是对应的，即其它点的度数应为偶数。这也是判断欧拉路是否存在的充分条件–<strong>如果一个无向图是连通的，且最多只有两个奇点，则一定存在欧拉道路。如果有两个奇点，则必须从其中一个奇点出发，另一个奇点终止；如果奇点不存在，则可以从任意点出发，最终一点会回到该点（欧拉回路）</strong><br>类似的对有向图来说–<strong>最多只能有两个点的入度不等于出度， 而且必须是其中一个点的出度恰好比入度大1（把它作为起点），另一个的入度比出度大1（把它作为终点）。还有一个前提条件：在忽略边的方向后，图必须是连通的</strong></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>《算法竞赛入门经典（2）》</p>
+<p>Ps：图片来自<a href="https://www.wikiwand.com/zh-hans/%E6%9F%AF%E5%B0%BC%E6%96%AF%E5%A0%A1%E4%B8%83%E6%A1%A5%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">维基百科</a></p>
+<h1 id="欧拉路（欧拉回路）"><a href="#欧拉路（欧拉回路）" class="headerlink" title="欧拉路（欧拉回路）"></a>欧拉路（欧拉回路）</h1><p>将七桥问题用图论的形式表达：能否从无向图中的一个结点出发走出一条道路，每条边恰好经过一次。</p>
+<p>可以发现，除起点和终点外其它点的“进”和“出”是对应的，即其它点的度数应为偶数。这也是判断欧拉路是否存在的充分条件–<strong>如果一个无向图是连通的，且最多只有两个奇点，则一定存在欧拉道路。如果有两个奇点，则必须从其中一个奇点出发，另一个奇点终止；如果奇点不存在，则可以从任意点出发，最终一点会回到该点（欧拉回路）</strong></p>
+<p>类似的对有向图来说–<strong>最多只能有两个点的入度不等于出度， 而且必须是其中一个点的出度恰好比入度大1（把它作为起点），另一个的入度比出度大1（把它作为终点）。还有一个前提条件：在忽略边的方向后，图必须是连通的</strong></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">elur</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; n; v++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(G[u][v] &amp;&amp; !vis[u][v])&#123;</span><br><span class="line">            vis[u][v] = vis[v][u] = <span class="number">1</span>;</span><br><span class="line">            elur(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, u, v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//说明</span></span><br><span class="line"><span class="number">1.</span>上面的代码适用于无向图，但是可以改为有向图：把vis[u][v] = vis[v][u] = <span class="number">1</span>改成vis[u][v] = <span class="number">1</span></span><br><span class="line"><span class="number">2.</span>上面的代码是逆序打印，可以把<span class="built_in">printf</span>改为push，将边压栈，最后顺序打印。</span><br></pre></td></tr></table></figure>
 
 

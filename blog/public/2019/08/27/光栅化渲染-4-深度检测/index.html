@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对应">
+<meta name="description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。 z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="光栅化渲染(4)-深度检测">
 <meta property="og:url" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/index.html">
 <meta property="og:site_name" content="Aincrad&#39;s blog">
-<meta property="og:description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对应">
+<meta property="og:description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。 z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/depth.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/figure1.png">
-<meta property="og:updated_time" content="2019-08-29T03:28:45.780Z">
+<meta property="og:updated_time" content="2019-08-29T04:42:52.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(4)-深度检测">
-<meta name="twitter:description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对应">
+<meta name="twitter:description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。 z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对">
 <meta name="twitter:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/depth.png">
 
 
@@ -398,7 +398,9 @@
       
         <p><img src="/2019/08/27/光栅化渲染-4-深度检测/depth.png" alt="depth"></p>
 <p><em>如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。</em></p>
-<h1 id="Z-Buffer"><a href="#Z-Buffer" class="headerlink" title="Z-Buffer"></a>Z-Buffer</h1><p>在<a href="https://ain-crad.github.io/2019/08/10/%E5%85%89%E6%A0%85%E5%8C%96%E6%B8%B2%E6%9F%93-1-%E7%AE%97%E6%B3%95%E6%80%BB%E8%BF%B0/#more" target="_blank" rel="noopener">光栅化算法总述</a>里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过<code>z-buffer</code>方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。<br><code>z-buffer</code>是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对应的距离相机最近的空间物体上一点的深度。<br>关于如何求解每个像素对应的空间深度值，首先想到的可能是借助上一节提到的<strong>重心坐标</strong>插值的方法。但是由于投影后的比例变化（Figure 1），我们不能直接把投影平面上三角形的面积比作为空间三角形的面积比来得到重心坐标。</p>
+<h1 id="Z-Buffer"><a href="#Z-Buffer" class="headerlink" title="Z-Buffer"></a>Z-Buffer</h1><p>在<a href="https://ain-crad.github.io/2019/08/10/%E5%85%89%E6%A0%85%E5%8C%96%E6%B8%B2%E6%9F%93-1-%E7%AE%97%E6%B3%95%E6%80%BB%E8%BF%B0/#more" target="_blank" rel="noopener">光栅化算法总述</a>里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过<code>z-buffer</code>方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。</p>
+<p><code>z-buffer</code>是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录每个像素对应的距离相机最近的空间物体上一点的深度。</p>
+<p>关于如何求解每个像素对应的空间深度值，首先想到的可能是借助上一节提到的<strong>重心坐标</strong>插值的方法。但是由于投影后的比例变化（Figure 1），我们不能直接把投影平面上三角形的面积比作为空间三角形的面积比来得到重心坐标。</p>
 <p><img src="/2019/08/27/光栅化渲染-4-深度检测/figure1.png" alt="figure 1"></p>
 <center>Figure 1</center>
 

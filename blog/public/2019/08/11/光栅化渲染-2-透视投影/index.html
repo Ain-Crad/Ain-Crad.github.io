@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure3.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure4.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure5.png">
-<meta property="og:updated_time" content="2019-08-29T03:35:22.773Z">
+<meta property="og:updated_time" content="2019-08-29T04:40:32.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(2)-透视投影">
 <meta name="twitter:description" content="画家用透视投影的方法作画，以获得接近真实三维物体的视觉效果。">
@@ -406,7 +406,9 @@
 <a id="more"></a>
 
 <h1 id="透视投影"><a href="#透视投影" class="headerlink" title="透视投影"></a>透视投影</h1><p>透视投影是三维投影的一种，是将三维空间中的点映射到二维平面上的方法。由于目前绝大多数图形数据的显示方式仍是二维的，因此三维投影的在计算机图形学等方面应用广泛。</p>
-<h1 id="投影原理"><a href="#投影原理" class="headerlink" title="投影原理"></a>投影原理</h1><p>透视投影符合人眼成像的特点，以人眼作为视点，在视网膜上的图像就是空间物体投影的结果。<br>如图(Figure 1)，点 $P$ 为空间中的一点，$P^\prime$ 为其投影在成像平面上的点，$A$ 为视点。<br><img src="/2019/08/11/光栅化渲染-2-透视投影/figure1.png" alt="figure 1"></p>
+<h1 id="投影原理"><a href="#投影原理" class="headerlink" title="投影原理"></a>投影原理</h1><p>透视投影符合人眼成像的特点，以人眼作为视点，在视网膜上的图像就是空间物体投影的结果。</p>
+<p>如图(Figure 1)，点 $P$ 为空间中的一点，$P^\prime$ 为其投影在成像平面上的点，$A$ 为视点。</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure1.png" alt="figure 1"></p>
 <center>Figure 1</center>
 
 <p>由 $\Delta ABC$ 和 $\Delta AB^\prime C^\prime$ 相似可以得到：</p>
@@ -422,21 +424,27 @@
 <p>$$<br>P_{screen}.x = \cfrac{near * P_{camera}.x}{-P_{camera}.z} \\<br>P_{screen}.y = \cfrac{near * P_{camera}.y}{-P_{camera}.z}<br>$$</p>
 <p>假设图片的尺寸为 $W * H$，那么投影后的坐标与该点可见性的关系如下：</p>
 <p>$$<br>visible=<br>\begin{cases}<br>    yes &amp; |P_{screen}.x| &lt;= \cfrac{W}{2} \quad \text{or} \quad |P_{screen}.y| &lt;= \cfrac{H}{2} \\<br>    no &amp; \text{otherwise}<br>\end{cases}<br>$$</p>
-<h1 id="坐标系变换"><a href="#坐标系变换" class="headerlink" title="坐标系变换"></a>坐标系变换</h1><p>我们的目标是获得投影点的像素坐标，所以要对坐标系进行变换，由成像平面坐标系变为光栅坐标系。<br>相机成像平面上一点 $P_{screen}$ (Figure 3)<br><img src="/2019/08/11/光栅化渲染-2-透视投影/figure3.png" alt="figure 3"></p>
+<h1 id="坐标系变换"><a href="#坐标系变换" class="headerlink" title="坐标系变换"></a>坐标系变换</h1><p>我们的目标是获得投影点的像素坐标，所以要对坐标系进行变换，由成像平面坐标系变为光栅坐标系。</p>
+<p>相机成像平面上一点 $P_{screen}$ (Figure 3)</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure3.png" alt="figure 3"></p>
 <center>Figure 3</center>
 
-<p>先将其转换为 $NDC$ 坐标系下(Figure 4)，范围为 $[0, 1]$<br><img src="/2019/08/11/光栅化渲染-2-透视投影/figure4.png" alt="figure 4"></p>
+<p>先将其转换为 $NDC$ 坐标系下(Figure 4)，范围为 $[0, 1]$</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure4.png" alt="figure 4"></p>
 <center>Figure 4</center>
 
 <p>$$<br>P_{normalized}.x=\cfrac{P_{screen}.x + W/2}{W} \\<br>P_{normalized}.y=\cfrac{P_{screen}.y + H/2}{H}<br>$$</p>
-<p>最后转换为光栅化坐标(Figure 5)<br><img src="/2019/08/11/光栅化渲染-2-透视投影/figure5.png" alt="figure 5"></p>
+<p>最后转换为光栅化坐标(Figure 5)</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure5.png" alt="figure 5"></p>
 <center>Figure 5</center>
 
 <p>$$<br>P_{raster}.x=P_{normalized}.x * pixelWidth \\<br>P_{raster}.y=(1-P_{normalized}.y) * pixelHeight<br>$$</p>
 <p><em>注意区分</em> $W$ <em>和</em> $pixelWidth$，<em>W指的是图片的物理尺寸，以 m 或 mm 等为单位，pixelWidth指的是图片的横向像素的个数。</em></p>
 <p>由此可得<strong>相机坐标系</strong>到<strong>光栅坐标系</strong>的转换公式：</p>
 <p>$$<br>P_{raster}.x=(1 + \cfrac{near * P_{camera}.x}{-W * P_{camera}.z})* 0.5 * pixelWidth \\<br>P_{raster}.y=(1 - \cfrac{near * P_{camera}.y}{-W * P_{camera}.z}) * 0.5 * pixelHeight<br>$$</p>
-<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>上面提到的 $NDC$ 坐标范围为 $[0, 1]$，实际上在GPU的实现中， $NDC$ 坐标范围为 $[-1, 1]$。另外讨论更一般的情况，假设成像平面坐标系的 $x$　坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$。<br>此时由成像平面坐标系到 $NDC$ 坐标系的映射关系可以通过以下方式求解，先考虑 $x$：<br>由 $l&lt;x&lt;r$，可得 $0&lt;x-l&lt;r-l$，各项同时除以 $(r-l)$：</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>上面提到的 $NDC$ 坐标范围为 $[0, 1]$，实际上在GPU的实现中， $NDC$ 坐标范围为 $[-1, 1]$。另外讨论更一般的情况，假设成像平面坐标系的 $x$　坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$。</p>
+<p>此时由成像平面坐标系到 $NDC$ 坐标系的映射关系可以通过以下方式求解，先考虑 $x$：</p>
+<p>由 $l&lt;x&lt;r$，可得 $0&lt;x-l&lt;r-l$，各项同时除以 $(r-l)$：</p>
 <p>$$<br>0 &lt; \cfrac{x-l}{r-l} &lt; 1<br>$$</p>
 <p>公式各项同时乘以 $2$ 再减去 $1$：</p>
 <p>$$<br>-1 &lt; 2 * \cfrac{x-l}{r-l} - 1 &lt; 1<br>$$</p>

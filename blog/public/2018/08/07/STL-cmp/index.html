@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Aincrad&#39;s blog">
 <meta property="og:description" content="STL中自定义比较函数和重载运算符总结。部分内容转载自Ohazyi Zone’s blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-22T04:14:08.933Z">
+<meta property="og:updated_time" content="2019-08-29T04:44:30.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL中自定义比较函数和重载运算符总结">
 <meta name="twitter:description" content="STL中自定义比较函数和重载运算符总结。部分内容转载自Ohazyi Zone’s blog">
@@ -385,6 +385,7 @@
       
         <p>STL中自定义比较函数和重载运算符总结。部分内容转载自<a href="https://www.ohazyi.com/c_cmp/" target="_blank" rel="noopener">Ohazyi Zone’s blog</a></p>
 <a id="more"></a>
+
 <h1 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h1><h2 id="自定义比较函数"><a href="#自定义比较函数" class="headerlink" title="自定义比较函数"></a>自定义比较函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示例</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> node&amp; a, <span class="keyword">const</span> node&amp; b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x &gt; b.x <span class="comment">//对x降序排列</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">node d[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    sort(d, d + n, cmp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>注：自定义比较函数的形式同样也适用于pair类型数据排序。</p>

@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/17/Kalman-filter-卡尔曼滤波器/g5.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/Kalman-filter-卡尔曼滤波器/origin.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/Kalman-filter-卡尔曼滤波器/afterFilter.png">
-<meta property="og:updated_time" content="2019-08-29T03:36:47.588Z">
+<meta property="og:updated_time" content="2019-08-29T04:42:37.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kalman filter-卡尔曼滤波器">
 <meta name="twitter:description" content="卡尔曼滤波理论，由卡尔曼博士在1960年访问NASA时首次提出，震惊了NASA，促成了著名的“阿波罗”计划，使人类第一次登上月球。">
@@ -393,36 +393,61 @@
       
 
       
-        <p>卡尔曼滤波理论，由卡尔曼博士在1960年访问NASA时首次提出，震惊了NASA，促成了著名的“阿波罗”计划，使人类第一次登上月球。<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/Rudolf_Kalman.jpg" alt="Rudolf_Kalman"></p>
+        <p>卡尔曼滤波理论，由卡尔曼博士在1960年访问NASA时首次提出，震惊了NASA，促成了著名的“阿波罗”计划，使人类第一次登上月球。</p>
+<p><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/Rudolf_Kalman.jpg" alt="Rudolf_Kalman"></p>
 <a id="more"></a>
-<h1 id="什么是卡尔曼滤波"><a href="#什么是卡尔曼滤波" class="headerlink" title="什么是卡尔曼滤波"></a>什么是卡尔曼滤波</h1><p><a href="https://www.wikiwand.com/zh-hans/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2" target="_blank" rel="noopener">维基百科上的解释</a>：卡尔曼滤波是一种高效率的递归滤波器，它能从一系列的不完全及包含杂讯的测量中，估计动态系统的状态。<br>简单来说就是它可以有效利用多个粗糙数据之间的关系，对多个数据进行融合。下面举个简单的例子：<br><em>例子来源<a href="https://www.zhihu.com/question/23971601/answer/26254459" target="_blank" rel="noopener">Kent Zeng</a></em><br>假设我们有两个传感器，测的是同一个信号，譬如说物体的位置$(x, y, z)$。可是它们每次的读数都不太一样，即传感器的信号有波动，怎么办？<br><strong>取平均。</strong><br>再假设我们知道其中那个价格贵一些的传感器应该更准一些，比取平均更好的方法是：<br><strong>取加权平均。</strong>即我们把精度更高的传感器的权值设的高一点，表示我们更相信它的测量结果。假设两个传感器的测量误差都符合正态分布，我们可以将这<strong>两个正态分布合成为一个新的正态分布</strong>。具体过程在下面的原理部分讨论，这种理解方式很重要。<br>但是如果我们只有一个传感器，但是还有一个数学模型，譬如物体的运动模型。模型可以帮我们算出一个物体的位置值，但也不是那么准。怎么办？<br><strong>把模型算出来的值和传感器测出来的值，像两个传感器那样，取加权平均。</strong></p>
-<h1 id="卡尔曼滤波原理"><a href="#卡尔曼滤波原理" class="headerlink" title="卡尔曼滤波原理"></a>卡尔曼滤波原理</h1><h2 id="运动模型"><a href="#运动模型" class="headerlink" title="运动模型"></a>运动模型</h2><p>同样我们用测量物体的位置的例子来说明。假设我们要实时的得到机器人在空间中的位置。如上面所说，我们需要一个机器人的运动模型，如果我们不知道机器人确切的运动模型，可以先简单的假定其为匀速运动模型。<br>有了运动模型之后，我们就可以通过一组<strong>状态变量</strong>$x$来描述机器人在某一时刻的状态，包括位置$p$和速度$v$。</p>
+
+<h1 id="什么是卡尔曼滤波"><a href="#什么是卡尔曼滤波" class="headerlink" title="什么是卡尔曼滤波"></a>什么是卡尔曼滤波</h1><p><a href="https://www.wikiwand.com/zh-hans/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2" target="_blank" rel="noopener">维基百科上的解释</a>：卡尔曼滤波是一种高效率的递归滤波器，它能从一系列的不完全及包含杂讯的测量中，估计动态系统的状态。</p>
+<p>简单来说就是它可以有效利用多个粗糙数据之间的关系，对多个数据进行融合。下面举个简单的例子：</p>
+<p><em>例子来源<a href="https://www.zhihu.com/question/23971601/answer/26254459" target="_blank" rel="noopener">Kent Zeng</a></em></p>
+<p>假设我们有两个传感器，测的是同一个信号，譬如说物体的位置$(x, y, z)$。可是它们每次的读数都不太一样，即传感器的信号有波动，怎么办？</p>
+<p><strong>取平均。</strong></p>
+<p>再假设我们知道其中那个价格贵一些的传感器应该更准一些，比取平均更好的方法是：</p>
+<p><strong>取加权平均。</strong>即我们把精度更高的传感器的权值设的高一点，表示我们更相信它的测量结果。假设两个传感器的测量误差都符合正态分布，我们可以将这<strong>两个正态分布合成为一个新的正态分布</strong>。具体过程在下面的原理部分讨论，这种理解方式很重要。</p>
+<p>但是如果我们只有一个传感器，但是还有一个数学模型，譬如物体的运动模型。模型可以帮我们算出一个物体的位置值，但也不是那么准。怎么办？</p>
+<p><strong>把模型算出来的值和传感器测出来的值，像两个传感器那样，取加权平均。</strong></p>
+<h1 id="卡尔曼滤波原理"><a href="#卡尔曼滤波原理" class="headerlink" title="卡尔曼滤波原理"></a>卡尔曼滤波原理</h1><h2 id="运动模型"><a href="#运动模型" class="headerlink" title="运动模型"></a>运动模型</h2><p>同样我们用测量物体的位置的例子来说明。假设我们要实时的得到机器人在空间中的位置。如上面所说，我们需要一个机器人的运动模型，如果我们不知道机器人确切的运动模型，可以先简单的假定其为匀速运动模型。</p>
+<p>有了运动模型之后，我们就可以通过一组<strong>状态变量</strong>$x$来描述机器人在某一时刻的状态，包括位置$p$和速度$v$。</p>
 <p>$$<br>x=<br> \begin{bmatrix}<br>    p \\<br>    v \\<br>  \end{bmatrix}<br>$$</p>
-<p>这里的$x, p, v$都是向量，其中，$p=\begin{bmatrix} x \\ y \\ z \end{bmatrix}$，$v=\begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}$<br>这里我们只记录了位置和速度，但是取决于我们的模型以及我们期望获得的数据我们可以把任何数据变量放进系统状态里。<br>用运动方程来表示我们建立的匀速模型：</p>
+<p>这里的$x, p, v$都是向量，其中，$p=\begin{bmatrix} x \\ y \\ z \end{bmatrix}$，$v=\begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}$</p>
+<p>这里我们只记录了位置和速度，但是取决于我们的模型以及我们期望获得的数据我们可以把任何数据变量放进系统状态里。</p>
+<p>用运动方程来表示我们建立的匀速模型：</p>
 <p>$$<br>p_k = p_{k - 1} + \Delta t \times{v_{k - 1}} \\<br>v_k = v_{k - 1}<br>$$</p>
 <p>写成矩阵形式：</p>
 <p>$$<br>x_k=<br> \begin{bmatrix}<br>    p_k \\<br>    v_k \\<br>  \end{bmatrix}<br>=<br> \begin{bmatrix}<br>    1 &amp; \Delta t \\<br>    0 &amp; 1 \\<br> \end{bmatrix}<br> \begin{bmatrix}<br>    p_{k -1} \\<br>    v_{k - 1} \\<br> \end{bmatrix}<br>$$</p>
 <p>因为$x$实际上是一个包含三个位置量和三个速度量的六维向量，所以由$x_{k - 1}$到$x_{k}$的转移矩阵可具体表示为：</p>
 <p>$$<br>x_k=<br> \begin{bmatrix}<br>    1 &amp; 0 &amp; 0 &amp; \Delta t &amp; 0 &amp; 0 \\<br>    0 &amp; 1 &amp; 0 &amp; 0 &amp; \Delta t &amp; 0 \\<br>    0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; \Delta t \\<br>    0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\<br>    0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\<br>    0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\<br> \end{bmatrix}<br> x_{k - 1}<br>$$</p>
-<p>把转移矩阵记为$F$，则$x_k = Fx_{k - 1}$<br>卡尔曼滤波假设所有变量的值符合<strong>正态分布</strong>，那么系统各变量间的<strong>不确定度</strong>可以用<strong><a href="https://ain-crad.github.io/2019/03/27/Covariance-%E5%8D%8F%E6%96%B9%E5%B7%AE/" target="_blank" rel="noopener">协方差</a></strong>来表示，系统状态的协方差记为$P_k$，这是一个$6\times{6}$的对称矩阵。<br>由于我们有下面的公式：</p>
+<p>把转移矩阵记为$F$，则$x_k = Fx_{k - 1}$</p>
+<p>卡尔曼滤波假设所有变量的值符合<strong>正态分布</strong>，那么系统各变量间的<strong>不确定度</strong>可以用<strong><a href="https://ain-crad.github.io/2019/03/27/Covariance-%E5%8D%8F%E6%96%B9%E5%B7%AE/" target="_blank" rel="noopener">协方差</a></strong>来表示，系统状态的协方差记为$P_k$，这是一个$6\times{6}$的对称矩阵。</p>
+<p>由于我们有下面的公式：</p>
 <p>$$<br>Cov(x) = \Sigma \\<br>Cov(Ax) = A \Sigma A^T<br>$$</p>
 <p>所以综合上面的运动模型我们可以得到<strong>状态变量以及误差的更新公式</strong>：</p>
 <p>$$<br>x_k = Fx_{k - 1} \\<br>P_k = FP_{k -1}F^T<br>$$</p>
 <p>之前提到我们的模型一般不会是100%准确的，那么就会存在一个<strong>预测误差</strong>，我们把这个预测误差矩阵记为$Q$，表示预测上的高斯噪声。对误差做简单的叠加，可以得到<strong>完整的预测转换方程</strong>：</p>
 <p>$$<br>x_k = Fx_{k - 1} \\<br>P_k = FP_{k - 1}F^T + Q<br>$$</p>
 <p><em>Ps.有时我们会看到$x_k = Fx_{k - 1} + Bu_k$这种转移方程的写法，这是引入了一个可以预测的外力影响因素，表示系统当前状态并不只依靠上一个系统状态。譬如，机器人的运动受当时风速的影响，那么$u_k$就表示风速变量，$B$表示风速变量到系统状态变量的转换矩阵。</em></p>
-<h2 id="观测模型"><a href="#观测模型" class="headerlink" title="观测模型"></a>观测模型</h2><p>我们还需要一个（或多个）传感器来提供系统状态的<strong>观测数据</strong>，通过测量值来精炼上一阶段模型的预测值。传感器所能够测得的变量由其功能决定，假设我们现在有一个传感器可以直接得到机器人的位置状态量$p$，$p=\begin{bmatrix} x &amp; y &amp; z \end{bmatrix}^T$。<br>注意传感器测量量的范围和单位可能与系统状态变量的范围和单位不一致，所以我们需要做如下变换：</p>
+<h2 id="观测模型"><a href="#观测模型" class="headerlink" title="观测模型"></a>观测模型</h2><p>我们还需要一个（或多个）传感器来提供系统状态的<strong>观测数据</strong>，通过测量值来精炼上一阶段模型的预测值。传感器所能够测得的变量由其功能决定，假设我们现在有一个传感器可以直接得到机器人的位置状态量$p$，$p=\begin{bmatrix} x &amp; y &amp; z \end{bmatrix}^T$。</p>
+<p>注意传感器测量量的范围和单位可能与系统状态变量的范围和单位不一致，所以我们需要做如下变换：</p>
 <p>$$<br>\mu = Hx_k \\<br>\Sigma = HP_kH^T<br>$$</p>
 <p>其中$H$为变换矩阵，具体到我们所讨论的例子，传感器只能测得6个系统状态量中的3个，所以要做如下变换，把系统状态量变换到传感器测量空间中去：</p>
 <p>$$<br>\begin{bmatrix}<br>    x \\<br>    y \\<br>    z \\<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>    1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\<br>    0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\<br>    0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\<br>\end{bmatrix}<br>\begin{bmatrix}<br>    x \\<br>    y \\<br>    z \\<br>    v_x \\<br>    v_y \\<br>    v_z \\<br>\end{bmatrix}<br>$$</p>
 <p>传感器也有自己的精度范围，换句话说传感器的读数会收到高斯噪声的影响在某个范围内波动。我们把传感器<strong>测量值不确定性</strong>的方差记为$R$，传感器实际返回的值（即正态分布均值）记为$z_k$。</p>
-<h2 id="数据融合"><a href="#数据融合" class="headerlink" title="数据融合"></a>数据融合</h2><p>现在每一时刻我们都有了两个高维的正态分布模型，一个来自模型的预测值，另一个来自传感器的测量值。我们尝试去进行<strong>数据的融合</strong>。其实非常简单，对每一个模型来说我们有了它在空间各个位置的<strong>概率密度函数</strong>，我们需要找到<strong>最大可能性</strong>的那个位置，那么我们只要将<strong>两者相乘</strong>就好了。<br>非常值得高兴的是，<strong>两个正态分布相乘，结果还是一个正态分布！</strong>于是新的正态分布的<strong>均值位置</strong>就是两模型相乘后<strong>概率密度最大</strong>的位置处。理所当然的我们就可以把它选做该时刻的机器人的位置<strong>估计值</strong>。<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/gauss.jpg" alt="gauss"></p>
-<p>下面做一些简要的推导：<br><em>太懒了直接贴图，来源<a href="https://www.zhihu.com/question/23971601" target="_blank" rel="noopener">米开朗基罗赵</a></em><br>一维正态分布定义：<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g1.jpg" alt="g1"></p>
-<p>我们想知道两个均值、方差不同的正态分布相乘的结果：<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g2.jpg" alt="g2"></p>
-<p>把公式(9)带入(10)然后做一些变换，可以得到：<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g3.jpg" alt="g3"></p>
-<p>因式分解出一部分，表示为$k$：<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g4.jpg" alt="g4"></p>
-<p>上面是一维的情况，扩展到高维，直接把(12)和(13)表示成矩阵形式就好了：<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g5.jpg" alt="g5"></p>
-<p>现在出现的这个$K$就是那个让人很难理解的<strong>卡尔曼增益</strong>了，但是在这里这很简单，只是两个正态分布合并过程中因式分解出的一项。<br>现在我们来把(14)和(15)中的变量替换一下，替换成我们分析出的运动模型和观测模型的均值、方差，其中把运动模型变换到传感器测量空间中：</p>
+<h2 id="数据融合"><a href="#数据融合" class="headerlink" title="数据融合"></a>数据融合</h2><p>现在每一时刻我们都有了两个高维的正态分布模型，一个来自模型的预测值，另一个来自传感器的测量值。我们尝试去进行<strong>数据的融合</strong>。其实非常简单，对每一个模型来说我们有了它在空间各个位置的<strong>概率密度函数</strong>，我们需要找到<strong>最大可能性</strong>的那个位置，那么我们只要将<strong>两者相乘</strong>就好了。</p>
+<p>非常值得高兴的是，<strong>两个正态分布相乘，结果还是一个正态分布！</strong>于是新的正态分布的<strong>均值位置</strong>就是两模型相乘后<strong>概率密度最大</strong>的位置处。理所当然的我们就可以把它选做该时刻的机器人的位置<strong>估计值</strong>。<br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/gauss.jpg" alt="gauss"></p>
+<p>下面做一些简要的推导：</p>
+<p><em>太懒了直接贴图，来源<a href="https://www.zhihu.com/question/23971601" target="_blank" rel="noopener">米开朗基罗赵</a></em></p>
+<p>一维正态分布定义：</p>
+<p><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g1.jpg" alt="g1"></p>
+<p>我们想知道两个均值、方差不同的正态分布相乘的结果：</p>
+<p><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g2.jpg" alt="g2"></p>
+<p>把公式(9)带入(10)然后做一些变换，可以得到：</p>
+<p><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g3.jpg" alt="g3"></p>
+<p>因式分解出一部分，表示为$k$：</p>
+<p><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g4.jpg" alt="g4"></p>
+<p>上面是一维的情况，扩展到高维，直接把(12)和(13)表示成矩阵形式就好了：</p>
+<p><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/g5.jpg" alt="g5"></p>
+<p>现在出现的这个$K$就是那个让人很难理解的<strong>卡尔曼增益</strong>了，但是在这里这很简单，只是两个正态分布合并过程中因式分解出的一项。</p>
+<p>现在我们来把(14)和(15)中的变量替换一下，替换成我们分析出的运动模型和观测模型的均值、方差，其中把运动模型变换到传感器测量空间中：</p>
 <p>$$<br>(\mu_0, \Sigma_0)=(Hx_k, HP_kH^T) \\<br>(\mu_1, \Sigma_1)=(z_k, R)<br>$$</p>
 <p>经过化简，我们就可以得到三个更新公式了，再加上之前的两个运动模型方程，共同组成卡尔曼滤波的<strong>五个核心公式</strong>：</p>
 <p>$$<br>x_k = Fx_{k - 1} \\<br>P_k = FP_{k - 1}F^T + Q \\<br>K = P_kH^T(HP_kH^T + R)^{-1} \\<br>\hat{x_k} = x_k + G(z_k - Hx_k) \\<br>\hat{P_k} = (I - GH)P_k<br>$$</p>
