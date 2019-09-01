@@ -7,7 +7,6 @@ tags:
 - Covariance
 ---
 *填坑数学系列*
-
 总结协方差的意义，它可以表示物体间的什么属性，它和相关系数之间的关系，以及协方差矩阵的作用。
 <!--more-->
 
@@ -92,6 +91,6 @@ $$
 协方差矩阵经常被用来计算特征之间的某种联系，机器学习中的用于降维的主成分分析(PCA)就用到了协方差矩阵。
 
 # 参考
-[如何通俗易懂地解释协方差和相关系数的概念](https://www.zhihu.com/question/20852004/answer/287792087)
 
+[如何通俗易懂地解释协方差和相关系数的概念](https://www.zhihu.com/question/20852004/answer/287792087)
 [协方差矩阵-Jermmy's Lazy Blog](http://jermmy.xyz/2017/03/19/2017-3-19-covariance-matrix/)

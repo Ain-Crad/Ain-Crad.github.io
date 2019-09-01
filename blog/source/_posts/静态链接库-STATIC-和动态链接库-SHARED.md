@@ -6,11 +6,11 @@ categories:
 tags:
 - Link Library
 ---
-静态链接库、动态链接库的区别和特点。
+　　静态链接库、动态链接库的区别和特点。
 <!--more-->
 # 静态链接库
 ## 概念
-静态链接库是以.a为后缀的文件（window下以.lib为后缀）。和库相关的所有代码都在这个文件中，它在**编译**时直接链接到程序中。如果一个程序使用静态编译，它会从静态链接库中**复制**需要的那部分代码，并使其成为**程序的一部分**。
+　　静态链接库是以.a为后缀的文件（window下以.lib为后缀）。和库相关的所有代码都在这个文件中，它在**编译**时直接链接到程序中。如果一个程序使用静态编译，它会从静态链接库中**复制**需要的那部分代码，并使其成为**程序的一部分**。
 
 ## 特点
 - 对静态库的链接是在**编译时期**完成的。
@@ -21,11 +21,11 @@ tags:
 ## 示意图
 ![static](/static.png)
 
-*图片来源：[Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)*
+　　*图片来源：[Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)*
 
 # 动态链接库
 ## 概念
-动态链接库是以.so为后缀的文件(windows下以.dll为后缀，OS X下以.dylib为后缀)。和库相关的所有代码都在这个文件中，它在程序**运行**时被**引用**。如果一个程序使用动态编译，它只会**引用**需要的那部分代码，不会将库中代码和自身整合在一起。
+　　动态链接库是以.so为后缀的文件(windows下以.dll为后缀，OS X下以.dylib为后缀)。和库相关的所有代码都在这个文件中，它在程序**运行**时被**引用**。如果一个程序使用动态编译，它只会**引用**需要的那部分代码，不会将库中代码和自身整合在一起。
 
 ## 特点
 - 动态库是在程序**运行**时被链接的。
@@ -36,12 +36,12 @@ tags:
 ## 示意图
 ![shared](/shared.png)
 
-*图片来源：[Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)*
+　　*图片来源：[Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)*
 
 # 总结
-静态链接库和动态链接库有各自的特点，一般情况下为了节省内存资源我们会比较多的使用动态库，但是在需要保证应用程序不受外部依赖限制的时候我们会使用静态库。
+　　静态链接库和动态链接库有各自的特点，一般情况下为了节省内存资源我们会比较多的使用动态库，但是在需要保证应用程序不受外部依赖限制的时候我们会使用静态库。
 
 # 参考链接
-[Stack Overflow--Difference between static and shared libraries](https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries)
 
+[Stack Overflow--Difference between static and shared libraries](https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries)
 [Tyler's Blog-C++静态库与动态库](https://www.cnblogs.com/skynet/p/3372855.html)
