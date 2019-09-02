@@ -88,7 +88,7 @@
 <meta property="og:description" content="C++随机数发生器。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/28/Rand-C-随机数/random.jpg">
-<meta property="og:updated_time" content="2019-08-29T03:29:24.652Z">
+<meta property="og:updated_time" content="2019-09-01T08:41:46.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rand-C++随机数">
 <meta name="twitter:description" content="C++随机数发生器。">
@@ -386,26 +386,26 @@
 
       
         <p><img src="/2019/04/28/Rand-C-随机数/random.jpg" alt="random"></p>
-<p><em>C++随机数发生器。</em></p>
+<p>　　<em>C++随机数发生器。</em></p>
 <a id="more"></a>
 
-<h1 id="rand"><a href="#rand" class="headerlink" title="rand()"></a>rand()</h1><p>生成随机整数的核心函数是<code>cstdlib</code>中的<code>rand()</code>，它生成一个闭区间 [0, RAND_MAX] 内的均匀随机数（均匀的含义是：该区间内每个整数被随机获取的概率相同），其中<code>RAND_MAX</code>是定义在cstdlib中的一个宏变量，在不同环境下的值可能不同，但是保证至少为$32767(2^{15} - 1)$。<br><em>严格地说，这里的随机数是“伪随机数”，因为它也是由数学公式计算出来的，不过在算法领域，多数情况下可以把它当作真正的随机数。</em></p>
-<h1 id="产生-0-n-之间的整数"><a href="#产生-0-n-之间的整数" class="headerlink" title="产生[0, n]之间的整数"></a>产生[0, n]之间的整数</h1><p>可以用<code>rand() % n</code>的方式产生区间 $[0, n - 1]$ 内的一个随机整数。但是一方面这会破坏产生的整数分布的均匀性，另一方面只要<code>n</code>大于 <code>RAND_MAX</code>这种方法就不能得到期望的结果。由于<code>RAND_MAX</code>可能只有 32767 这么小，所以在使用这种方法的时候要小心。<br>另一个方法是执行<code>rand()</code>后先除以<code>RAND_MAX</code>，得到 $[0, 1]$ 之间的随机实数，扩大<code>n</code>倍后四舍五入，得到 $[0, n]$ 之间的均匀整数。</p>
-<h1 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h1><p>需要随机数的程序在最开始时一般会执行一次<code>srand(time(NULL))</code>，目的是初始化“随机数种子”。简单来说，种子是生成随机数的计算依据。<strong>种子相同，计算出来的“随机数”序列总是相同</strong>。譬如运行下面的程序：</p>
+<h1 id="rand"><a href="#rand" class="headerlink" title="rand()"></a>rand()</h1><p>　　生成随机整数的核心函数是<code>cstdlib</code>中的<code>rand()</code>，它生成一个闭区间 [0, RAND_MAX] 内的均匀随机数（均匀的含义是：该区间内每个整数被随机获取的概率相同），其中<code>RAND_MAX</code>是定义在cstdlib中的一个宏变量，在不同环境下的值可能不同，但是保证至少为$32767(2^{15} - 1)$。<br>　　<em>严格地说，这里的随机数是“伪随机数”，因为它也是由数学公式计算出来的，不过在算法领域，多数情况下可以把它当作真正的随机数。</em></p>
+<h1 id="产生-0-n-之间的整数"><a href="#产生-0-n-之间的整数" class="headerlink" title="产生[0, n]之间的整数"></a>产生[0, n]之间的整数</h1><p>　　可以用<code>rand() % n</code>的方式产生区间 $[0, n - 1]$ 内的一个随机整数。但是一方面这会破坏产生的整数分布的均匀性，另一方面只要<code>n</code>大于 <code>RAND_MAX</code>这种方法就不能得到期望的结果。由于<code>RAND_MAX</code>可能只有 32767 这么小，所以在使用这种方法的时候要小心。<br>　　另一个方法是执行<code>rand()</code>后先除以<code>RAND_MAX</code>，得到 $[0, 1]$ 之间的随机实数，扩大<code>n</code>倍后四舍五入，得到 $[0, n]$ 之间的均匀整数。</p>
+<h1 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h1><p>　　需要随机数的程序在最开始时一般会执行一次<code>srand(time(NULL))</code>，目的是初始化“随机数种子”。简单来说，种子是生成随机数的计算依据。<strong>种子相同，计算出来的“随机数”序列总是相同</strong>。譬如运行下面的程序：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    srand(<span class="number">100</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; rand() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>可以得到这样的一组随机数：</p>
+<p>　　可以得到这样的一组随机数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">677741240</span><br><span class="line">611911301</span><br><span class="line">516687479</span><br></pre></td></tr></table></figure>
 
-<p>但是当我们第二次运行这段代码的时候，我们会得到相同的一组随机数，原因就在于，我们每次运行时<code>srand</code>函数中初始化的种子始终是<code>100</code>。<br>而当我们使用<code>srand(time(NULL))</code>来替代上面的<code>srand(100)</code>时，由于<code>time()</code>函数会返回系统当前时间，所以每次运行程序时这个值都会不一样，也就使得每次运行生成的随机数序列不同。<br><em>如果不调用<code>srand</code>而直接使用<code>rand()</code>，相当于调用过一次<code>srand(1)</code>。</em><br>另外，<strong>不要在同一个程序每次生成随机数之前都重新调用一次srand。</strong>譬如运行下面的程序：</p>
+<p>　　但是当我们第二次运行这段代码的时候，我们会得到相同的一组随机数，原因就在于，我们每次运行时<code>srand</code>函数中初始化的种子始终是<code>100</code>。<br>　　而当我们使用<code>srand(time(NULL))</code>来替代上面的<code>srand(100)</code>时，由于<code>time()</code>函数会返回系统当前时间，所以每次运行程序时这个值都会不一样，也就使得每次运行生成的随机数序列不同。<br>　　<em>如果不调用<code>srand</code>而直接使用<code>rand()</code>，相当于调用过一次<code>srand(1)</code>。</em><br>　　另外，<strong>不要在同一个程序每次生成随机数之前都重新调用一次srand。</strong>譬如运行下面的程序：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">        srand(time(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; rand() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>会发现生成的三个随机数是相同的（随机数的具体值因人而异）：</p>
+<p>　　会发现生成的三个随机数是相同的（随机数的具体值因人而异）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">805428961</span><br><span class="line">805428961</span><br><span class="line">805428961</span><br></pre></td></tr></table></figure>
 
-<p>仔细思考一下就很可以分析出原因：生成随机数的序列是由“种子”决定的，在这段代码里的种子就是<code>time(NULL)</code>的返回值了，也就是系统当前时间（准确来说是自UTC时间1970年1月1日0点依赖经过的“秒数”），它<strong>每秒变化一次</strong>，但是程序在上面三次运行的<strong>时间间隔过短</strong>，应该毫秒甚至微秒级的，因此上面三个随机数是同一个种子生成的，而且因为每次都被重新初始化，所以都是同一个随机数序列的第一个值。</p>
-<p><em>“同一套随机数”可能是好事也可能是坏事。例如，若要反复测试程序对不同随机数据的响应，需要每次得到的随机数不同。另一方面，如果发现某一程序对于一组随机数据报错，就需要在调试时“重现”这组数据。另外，不同的编译器计算随机数的方法可能不同。如果是不同编译器编译出来的程序，即使是用相同参数调用<code>srand()</code>，也可能的都不同的随机序列。</em></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>主要参考了刘汝佳老师的《算法竞赛入门经典》(第2版)第五章中5.2.6-测试STL一节中的内容。</p>
+<p>　　仔细思考一下就很可以分析出原因：生成随机数的序列是由“种子”决定的，在这段代码里的种子就是<code>time(NULL)</code>的返回值了，也就是系统当前时间（准确来说是自UTC时间1970年1月1日0点依赖经过的“秒数”），它<strong>每秒变化一次</strong>，但是程序在上面三次运行的<strong>时间间隔过短</strong>，应该毫秒甚至微秒级的，因此上面三个随机数是同一个种子生成的，而且因为每次都被重新初始化，所以都是同一个随机数序列的第一个值。</p>
+<p>　　<em>“同一套随机数”可能是好事也可能是坏事。例如，若要反复测试程序对不同随机数据的响应，需要每次得到的随机数不同。另一方面，如果发现某一程序对于一组随机数据报错，就需要在调试时“重现”这组数据。另外，不同的编译器计算随机数的方法可能不同。如果是不同编译器编译出来的程序，即使是用相同参数调用<code>srand()</code>，也可能的都不同的随机序列。</em></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>　　主要参考了刘汝佳老师的《算法竞赛入门经典》(第2版)第五章中5.2.6-测试STL一节中的内容。</p>
 
       
     </div>
