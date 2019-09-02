@@ -88,7 +88,14 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/depth.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/figure1.png">
-<meta property="og:updated_time" content="2019-09-01T08:30:39.009Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/figure2.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/equation2.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/equation4.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/equation6.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/simplify.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/equation7.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/27/光栅化渲染-4-深度检测/equation8.png">
+<meta property="og:updated_time" content="2019-09-02T11:52:27.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(4)-深度检测">
 <meta name="twitter:description" content="如何确定投影区域内每个像素对应的空间物体上一点的深度是本节主要讨论的内容。 Z-Buffer　　在光栅化算法总述里我们提到当有多个三角形相互重叠时，它们之上的某些点可能会投影到同一个像素位置，我们要通过z-buffer方法来确定这些点的深度大小关系，从而决定像素显示哪一点的颜色。　　z-buffer是一个二维矩阵，矩阵元素初始化为一个较大的值，当遍历三角面片进行投影时不断更新元素值，用来记录">
@@ -404,8 +411,42 @@
 
 <p>　　我们的目标是由投影平面上三角形的重心坐标来推出空间三角形的重心坐标。在<a href="https://ain-crad.github.io/2019/08/11/%E5%85%89%E6%A0%85%E5%8C%96%E6%B8%B2%E6%9F%93-2-%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1/" target="_blank" rel="noopener">透视投影</a>部分我们得到了投影坐标：</p>
 <p>$$<br>\begin{align}<br>&amp;P_{screen}.x = \cfrac{near * P_{camera}.x}{-P_{camera}.z} \\<br>&amp;P_{screen}.y = \cfrac{near * P_{camera}.y}{-P_{camera}.z} \\<br>&amp;P_{screen}.z = -P_{camera}.z<br>\end{align}<br>$$</p>
-<p>　　<em>注意与之前不同的是，投影之后我们仍然保留空间点的z坐标，利用它们还原计算空间三角形的重心坐标。</em>
-　　</p>
+<p>　　<em>投影之后我们仍然保留空间点的z坐标，利用它们还原计算空间三角形的重心坐标。</em><br>　　<br>如图（Figure 2），为了简化问题，我们仍只考虑一条在相机空间中的线段，它的两个端点的坐标分别为 $P_0(X_0, Z_0)$ 和 $P_1(X_1, Z_1)$ ，两端点在成像平面上的投影坐标分别为 $S_0$ 和 $S_1$。$S$ 是投影线段上的一点，其分割线段的比例是 $(1 - q):q$ （即重心坐标），$P$ 是 $S$ 对应的原线段上的点，其重心坐标为 $(1-t):t$。</p>
+<p><img src="/2019/08/27/光栅化渲染-4-深度检测/figure2.png" alt="figure 2"></p>
+<center>Figure 2</center>
+
+<p>我们可以得到如下关系式：</p>
+<p>$$<br>P = P_0 * (1 - t) + P_1 * t<br>S = S_0 * (1 - q) + S_1 * q<br>$$</p>
+<p>也可以写做如下形式：</p>
+<p>$$<br>P = P_0 + t * (P_1 - P_0)<br>S = S_0 + q * (S_1 - S_0)<br>$$</p>
+<p><em>S是一维的坐标点，我们下面用它来指代自己的坐标值</em></p>
+<p>于是我们可以插值得到 $P$ 和 $S$ 的坐标（Equation 1）：</p>
+<p>$$<br>\begin{align}<br>&amp;(X, \quad Z)=(X_0 + t * (X_1 - X_0), \quad Z_0 + t * (Z_1 - Z0)) \\<br>&amp;S = S_0 + q * (S_1 - S_0)<br>\end{align}<br>$$</p>
+<p>由相似三角形的比例关系我们可以得到：</p>
+<p>$$<br>\cfrac{S}{X} = \cfrac{near}{Z}<br>$$</p>
+<p>即：</p>
+<p>$$<br>Z = \cfrac{near * X}{S}<br>$$</p>
+<p>把（Equation 1）带入上式得（Equation 2）：</p>
+<p>$$<br>Z = \cfrac{X_0 + t * (X_1 - X_0)}{S_0 + q * (S_1 - S_0)}<br>$$</p>
+<p><img src="/2019/08/27/光栅化渲染-4-深度检测/equation2.png" alt="Equation 2"></p>
+<p>类似的我们还有：</p>
+<p>$$<br>S_0 = \cfrac{X_0}{Z_0}<br>S_1 = \cfrac{X_1}{Z_1}<br>$$</p>
+<p>因此（Equation 3）：</p>
+<p>$$<br>X_0 = S_0 * Z_0<br>X_1 = S_1 * Z_1<br>$$</p>
+<p>把（Equation 3）带入到（Equation 2）中得到（Equation 4）：</p>
+<p><img src="/2019/08/27/光栅化渲染-4-深度检测/equation4.png" alt="Equation 4"></p>
+<p>由（Equation 1）中我们知道（Equation 5）：</p>
+<p>$$<br>Z = Z_0 + t * (Z_1 - Z0)<br>$$</p>
+<p>带入（Equation 4）中得（Equation 6）:</p>
+<p><img src="/2019/08/27/光栅化渲染-4-深度检测/equation6.png" alt="Equation 6"></p>
+<p>化简（Equation 5）得：</p>
+<p><img src="/2019/08/27/光栅化渲染-4-深度检测/simplify.png" alt="simplify"></p>
+<p>我们现在可以把变量 $t$ 替换掉了。（<em>其实这就是我们的目的，因为只有t是未知的</em>）：</p>
+<p>$$<br>t = \cfrac{qZ_0}{qZ_0 + (1 - q)Z_1}<br>$$</p>
+<p>带入（Equation 5）中得：</p>
+<p><img src="/2019/08/27/光栅化渲染-4-深度检测/equation7.png" alt="Equation 7"></p>
+<p>进而我们就可以得到：</p>
+<p><img src="/2019/08/27/光栅化渲染-4-深度检测/equation8.png" alt="Equation 8"></p>
 
       
     </div>
