@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/17/Kalman-filter-卡尔曼滤波器/g5.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/Kalman-filter-卡尔曼滤波器/origin.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/Kalman-filter-卡尔曼滤波器/afterFilter.png">
-<meta property="og:updated_time" content="2019-09-01T08:49:46.591Z">
+<meta property="og:updated_time" content="2019-09-09T12:35:51.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kalman filter-卡尔曼滤波器">
 <meta name="twitter:description" content="卡尔曼滤波理论，由卡尔曼博士在1960年访问NASA时首次提出，震惊了NASA，促成了著名的“阿波罗”计划，使人类第一次登上月球。">
@@ -435,7 +435,7 @@
 <p>　　现在出现的这个$K$就是那个让人很难理解的<strong>卡尔曼增益</strong>了，但是在这里这很简单，只是两个正态分布合并过程中因式分解出的一项。<br>　　现在我们来把(14)和(15)中的变量替换一下，替换成我们分析出的运动模型和观测模型的均值、方差，其中把运动模型变换到传感器测量空间中：</p>
 <p>$$<br>(\mu_0, \Sigma_0)=(Hx_k, HP_kH^T) \\<br>(\mu_1, \Sigma_1)=(z_k, R)<br>$$</p>
 <p>　　经过化简，我们就可以得到三个更新公式了，再加上之前的两个运动模型方程，共同组成卡尔曼滤波的<strong>五个核心公式</strong>：</p>
-<p>$$<br>x_k = Fx_{k - 1} \\<br>P_k = FP_{k - 1}F^T + Q \\<br>K = P_kH^T(HP_kH^T + R)^{-1} \\<br>\hat{x_k} = x_k + G(z_k - Hx_k) \\<br>\hat{P_k} = (I - GH)P_k<br>$$</p>
+<p>$$<br>x_k = Fx_{k - 1} \\<br>P_k = FP_{k - 1}F^T + Q \\<br>K = P_kH^T(HP_kH^T + R)^{-1} \\<br>\hat{x_k} = x_k + K(z_k - Hx_k) \\<br>\hat{P_k} = (I - KH)P_k<br>$$</p>
 <p>　　其中$\hat{x_k}$为该时刻的位置估计值，同时将作为下一次迭代的$x_{k - 1}$，$\hat{P_k}$为更新后的系统方差，将作为下一下迭代的$P_{k - 1}$</p>
 <h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>　　这一部分是一个实例，具体背景是我通过双目相机追踪并还原了手指在空间中运动的一些三维轨迹点（螺旋上升轨迹），但是数据有些噪音（波动），下面是原始数据以及用卡尔曼滤波后的效果图：</p>
 <p><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/origin.png" alt="origin"><br><img src="/2019/04/17/Kalman-filter-卡尔曼滤波器/afterFilter.png" alt="afterFilter"></p>
