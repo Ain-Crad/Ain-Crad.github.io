@@ -182,8 +182,8 @@ $$
 x_k = Fx_{k - 1} \\\\
 P_k = FP_{k - 1}F^T + Q \\\\
 K = P_kH^T(HP_kH^T + R)^{-1} \\\\
-\hat{x_k} = x_k + G(z_k - Hx_k) \\\\
-\hat{P_k} = (I - GH)P_k
+\hat{x_k} = x_k + K(z_k - Hx_k) \\\\
+\hat{P_k} = (I - KH)P_k
 $$
 
 　　其中$\hat{x_k}$为该时刻的位置估计值，同时将作为下一次迭代的$x_{k - 1}$，$\hat{P_k}$为更新后的系统方差，将作为下一下迭代的$P_{k - 1}$
