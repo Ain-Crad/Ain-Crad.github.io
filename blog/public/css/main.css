@@ -226,51 +226,51 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: 20px;
+  font-size: 22px;
 }
 @media (max-width: 767px) {
   h1 {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 h2 {
-  font-size: 15px;
+  font-size: 19px;
 }
 @media (max-width: 767px) {
   h2 {
-    font-size: 11px;
+    font-size: 15px;
   }
 }
 h3 {
-  font-size: 10px;
+  font-size: 16px;
 }
 @media (max-width: 767px) {
   h3 {
-    font-size: 6px;
+    font-size: 12px;
   }
 }
 h4 {
-  font-size: 5px;
+  font-size: 13px;
 }
 @media (max-width: 767px) {
   h4 {
-    font-size: 1px;
+    font-size: 9px;
   }
 }
 h5 {
-  font-size: 0px;
+  font-size: 10px;
 }
 @media (max-width: 767px) {
   h5 {
-    font-size: -4px;
+    font-size: 6px;
   }
 }
 h6 {
-  font-size: -5px;
+  font-size: 7px;
 }
 @media (max-width: 767px) {
   h6 {
-    font-size: -9px;
+    font-size: 3px;
   }
 }
 p {
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff41cb;
+  background: #0dff86;
 }
 .links-of-blogroll {
   font-size: 13px;
