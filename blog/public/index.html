@@ -430,25 +430,38 @@
 <p>　　现在只需要构造出 $P_z$ 分量部分的矩阵，使变换后的 $P_{S_z}$ 的范围为 $[-1, 1]$，由于 $P_{S_z}$ 和 $P_x, P_y$ 分量都无关，因此矩阵可以写成如下形式：</p>
 <p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        0 &amp; \cfrac{2n}{t-b} &amp; \cfrac{t+b}{t-b} &amp; 0 \\<br>        0 &amp; 0 &amp; A &amp; B \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
 <p>　　$A$ 和 $B$ 是我们待求解的部分，它们满足：</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure5.png" alt="figure 5"></p>
-<center>Figure 5</center>
-
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/equation1.png" alt="equation 1"></p>
 <p>　　当 $P_z = -n$ 即点 $P$ 在近平面上时，$P_{S_z} = -1$；当 $P_z = -f$ 即点 $P$ 在远平面上时，$P_{S_z} = 1$。所以可以得到下面的方程组：</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure6.png" alt="figure 6"></p>
-<center>Figure 6</center>
-
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/equation2.png" alt="equation 2"></p>
 <p>　　解方程组得：</p>
 <p>$$<br>A = -\cfrac{f+n}{f-n} \\<br>B = -\cfrac{2fn}{f-n}<br>$$</p>
 <p>　　于是我们就得到了最终的透视投影矩阵：</p>
 <p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        0 &amp; \cfrac{2n}{t-b} &amp; \cfrac{t+b}{t-b} &amp; 0 \\<br>        0 &amp; 0 &amp; -\cfrac{f+n}{f-n} &amp; -\cfrac{2fn}{f-n} \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　由于 $P_z$ 的范围映射到 $[-1, 1]$ 不是线性变化的，靠近近剪切平面的点映射的精度高，靠近远剪切平面的点映射的精度低（Figure 7）。</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure7.png" alt="figure7"></p>
+<p>　　由于 $P_z$ 映射到 $[-1, 1]$ 的变化不是线性的，靠近近剪切平面的点的精度高，靠近远剪切平面的点的精度低（Figure 4），图中 $n = 1$，$f = 5$。</p>
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure4.png" alt="figure4"></p>
+<center>Figure 4</center>
+
+<p>　　当精度过低时，可能会出现 <strong>z-fighting</strong> 的现象，即不同 $P_z$ 坐标的点映射到 $P_{S_z}$ 是相同的。这个问题无法被真正解决，我们只能通过使两个剪切平面之间的距离在包含所有物体的前提下尽可能的接近，来尽量避免 <strong>z-fighting</strong> 的问题。（Figure 5）</p>
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure5.png" alt="figure5"></p>
+<center>Figure 5</center>
+
+<h1 id="视场（Fov）和图像纵横比（Aspect-Ratio）"><a href="#视场（Fov）和图像纵横比（Aspect-Ratio）" class="headerlink" title="视场（Fov）和图像纵横比（Aspect Ratio）"></a>视场（Fov）和图像纵横比（Aspect Ratio）</h1><p>　　求解透视投影矩阵时用到了6个参数 <strong>near，far，left，right，top，bottom</strong>。其中 near 和 far 是人为指定的，而剩下的4个参数则是由<strong>视场(Fov)</strong>以及<strong>图像纵横比(Aspect Ratio)</strong>决定的（Figure 6）。</p>
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure6.png" alt="figure 6"></p>
+<center>Figure 6</center>
+
+<p>　　由简单的比例关系可以得到：</p>
+<p>$$<br>tan(\cfrac{FOV}{2}) = \cfrac{opposite}{adjacent} = \cfrac{BC}{AB} = \cfrac{top}{near}<br>$$</p>
+<p>　　因此</p>
+<p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;bottom = -top<br>\end{align}<br>$$</p>
+<p>　　<code>这里假设了 filed-of-view 是纵向的，OpenGL 就是默认 fov 为纵向，但是同时需要注意的是其它软件有可能默认 fov 为横向，如 Maya 和 RenderMan。</code></p>
+<p>　　如图（Figure 7）图像的纵横比有可能相等也有可能不等：</p>
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure7.png" alt="figure 7"></p>
 <center>Figure 7</center>
 
-<p>　　当精度过低时，可能会出现 <strong>z-fighting</strong> 的现象，即不同 $P_z$ 坐标的点映射到 $P_{S_z}$ 是相同的。这个问题无法被真正解决，我们只能通过使两个剪切平面之间的距离在包含所有物体的前提下尽可能的接近，才能尽量避免 <strong>z-fighting</strong> 的问题。（Figure 8）</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure8.png" alt="figure8"></p>
-<center>Figure 8</center>
-
+<p>　　若纵横比相等，由对称关系可得：</p>
+<p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;right = top \\<br>&amp;left = bottom = -top<br>\end{align}<br>$$</p>
+<p>　　若纵横比不等，借助 aspect ratio 可得：</p>
+<p>$$<br>\begin{align}<br>&amp;aspect ratio = \cfrac{width}{height} \\<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp; bottom = -top \\<br>&amp;right = top * aspect ratio \\<br>&amp;left = -right<br>\end{align}<br>$$</p>
 
           
         
