@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/02/光栅化渲染-5-透视矫正/formula1.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/02/光栅化渲染-5-透视矫正/formula2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/02/光栅化渲染-5-透视矫正/formula3.png">
-<meta property="og:updated_time" content="2019-09-20T13:26:13.449Z">
+<meta property="og:updated_time" content="2019-09-21T03:54:18.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(5)-透视矫正">
 <meta name="twitter:description" content="由于投影后比例的变化，在成像平面上插值计算出的颜色等属性值实际上也是存在偏差的。">
@@ -402,7 +402,7 @@
         <p>　　<em>由于投影后比例的变化，在成像平面上插值计算出的颜色等属性值实际上也是存在偏差的。</em></p>
 <a id="more"></a>
 
-<h1 id="透视校正"><a href="#透视校正" class="headerlink" title="透视校正"></a>透视校正</h1><p>　　前面我们提到可以用重心坐标的方法来对三角形内部的点做属性的插值，来赋予各个像素相应的颜色等属性：</p>
+<h1 id="透视矫正"><a href="#透视矫正" class="headerlink" title="透视矫正"></a>透视矫正</h1><p>　　前面我们提到可以用重心坐标的方法来对三角形内部的点做属性的插值，来赋予各个像素相应的颜色等属性：</p>
 <p>$$<br>C_p = \lambda_0 * C_0 + \lambda_1 * C_1 + \lambda_2 * C_2<br>$$</p>
 <p>　　其中$(\lambda_0, \lambda_1, \lambda_2)$为投影平面上插值这一点的重心坐标。</p>
 <p>　　但是在<a href="https://ain-crad.github.io/2019/08/27/%E5%85%89%E6%A0%85%E5%8C%96%E6%B8%B2%E6%9F%93-4-%E6%B7%B1%E5%BA%A6%E6%A3%80%E6%B5%8B/#more" target="_blank" rel="noopener">深度检测</a>中我们考虑到由于投影后的比例变化，所以我们不能把投影平面上三角形某点的重心坐标直接作为空间三角形上对应点的重心坐标（Figure 1)。<strong>因此上面的颜色插值实际上也是存在偏差的。</strong></p>
@@ -621,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#透视校正"><span class="nav-number">1.</span> <span class="nav-text">透视校正</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#透视矫正"><span class="nav-number">1.</span> <span class="nav-text">透视矫正</span></a></li></ol></div>
             
 
           </div>

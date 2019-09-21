@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure3.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure4.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure5.png">
-<meta property="og:updated_time" content="2019-09-02T13:05:45.246Z">
+<meta property="og:updated_time" content="2019-09-21T08:50:55.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染(2)-透视投影">
 <meta name="twitter:description" content="画家用透视投影的方法作画，以获得接近真实三维物体的视觉效果。">
@@ -439,7 +439,7 @@
 <p>$$<br>P_{raster}.x=P_{normalized}.x * pixelWidth \\<br>P_{raster}.y=(1-P_{normalized}.y) * pixelHeight<br>$$</p>
 <p>　　<em>注意区分</em> $W$ <em>和</em> $pixelWidth$，<em>W指的是图片的物理尺寸，以 m 或 mm 等为单位，pixelWidth指的是图片的横向像素的个数。</em><br>　　由此可得<strong>相机坐标系</strong>到<strong>光栅坐标系</strong>的转换公式：</p>
 <p>$$<br>P_{raster}.x=(1 + \cfrac{near * P_{camera}.x}{-W * P_{camera}.z})* 0.5 * pixelWidth \\<br>P_{raster}.y=(1 - \cfrac{near * P_{camera}.y}{-W * P_{camera}.z}) * 0.5 * pixelHeight<br>$$</p>
-<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>　　上面提到的 $NDC$ 坐标范围为 $[0, 1]$，实际上在GPU的实现中， $NDC$ 坐标范围为 $[-1, 1]$。另外讨论更一般的情况，假设成像平面坐标系的 $x$　坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$。<br>　　此时由成像平面坐标系到 $NDC$ 坐标系的映射关系可以通过以下方式求解，先考虑 $x$：<br>　　由 $l&lt;x&lt;r$，可得 $0&lt;x-l&lt;r-l$，各项同时除以 $(r-l)$：</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>　　上面提到的 $NDC$ 坐标范围为 $[0, 1]$，实际上在GPU的实现中， $NDC$ 坐标范围为 $[-1, 1]$。另外讨论更一般的情况，假设成像平面坐标系的 $x$ 坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$。<br>　　此时由成像平面坐标系到 $NDC$ 坐标系的映射关系可以通过以下方式求解，先考虑 $x$：<br>　　由 $l&lt;x&lt;r$，可得 $0&lt;x-l&lt;r-l$，各项同时除以 $(r-l)$：</p>
 <p>$$<br>0 &lt; \cfrac{x-l}{r-l} &lt; 1<br>$$</p>
 <p>　　公式各项同时乘以 $2$ 再减去 $1$：</p>
 <p>$$<br>-1 &lt; 2 * \cfrac{x-l}{r-l} - 1 &lt; 1<br>$$</p>

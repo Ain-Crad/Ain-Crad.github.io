@@ -397,9 +397,33 @@
       
         
           
-            <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文文字</p>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>正文文字</p>
-<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>正文文字</p>
+            <p>　　<em>GPU结构被设计的非常适合矩阵运算，把透视投影过程用矩阵表达出来可以加速计算。</em></p>
+<h1 id="Unit-Cube"><a href="#Unit-Cube" class="headerlink" title="Unit Cube"></a>Unit Cube</h1><p>　　在讨论如何构造透视投影矩阵之前，我们先了解透视投影的作用（效果）。空间中一点 $P$ 乘以透视投影矩阵后，我们会得到一点 $P^\prime$：<br><code>它的 x&#39; 坐标和 y&#39; 坐标的范围是 [-1, 1]，即定义在 NDC 空间下。
+　　它的 z&#39; 坐标的范围同样被压缩到 [-1, 1] 的范围内，边界分别为近剪切平面和远剪切平面。</code></p>
+<p>　　如（Figure 1）所示，这样做的效果从空间中来看，其实是把相机坐标系下的<strong>视棱台</strong>(viewing frustum)压缩成了<strong>立方体</strong>(unit cube)。</p>
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure1.png" alt="figure1"></p>
+<center>Figure 1</center>
+
+<p>　　而这样做的目的是为了方便做<strong>剪切(clipping)</strong>。一方面去除那些在视野范围之外的图元（不必浪费资源渲染它们），另一方面对那些一部分在视野内一部分在视野外的图元做修剪（Figure 2）。</p>
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure2.png" alt="figure2"></p>
+<center>Figure 2</center>
+
+<p><code>这里有一个剪切空间(Clip Space)的概念，与 NDC 空间不同。我们稍后再做介绍 。</code></p>
+<h1 id="透视投影矩阵"><a href="#透视投影矩阵" class="headerlink" title="透视投影矩阵"></a>透视投影矩阵</h1><p>　　现在我们可以开始构造透视投影矩阵了。回顾一下之前的透视投影的内容，相机空间中的点投影到成像平面上（Figure 3）的变化为：</p>
+<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure3.png" alt="figure 3"></p>
+<center>Figure 3</center>
+
+<p>$$<br>P_(S_x) = \cfrac{n * P_x}{-P_z}<br>P_(S_y) = \cfrac{n * P_y}{-P_z}<br>$$</p>
+<p>　　我们发现计算投影要除以 $P_z$ 坐标，但这是矩阵的线性变换做不到的，矩阵只能线性的组合 $P_x, P_y, P_z$ 来得到 $P_{S_x}, P_{S_y}, P_{S_z}$，于是我们引入<strong>其次坐标</strong>，将空间点扩充为 $(P_x, P_y, P_z, P_w = 1)$。<br>　　同时对矩阵做特定设定，使其将转换后的 $P_{S_w}$ 分量设置为 $-P_z$，这样通过 $[P_{S_x}, P_{S_y}, P_{S_z}, P_{S_w}]$ 整体除以 $P_{S_w}$ 分量便实现了除法变换。</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        … &amp; … &amp; … &amp; … \\<br>        … &amp; … &amp; … &amp; … \\<br>        … &amp; … &amp; … &amp; … \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>*<br>\left[<br>    \begin{matrix}<br>        P_x \\<br>        P_y \\<br>        P_z \\<br>        1<br>    \end{matrix}<br>\right]<br>=<br>\left[<br>    \begin{matrix}<br>        P_{S_x} \\<br>        P_{S_y} \\<br>        P_{S_z} \\<br>        -P_z<br>    \end{matrix}<br>\right]<br>$$</p>
+<p>　　接下来继续构造其它分量，假设成像平面坐标系的 $x$ 坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$，近平面和远平面分别为 $n, f$。<br>　　由<a href="https://ain-crad.github.io/2019/08/11/%E5%85%89%E6%A0%85%E5%8C%96%E6%B8%B2%E6%9F%93-2-%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1/#more" target="_blank" rel="noopener">透视投影的拓展内容</a>中我们知道，若要使相机坐标 $P_x$ 变换到屏幕坐标 $P_{S_x}$ 且范围为 $[-1, 1]$，那么</p>
+<p>$$<br>P_{S_x} = \cfrac{2nP_x}{-P_z(r-l)}-\cfrac{r+l}{r-l}<br>$$</p>
+<p>　　由于 $\cfrac{1}{-P_z}$ 部分可以除以 $P_{S_w}$ 分量得到，所以目前的矩阵形式为：</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        … &amp; … &amp; … &amp; … \\<br>        … &amp; … &amp; … &amp; … \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
+<p>　　同理</p>
+<p>$$<br>P_{S_y} = \cfrac{2nP_y}{t-b}-\cfrac{t+b}{t-b}<br>$$</p>
+<p>　　进一步扩充矩阵</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        0 &amp; \cfrac{2n}{t-b} &amp; \cfrac{t+b}{t-b} &amp; 0 \\<br>        … &amp; … &amp; … &amp; … \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
 
           
         
