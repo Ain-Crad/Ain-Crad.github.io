@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/20/光栅化渲染-6-透视投影矩阵/figure5.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/20/光栅化渲染-6-透视投影矩阵/figure6.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/20/光栅化渲染-6-透视投影矩阵/figure7.png">
-<meta property="og:updated_time" content="2019-09-21T11:53:45.215Z">
+<meta property="og:updated_time" content="2019-09-21T13:10:05.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染-6-透视投影矩阵">
 <meta name="twitter:description" content="GPU结构被设计的非常适合矩阵运算，把透视投影过程用矩阵表达出来可以加速计算。 Unit Cube　　在讨论如何构造透视投影矩阵之前，我们先了解透视投影的作用（效果）。空间中一点 $P$ 乘以透视投影矩阵后，我们会得到一点 $P^\prime$：  它的 x’ 坐标和 y’ 坐标的范围是 [-1, 1]，即定义在 NDC 空间下。 它的 z’ 坐标的范围同样被压缩到 [-1, 1] 的范围内，">
@@ -417,7 +417,7 @@
 <p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure2.png" alt="figure2"></p>
 <center>Figure 2</center>
 
-<p><code>这里有一个剪切空间(Clipping Space)的概念，与 NDC 空间不同。我们稍后再做介绍 。</code></p>
+<p><code>这里有一个剪切空间(Clip Space)的概念，与 NDC 空间不同。我们稍后再做介绍 。</code></p>
 <h1 id="透视投影矩阵"><a href="#透视投影矩阵" class="headerlink" title="透视投影矩阵"></a>透视投影矩阵</h1><p>　　现在我们可以开始构造透视投影矩阵了。回顾一下之前的透视投影的内容，相机空间中的点投影到成像平面上（Figure 3）的变化为：</p>
 <p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure3.png" alt="figure 3"></p>
 <center>Figure 3</center>
@@ -459,7 +459,7 @@
 <p>$$<br>tan(\cfrac{FOV}{2}) = \cfrac{opposite}{adjacent} = \cfrac{BC}{AB} = \cfrac{top}{near}<br>$$</p>
 <p>　　因此</p>
 <p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;bottom = -top<br>\end{align}<br>$$</p>
-<p>　　<code>这里假设了 filed-of-view 是纵向的，OpenGL 就是默认 fov 为纵向，但是同时需要注意的是其它软件有可能默认 fov 为横向，如 Maya 和 RenderMan。</code></p>
+<p>　　<code>这里假设了 filed-of-view 是纵向的，OpenGL 就是默认 fov 为纵向，但是同时需要注意的是其它渲染器有可能默认 fov 为横向，如 Maya 和 RenderMan。</code></p>
 <p>　　如图（Figure 7）图像的纵横比有可能相等也有可能不等：</p>
 <p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure7.png" alt="figure 7"></p>
 <center>Figure 7</center>
@@ -468,6 +468,7 @@
 <p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;right = top \\<br>&amp;left = bottom = -top<br>\end{align}<br>$$</p>
 <p>　　若纵横比不等，借助 aspect ratio 可得：</p>
 <p>$$<br>\begin{align}<br>&amp;aspect ratio = \cfrac{width}{height} \\<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp; bottom = -top \\<br>&amp;right = top * aspect ratio \\<br>&amp;left = -right<br>\end{align}<br>$$</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrices-what-you-need-to-know-first" target="_blank" rel="noopener">Scratchapixel-Projection Matrices: What You Need to Know First</a><br><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/opengl-perspective-projection-matrix" target="_blank" rel="noopener">Scratchapixel-The OpenGL Perspective Projection Matrix</a></p>
 
       
     </div>
@@ -501,6 +502,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/21/光栅化渲染-7-渲染管线/" rel="prev" title="光栅化渲染-7-渲染管线">
+                光栅化渲染-7-渲染管线 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -582,7 +587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">86</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -659,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unit-Cube"><span class="nav-number">1.</span> <span class="nav-text">Unit Cube</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#透视投影矩阵"><span class="nav-number">2.</span> <span class="nav-text">透视投影矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视场（Fov）和图像纵横比（Aspect-Ratio）"><span class="nav-number">3.</span> <span class="nav-text">视场（Fov）和图像纵横比（Aspect Ratio）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unit-Cube"><span class="nav-number">1.</span> <span class="nav-text">Unit Cube</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#透视投影矩阵"><span class="nav-number">2.</span> <span class="nav-text">透视投影矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视场（Fov）和图像纵横比（Aspect-Ratio）"><span class="nav-number">3.</span> <span class="nav-text">视场（Fov）和图像纵横比（Aspect Ratio）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>

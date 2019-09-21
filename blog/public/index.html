@@ -272,6 +272,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/光栅化渲染-7-渲染管线/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aincrad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aincrad's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/光栅化渲染-7-渲染管线/" itemprop="url">光栅化渲染-7-渲染管线</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T20:38:45+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Graphics/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Graphics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Graphics/光栅化渲染/" itemprop="url" rel="index">
+                    <span itemprop="name">光栅化渲染</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/21/光栅化渲染-7-渲染管线/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/21/光栅化渲染-7-渲染管线/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/21/光栅化渲染-7-渲染管线/" class="leancloud_visitors" data-flag-title="光栅化渲染-7-渲染管线">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>　　<em>GPU 渲染管线分为两种，一种是原始的固定管线，另一种是现在常用的可编程管线。</em></p>
+<h1 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h1><p>　　1.在顶点着色器中，空间点由<strong>相机空间</strong>(camera space)变换到<strong>裁剪空间</strong>(clip space)。这个过程首先将顶点变为<strong>齐次坐标</strong>，然后乘以<strong>透视投影矩阵</strong>。需要注意的是，此时还没有进行标准化，即转化后的顶点各分量没有除以 $P_{S_w}$。<br>　　2.当所有顶点都经过顶点着色器处理后，不在裁剪空间中的图元将被舍弃，部分处于裁剪空间中的图元将被裁剪。需要注意的是，这个时候由于还没有进行标准化，因此裁剪空间并不是 $[-1, -1, -1]$ 和 $[1, 1, 1]$ 定义的固定的立方体空间，而是每个顶点都有一个自己的裁剪空间。常用的裁剪算法有 <strong>Cohen-Sutherland</strong> 和 <strong>Sutherland-Hodgman</strong> 算法。<br>　　3.裁剪过程结束后，所有的顶点都将进行标准化，每个顶点的 $x$，$y$，$z$ 坐标都要除以各自的 $w$ 分量。这一步也叫做 <strong>perspective divide</strong>。</p>
+<p><img src="/2019/09/21/光栅化渲染-7-渲染管线/figure1.png" alt="figure 1"></p>
+<center>Figure 1</center>
+
+<h1 id="固定管线"><a href="#固定管线" class="headerlink" title="固定管线"></a>固定管线</h1><p>　　在固定管线下，OpenGL 以及其它图形 API(e.g. Direct3D) 提供了两种模式来修改相机的状态，<strong>GL_MODELVIEW</strong> 以及 <strong>GL_PROJECTION</strong>。在 GL_MODELVIEW 模式下设置 objection-to-world 以及 world-to-camera 的转换矩阵，将顶点转换到相机坐标系下；在 GL_PROJECTION 模式下通过 glFrustum 设置透视投影矩阵，将顶点转换到裁剪空间下其次坐标形式。</p>
+<p><em>实例</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">glMatrixMode (GL_PROJECTION); </span><br><span class="line">glLoadIdentity(); </span><br><span class="line">glFrustum(l, r, b, t, n, f); </span><br><span class="line">glMatrixMode(GL_MODELVIEW); </span><br><span class="line">glLoadIdentity(); </span><br><span class="line">glTranslate(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>); </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>　　<em>固定管线模式现已被弃用。</em></p>
+<h1 id="可编程管线"><a href="#可编程管线" class="headerlink" title="可编程管线"></a>可编程管线</h1><p>　　可编程管线和固定管线的区别在于，舍弃了 GL_MODELVIEW 和 GL_PROJECTION 的概念，要求开发者在顶点着色器中自定义顶点的变换，即自己实现 world-to-camera 和 透视投影矩阵。OpenGL 要求程序中必须有顶点着色器和片段着色器的实现。</p>
+<p><em>顶点着色器实例</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">uniform mat4 worldToCamMatrix, projMatrix; </span><br><span class="line">in vec3 vert; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    gl_Position = projMatrix * worldToCamMatrix * vec4(vert, <span class="number">1</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrix-GPU-rendering-pipeline-clipping" target="_blank" rel="noopener">Scratchapixel-About the Projection Matrix, the GPU Rendering Pipeline and Clipping</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/光栅化渲染-6-透视投影矩阵/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -411,7 +599,7 @@
 <p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure2.png" alt="figure2"></p>
 <center>Figure 2</center>
 
-<p><code>这里有一个剪切空间(Clipping Space)的概念，与 NDC 空间不同。我们稍后再做介绍 。</code></p>
+<p><code>这里有一个剪切空间(Clip Space)的概念，与 NDC 空间不同。我们稍后再做介绍 。</code></p>
 <h1 id="透视投影矩阵"><a href="#透视投影矩阵" class="headerlink" title="透视投影矩阵"></a>透视投影矩阵</h1><p>　　现在我们可以开始构造透视投影矩阵了。回顾一下之前的透视投影的内容，相机空间中的点投影到成像平面上（Figure 3）的变化为：</p>
 <p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure3.png" alt="figure 3"></p>
 <center>Figure 3</center>
@@ -453,7 +641,7 @@
 <p>$$<br>tan(\cfrac{FOV}{2}) = \cfrac{opposite}{adjacent} = \cfrac{BC}{AB} = \cfrac{top}{near}<br>$$</p>
 <p>　　因此</p>
 <p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;bottom = -top<br>\end{align}<br>$$</p>
-<p>　　<code>这里假设了 filed-of-view 是纵向的，OpenGL 就是默认 fov 为纵向，但是同时需要注意的是其它软件有可能默认 fov 为横向，如 Maya 和 RenderMan。</code></p>
+<p>　　<code>这里假设了 filed-of-view 是纵向的，OpenGL 就是默认 fov 为纵向，但是同时需要注意的是其它渲染器有可能默认 fov 为横向，如 Maya 和 RenderMan。</code></p>
 <p>　　如图（Figure 7）图像的纵横比有可能相等也有可能不等：</p>
 <p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure7.png" alt="figure 7"></p>
 <center>Figure 7</center>
@@ -462,6 +650,7 @@
 <p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;right = top \\<br>&amp;left = bottom = -top<br>\end{align}<br>$$</p>
 <p>　　若纵横比不等，借助 aspect ratio 可得：</p>
 <p>$$<br>\begin{align}<br>&amp;aspect ratio = \cfrac{width}{height} \\<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp; bottom = -top \\<br>&amp;right = top * aspect ratio \\<br>&amp;left = -right<br>\end{align}<br>$$</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrices-what-you-need-to-know-first" target="_blank" rel="noopener">Scratchapixel-Projection Matrices: What You Need to Know First</a><br><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/opengl-perspective-projection-matrix" target="_blank" rel="noopener">Scratchapixel-The OpenGL Perspective Projection Matrix</a></p>
 
           
         
@@ -1903,174 +2092,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/Rand-C-随机数/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aincrad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aincrad's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/Rand-C-随机数/" itemprop="url">Rand-C++随机数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-28T18:55:29+08:00">
-                2019-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/28/Rand-C-随机数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/28/Rand-C-随机数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/04/28/Rand-C-随机数/" class="leancloud_visitors" data-flag-title="Rand-C++随机数">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/2019/04/28/Rand-C-随机数/random.jpg" alt="random"></p>
-<p>　　<em>C++随机数发生器。</em></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/28/Rand-C-随机数/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2123,7 +2144,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">86</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
