@@ -87,7 +87,7 @@
 <meta property="og:description" content="GPU 渲染管线分为两种，一种是原始的固定管线，另一种是现在常用的可编程管线。 渲染流程　　1.在顶点着色器中，空间点由相机空间(camera space)变换到裁剪空间(clip space)。这个过程首先将顶点变为齐次坐标，然后乘以透视投影矩阵。需要注意的是，此时还没有进行标准化，即转化后的顶点各分量没有除以 $P_{S_w}$。　　2.当所有顶点都经过顶点着色器处理后，不在裁剪空间中的图">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/09/21/光栅化渲染-7-渲染管线/figure1.png">
-<meta property="og:updated_time" content="2019-09-21T14:06:31.481Z">
+<meta property="og:updated_time" content="2019-09-21T14:09:21.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="光栅化渲染-7-渲染管线">
 <meta name="twitter:description" content="GPU 渲染管线分为两种，一种是原始的固定管线，另一种是现在常用的可编程管线。 渲染流程　　1.在顶点着色器中，空间点由相机空间(camera space)变换到裁剪空间(clip space)。这个过程首先将顶点变为齐次坐标，然后乘以透视投影矩阵。需要注意的是，此时还没有进行标准化，即转化后的顶点各分量没有除以 $P_{S_w}$。　　2.当所有顶点都经过顶点着色器处理后，不在裁剪空间中的图">
@@ -404,7 +404,7 @@
 <p><em>实例</em></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">glMatrixMode (GL_PROJECTION); </span><br><span class="line">glLoadIdentity(); </span><br><span class="line">glFrustum(l, r, b, t, n, f); </span><br><span class="line">glMatrixMode(GL_MODELVIEW); </span><br><span class="line">glLoadIdentity(); </span><br><span class="line">glTranslate(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>); </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>　　<em>固定管线模式现已被弃用。</em></p>
+<p>　　<em>固定管线现已被弃用。</em></p>
 <h1 id="可编程管线"><a href="#可编程管线" class="headerlink" title="可编程管线"></a>可编程管线</h1><p>　　可编程管线和固定管线的区别在于，舍弃了 GL_MODELVIEW 和 GL_PROJECTION 的概念，要求开发者在顶点着色器中自定义顶点的变换，即自己实现 world-to-camera 和 透视投影矩阵。OpenGL 要求程序中必须有顶点着色器和片段着色器的实现。</p>
 <p><em>顶点着色器实例</em></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">uniform mat4 worldToCamMatrix, projMatrix; </span><br><span class="line">in vec3 vert; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    gl_Position = projMatrix * worldToCamMatrix * vec4(vert, <span class="number">1</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
