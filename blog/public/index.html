@@ -272,6 +272,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/光栅化渲染-8-正交投影矩阵/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aincrad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aincrad's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/22/光栅化渲染-8-正交投影矩阵/" itemprop="url">光栅化渲染-8-正交投影矩阵</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-22T11:10:30+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Graphics/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Graphics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Graphics/光栅化渲染/" itemprop="url" rel="index">
+                    <span itemprop="name">光栅化渲染</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/22/光栅化渲染-8-正交投影矩阵/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/22/光栅化渲染-8-正交投影矩阵/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/22/光栅化渲染-8-正交投影矩阵/" class="leancloud_visitors" data-flag-title="光栅化渲染-8-正交投影矩阵">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2019/09/22/光栅化渲染-8-正交投影矩阵/projectionsexample.png" alt="projection"></p>
+<p>　　<em>正交投影和透视投影的对比图，正交投影可以更好的保持原始的比例，透视投影具有更好的3D真实感。</em></p>
+<h1 id="正交投影矩阵"><a href="#正交投影矩阵" class="headerlink" title="正交投影矩阵"></a>正交投影矩阵</h1><p>　　如图（Figure 1），正交投影的效果从空间中来看，是把相机坐标系下的<strong>边界盒</strong>压缩成了<strong>立方体</strong>。</p>
+<p><img src="/2019/09/22/光栅化渲染-8-正交投影矩阵/figure1.png" alt="figure1"></p>
+<center>Figure 1</center>
+
+<p>　　<code>与透视投影的视棱台不同，正交投影最开始的空间为长方体的边界盒。</code></p>
+<p>　　正交投影矩阵的构造方式与透视投影矩阵类似，同样假设成像平面坐标系的 $x$ 坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$，近剪切平面和远剪切平面分别为 $n, f$。<br>　　先考虑 $x$ ，由 $l&lt;=x&lt;=r$，可得 $0&lt;=x-l&lt;=r-l$，各项同时除以 $(r-l)$：</p>
+<p>$$<br>0 &lt;= \cfrac{x-l}{r-l} &lt;= 1<br>$$</p>
+<p>　　公式各项同时乘以 $2$ 再减去 $1$：</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        -1 &lt;= 2\cfrac{x-l}{r-l} - 1 &lt;= 1 \\<br>        -1 &lt;= \cfrac{2x}{r-l} - \cfrac{r+l}{r-l} &lt;= 1<br>    \end{matrix}<br>\right]<br>$$</p>
+<p>　　于是我们就可以得到 $x$ 的转换公式：</p>
+<p>$$<br>x\prime = \cfrac{2x}{r-l} - \cfrac{r+l}{r-l}<br>$$</p>
+<p>　　用矩阵形式表示为：</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2}{r-l} &amp; 0 &amp; 0 &amp; -\cfrac{r+l}{r-l} \\<br>        0 &amp; 1 &amp; 0 &amp; 0 \\<br>        0 &amp; 0 &amp; 1 &amp; 0 \\<br>        0 &amp; 0 &amp; 0 &amp; 1<br>    \end{matrix}<br>\right]<br>$$</p>
+<p>　　$y$ 坐标的转换公式类似：</p>
+<p>$$<br>y\prime = \cfrac{2y}{t-b} - \cfrac{t+b}{t-b}<br>$$</p>
+<p>　　矩阵此时变为：</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2}{r-l} &amp; 0 &amp; 0 &amp; -\cfrac{r+l}{r-l} \\<br>        0 &amp; \cfrac{2}{t-b} &amp; 0 &amp; - \cfrac{t+b}{t-b} \\<br>        0 &amp; 0 &amp; 1 &amp; 0 \\<br>        0 &amp; 0 &amp; 0 &amp; 1<br>    \end{matrix}<br>\right]<br>$$</p>
+<p>　　接下来考虑 $z$， 由 $n &lt;= -z &lt;= f$，可得 $0 &lt;= -z-n &lt;= f-n$，各项同时除以 $(f-n)$：</p>
+<p>$$<br>0 &lt;=  \cfrac{-z-n}{f-n} &lt;= 1<br>$$</p>
+<p>　　公式各项同时乘以 $2$ 再减去 $1$：</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        -1 &lt;= 2\cfrac{-z-n}{f-n} - 1 &lt;= 1 \\<br>        -1 &lt;= \cfrac{-2z}{f-n} - \cfrac{f+n}{f-n} &lt;= 1<br>    \end{matrix}<br>\right]<br>$$</p>
+<p>　　由此可以得到完整的正交投影矩阵：</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2}{r-l} &amp; 0 &amp; 0 &amp; -\cfrac{r+l}{r-l} \\<br>        0 &amp; \cfrac{2}{t-b} &amp; 0 &amp; - \cfrac{t+b}{t-b} \\<br>        0 &amp; 0 &amp; \cfrac{-2}{f-n} &amp; -\cfrac{f+n}{f-n} \\<br>        0 &amp; 0 &amp; 0 &amp; 1<br>    \end{matrix}<br>\right]<br>$$</p>
+<h1 id="参数计算"><a href="#参数计算" class="headerlink" title="参数计算"></a>参数计算</h1><p>　　关于如何计算 <strong>left，right，top，bottom</strong> 这几个参数，首先要计算出边界盒的大小，统计出场景中物体的最大 $x$ 坐标和 最大的 $y$ 坐标。<br>　　取<code>top = max(maxX, maxY)</code>，之后按比例 aspect ratio 来设置 <code>left = aspectRatio * top</code>，再根据对称可以得到 <code>bottom = -top, right = -left</code>。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix" target="_blank" rel="noopener">Scratchapixel-What Are Projection Matrices and Where/Why Are They Used</a><br><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/orthographic-projection-matrix" target="_blank" rel="noopener">Scratchapixel-The OpenGL Orthographic Projection Matrix</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/光栅化渲染-7-渲染管线/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -398,7 +598,7 @@
         
           
             <p>　　<em>GPU 渲染管线分为两种，一种是原始的固定管线，另一种是现在常用的可编程管线。</em></p>
-<h1 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h1><p>　　1.在顶点着色器中，空间点由<strong>相机空间</strong>(camera space)变换到<strong>裁剪空间</strong>(clip space)。这个过程首先将顶点变为<strong>齐次坐标</strong>，然后乘以<strong>透视投影矩阵</strong>。需要注意的是，此时还没有进行标准化，即转化后的顶点各分量没有除以 $P_{S_w}$。<br>　　2.当所有顶点都经过顶点着色器处理后，不在裁剪空间中的图元将被舍弃，部分处于裁剪空间中的图元将被裁剪。需要注意的是，这个时候由于还没有进行标准化，因此裁剪空间并不是 $[-1, -1, -1]$ 和 $[1, 1, 1]$ 定义的固定的立方体空间，而是每个顶点都有一个自己的裁剪空间。常用的裁剪算法有 <strong>Cohen-Sutherland</strong> 和 <strong>Sutherland-Hodgman</strong> 算法。<br>　　3.裁剪过程结束后，所有的顶点都将进行标准化，每个顶点的 $x$，$y$，$z$ 坐标都要除以各自的 $w$ 分量。这一步也叫做 <strong>perspective divide</strong>。</p>
+<h1 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h1><p>　　1.在顶点着色器中，空间点由<strong>相机空间</strong>(camera space)变换到<strong>裁剪空间</strong>(clip space)。这个过程首先将顶点变为<strong>齐次坐标</strong>，然后乘以<strong>透视投影矩阵</strong>。需要注意的是，此时还没有进行标准化，即转化后的顶点各分量没有除以 $P_{S_w}$ 。<br>　　2.当所有顶点都经过顶点着色器处理后，不在裁剪空间中的图元将被舍弃，部分处于裁剪空间中的图元将被裁剪。需要注意的是，这个时候由于还没有进行标准化，因此裁剪空间并不是 $[-1, -1, -1]$ 和 $[1, 1, 1]$ 定义的固定的立方体空间，而是每个顶点都有一个自己的裁剪空间。常用的裁剪算法有 <strong>Cohen-Sutherland</strong> 和 <strong>Sutherland-Hodgman</strong> 算法。<br>　　3.裁剪过程结束后，所有的顶点都将进行标准化，每个顶点的 $x$，$y$，$z$ 坐标都要除以各自的 $w$ 分量。这一步也叫做 <strong>perspective divide</strong>。</p>
 <p><img src="/2019/09/21/光栅化渲染-7-渲染管线/figure1.png" alt="figure 1"></p>
 <center>Figure 1</center>
 
@@ -1925,173 +2125,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/27/二分查找以及lower-bound-upper-bound实现/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aincrad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aincrad's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/27/二分查找以及lower-bound-upper-bound实现/" itemprop="url">Binary Search以及lower_bound & upper_bound实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-27T15:22:51+08:00">
-                2019-07-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Template/" itemprop="url" rel="index">
-                    <span itemprop="name">Template</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/27/二分查找以及lower-bound-upper-bound实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/27/二分查找以及lower-bound-upper-bound实现/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/07/27/二分查找以及lower-bound-upper-bound实现/" class="leancloud_visitors" data-flag-title="Binary Search以及lower_bound & upper_bound实现">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/2019/07/27/二分查找以及lower-bound-upper-bound实现/BinarySearch.jpeg" alt="BinarySearch"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/27/二分查找以及lower-bound-upper-bound实现/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2144,7 +2177,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-count">87</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
