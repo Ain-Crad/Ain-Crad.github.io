@@ -396,36 +396,15 @@
 
       
         
-          
-            <p><img src="/2019/09/22/光栅化渲染-8-正交投影矩阵/projectionsexample.png" alt="projection"></p>
-<p>　　<em>正交投影和透视投影的对比图，正交投影可以更好的保持原始的比例，透视投影具有更好的3D真实感。</em></p>
-<h1 id="正交投影矩阵"><a href="#正交投影矩阵" class="headerlink" title="正交投影矩阵"></a>正交投影矩阵</h1><p>　　如图（Figure 1），正交投影的效果从空间中来看，是把相机坐标系下的<strong>边界盒</strong>压缩成了<strong>立方体</strong>。</p>
-<p><img src="/2019/09/22/光栅化渲染-8-正交投影矩阵/figure1.png" alt="figure1"></p>
-<center>Figure 1</center>
-
-<p>　　<code>与透视投影的视棱台不同，正交投影最开始的空间为长方体的边界盒。</code></p>
-<p>　　正交投影矩阵的构造方式与透视投影矩阵类似，同样假设成像平面坐标系的 $x$ 坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$，近剪切平面和远剪切平面分别为 $n, f$。<br>　　先考虑 $x$ ，由 $l&lt;=x&lt;=r$，可得 $0&lt;=x-l&lt;=r-l$，各项同时除以 $(r-l)$：</p>
-<p>$$<br>0 &lt;= \cfrac{x-l}{r-l} &lt;= 1<br>$$</p>
-<p>　　公式各项同时乘以 $2$ 再减去 $1$：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        -1 &lt;= 2\cfrac{x-l}{r-l} - 1 &lt;= 1 \\<br>        -1 &lt;= \cfrac{2x}{r-l} - \cfrac{r+l}{r-l} &lt;= 1<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　于是我们就可以得到 $x$ 的转换公式：</p>
-<p>$$<br>x\prime = \cfrac{2x}{r-l} - \cfrac{r+l}{r-l}<br>$$</p>
-<p>　　用矩阵形式表示为：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2}{r-l} &amp; 0 &amp; 0 &amp; -\cfrac{r+l}{r-l} \\<br>        0 &amp; 1 &amp; 0 &amp; 0 \\<br>        0 &amp; 0 &amp; 1 &amp; 0 \\<br>        0 &amp; 0 &amp; 0 &amp; 1<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　$y$ 坐标的转换公式类似：</p>
-<p>$$<br>y\prime = \cfrac{2y}{t-b} - \cfrac{t+b}{t-b}<br>$$</p>
-<p>　　矩阵此时变为：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2}{r-l} &amp; 0 &amp; 0 &amp; -\cfrac{r+l}{r-l} \\<br>        0 &amp; \cfrac{2}{t-b} &amp; 0 &amp; - \cfrac{t+b}{t-b} \\<br>        0 &amp; 0 &amp; 1 &amp; 0 \\<br>        0 &amp; 0 &amp; 0 &amp; 1<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　接下来考虑 $z$， 由 $n &lt;= -z &lt;= f$，可得 $0 &lt;= -z-n &lt;= f-n$，各项同时除以 $(f-n)$：</p>
-<p>$$<br>0 &lt;=  \cfrac{-z-n}{f-n} &lt;= 1<br>$$</p>
-<p>　　公式各项同时乘以 $2$ 再减去 $1$：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        -1 &lt;= 2\cfrac{-z-n}{f-n} - 1 &lt;= 1 \\<br>        -1 &lt;= \cfrac{-2z}{f-n} - \cfrac{f+n}{f-n} &lt;= 1<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　由此可以得到完整的正交投影矩阵：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2}{r-l} &amp; 0 &amp; 0 &amp; -\cfrac{r+l}{r-l} \\<br>        0 &amp; \cfrac{2}{t-b} &amp; 0 &amp; - \cfrac{t+b}{t-b} \\<br>        0 &amp; 0 &amp; \cfrac{-2}{f-n} &amp; -\cfrac{f+n}{f-n} \\<br>        0 &amp; 0 &amp; 0 &amp; 1<br>    \end{matrix}<br>\right]<br>$$</p>
-<h1 id="参数计算"><a href="#参数计算" class="headerlink" title="参数计算"></a>参数计算</h1><p>　　关于如何计算 <strong>left，right，top，bottom</strong> 这几个参数，首先要计算出边界盒的大小，统计出场景中物体的最大 $x$ 坐标和 最大的 $y$ 坐标。<br>　　取<code>top = max(maxX, maxY)</code>，之后按比例 aspect ratio 来设置 <code>left = aspectRatio * top</code>，再根据对称可以得到 <code>bottom = -top, right = -left</code>。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix" target="_blank" rel="noopener">Scratchapixel-What Are Projection Matrices and Where/Why Are They Used</a><br><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/orthographic-projection-matrix" target="_blank" rel="noopener">Scratchapixel-The OpenGL Orthographic Projection Matrix</a></p>
-
-          
+          <p><img src="/2019/09/22/光栅化渲染-8-正交投影矩阵/projectionsexample.png" alt="projection"></p>
+<p>　　<em>正交投影和透视投影的对比图，正交投影可以更好的保持原始物体的比例，透视投影则具有更好的3D真实感。</em></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/22/光栅化渲染-8-正交投影矩阵/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -596,24 +575,14 @@
 
       
         
-          
-            <p>　　<em>GPU 渲染管线分为两种，一种是原始的固定管线，另一种是现在常用的可编程管线。</em></p>
-<h1 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h1><p>　　1.在顶点着色器中，空间点由<strong>相机空间</strong>(camera space)变换到<strong>裁剪空间</strong>(clip space)。这个过程首先将顶点变为<strong>齐次坐标</strong>，然后乘以<strong>透视投影矩阵</strong>。需要注意的是，此时还没有进行标准化，即转化后的顶点各分量没有除以 $P_{S_w}$ 。<br>　　2.当所有顶点都经过顶点着色器处理后，不在裁剪空间中的图元将被舍弃，部分处于裁剪空间中的图元将被裁剪。需要注意的是，这个时候由于还没有进行标准化，因此裁剪空间并不是 $[-1, -1, -1]$ 和 $[1, 1, 1]$ 定义的固定的立方体空间，而是每个顶点都有一个自己的裁剪空间。常用的裁剪算法有 <strong>Cohen-Sutherland</strong> 和 <strong>Sutherland-Hodgman</strong> 算法。<br>　　3.裁剪过程结束后，所有的顶点都将进行标准化，每个顶点的 $x$，$y$，$z$ 坐标都要除以各自的 $w$ 分量。这一步也叫做 <strong>perspective divide</strong>。</p>
-<p><img src="/2019/09/21/光栅化渲染-7-渲染管线/figure1.png" alt="figure 1"></p>
-<center>Figure 1</center>
-
-<h1 id="固定管线"><a href="#固定管线" class="headerlink" title="固定管线"></a>固定管线</h1><p>　　在固定管线下，OpenGL 以及其它图形 API(e.g. Direct3D) 提供了两种模式来修改相机的状态，<strong>GL_MODELVIEW</strong> 以及 <strong>GL_PROJECTION</strong>。在 GL_MODELVIEW 模式下设置 objection-to-world 以及 world-to-camera 的转换矩阵，将顶点转换到相机坐标系下；在 GL_PROJECTION 模式下通过 glFrustum 设置透视投影矩阵，将顶点转换到裁剪空间下其次坐标形式。</p>
-<p><em>实例</em></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">glMatrixMode (GL_PROJECTION); </span><br><span class="line">glLoadIdentity(); </span><br><span class="line">glFrustum(l, r, b, t, n, f); </span><br><span class="line">glMatrixMode(GL_MODELVIEW); </span><br><span class="line">glLoadIdentity(); </span><br><span class="line">glTranslate(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>); </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>　　<em>固定管线现已被弃用。</em></p>
-<h1 id="可编程管线"><a href="#可编程管线" class="headerlink" title="可编程管线"></a>可编程管线</h1><p>　　可编程管线和固定管线的区别在于，舍弃了 GL_MODELVIEW 和 GL_PROJECTION 的概念，要求开发者在顶点着色器中自定义顶点的变换，即自己实现 world-to-camera 和 透视投影矩阵。OpenGL 要求程序中必须有顶点着色器和片段着色器的实现。</p>
-<p><em>顶点着色器实例</em></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">uniform mat4 worldToCamMatrix, projMatrix; </span><br><span class="line">in vec3 vert; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    gl_Position = projMatrix * worldToCamMatrix * vec4(vert, <span class="number">1</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrix-GPU-rendering-pipeline-clipping" target="_blank" rel="noopener">Scratchapixel-About the Projection Matrix, the GPU Rendering Pipeline and Clipping</a></p>
-
-          
+          <p>　　<em>GPU 渲染管线分为两种，一种是原始的固定管线，另一种是现在常用的可编程管线。</em></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/21/光栅化渲染-7-渲染管线/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -784,75 +753,14 @@
 
       
         
-          
-            <p>　　<em>GPU结构被设计的非常适合矩阵运算，把透视投影过程用矩阵表达出来可以加速计算。</em></p>
-<h1 id="Unit-Cube"><a href="#Unit-Cube" class="headerlink" title="Unit Cube"></a>Unit Cube</h1><p>　　在讨论如何构造透视投影矩阵之前，我们先了解透视投影的作用（效果）。空间中一点 $P$ 乘以透视投影矩阵后，我们会得到一点 $P^\prime$：</p>
-<ul>
-<li>它的 x’ 坐标和 y’ 坐标的范围是 [-1, 1]，即定义在 NDC 空间下。</li>
-<li>它的 z’ 坐标的范围同样被压缩到 [-1, 1] 的范围内，边界分别为近剪切平面和远剪切平面。</li>
-</ul>
-<p>　　如（Figure 1）所示，这样做的效果从空间中来看，其实是把相机坐标系下的<strong>视棱台</strong>(viewing frustum)压缩成了<strong>立方体</strong>(unit cube)。</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure1.png" alt="figure1"></p>
-<center>Figure 1</center>
-
-<p>　　而这样做的目的是为了方便做<strong>剪切(clipping)</strong>。一方面去除那些在视野范围之外的图元（不必浪费资源渲染它们），另一方面对那些一部分在视野内一部分在视野外的图元做修剪（Figure 2）。</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure2.png" alt="figure2"></p>
-<center>Figure 2</center>
-
-<p><code>这里有一个剪切空间(Clip Space)的概念，与 NDC 空间不同。我们稍后再做介绍 。</code></p>
-<h1 id="透视投影矩阵"><a href="#透视投影矩阵" class="headerlink" title="透视投影矩阵"></a>透视投影矩阵</h1><p>　　现在我们可以开始构造透视投影矩阵了。回顾一下之前的透视投影的内容，相机空间中的点投影到成像平面上（Figure 3）的变化为：</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure3.png" alt="figure 3"></p>
-<center>Figure 3</center>
-
-<p>$$<br>P_{S_x} = \cfrac{n * P_x}{-P_z} \\<br>P_{S_y} = \cfrac{n * P_y}{-P_z}<br>$$</p>
-<p>　　我们发现计算投影要除以 $P_z$ 坐标，但这是矩阵的线性变换做不到的，矩阵只能线性的组合 $P_x$，$P_y$，$P_z$ 来得到 $P_{S_x}$，$P_{S_y}$，$P_{S_z}$，于是我们引入<strong>其次坐标</strong>，将空间点扩充为 $[P_x, P_y, P_z, P_w = 1]$。<br>　　同时对矩阵做特定设定，使其将转换后的 $P_{S_w}$ 分量设置为 $-P_z$，这样通过 $[P_{S_x}, P_{S_y}, P_{S_z}, P_{S_w}]$ 整体除以 $P_{S_w}$ 分量便实现了除法变换。</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        … &amp; … &amp; … &amp; … \\<br>        … &amp; … &amp; … &amp; … \\<br>        … &amp; … &amp; … &amp; … \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>*<br>\left[<br>    \begin{matrix}<br>        P_x \\<br>        P_y \\<br>        P_z \\<br>        1<br>    \end{matrix}<br>\right]<br>=<br>\left[<br>    \begin{matrix}<br>        P_{S_x} \\<br>        P_{S_y} \\<br>        P_{S_z} \\<br>        -P_z<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　接下来继续构造其它分量，假设成像平面坐标系的 $x$ 坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$，近剪切平面和远剪切平面分别为 $n, f$。<br>　　由<a href="https://ain-crad.github.io/2019/08/11/%E5%85%89%E6%A0%85%E5%8C%96%E6%B8%B2%E6%9F%93-2-%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1/#more" target="_blank" rel="noopener">透视投影的拓展内容</a>中我们知道，若要使相机坐标 $P_x$ 变换到屏幕坐标 $P_{S_x}$ 且范围为 $[-1, 1]$，那么</p>
-<p>$$<br>P_{S_x} = \cfrac{2nP_x}{-P_z(r-l)}-\cfrac{r+l}{r-l}<br>$$</p>
-<p>　　由于 $\cfrac{1}{-P_z}$ 部分可以除以 $P_{S_w}$ 分量得到，所以矩阵的形式可以构造为：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        … &amp; … &amp; … &amp; … \\<br>        … &amp; … &amp; … &amp; … \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　同理</p>
-<p>$$<br>P_{S_y} = \cfrac{2nP_y}{-P_z(t-b)}-\cfrac{t+b}{t-b}<br>$$</p>
-<p>　　进一步扩充矩阵</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        0 &amp; \cfrac{2n}{t-b} &amp; \cfrac{t+b}{t-b} &amp; 0 \\<br>        … &amp; … &amp; … &amp; … \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　现在只需要构造出 $P_z$ 分量部分的矩阵，使变换后的 $P_{S_z}$ 的范围为 $[-1, 1]$，由于 $P_{S_z}$ 和 $P_x, P_y$ 分量都无关，因此矩阵可以写成如下形式：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        0 &amp; \cfrac{2n}{t-b} &amp; \cfrac{t+b}{t-b} &amp; 0 \\<br>        0 &amp; 0 &amp; A &amp; B \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　$A$ 和 $B$ 是我们待求解的部分，它们满足：</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/equation1.png" alt="equation 1"></p>
-<p>　　当 $P_z = -n$ 即点 $P$ 在近平面上时，$P_{S_z} = -1$；当 $P_z = -f$ 即点 $P$ 在远平面上时，$P_{S_z} = 1$。所以可以得到下面的方程组：</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/equation2.png" alt="equation 2"></p>
-<p>　　解方程组得：</p>
-<p>$$<br>A = -\cfrac{f+n}{f-n} \\<br>B = -\cfrac{2fn}{f-n}<br>$$</p>
-<p>　　于是我们就得到了最终的透视投影矩阵：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>        \cfrac{2n}{r-l} &amp; 0 &amp; \cfrac{r+l}{r-l} &amp; 0 \\<br>        0 &amp; \cfrac{2n}{t-b} &amp; \cfrac{t+b}{t-b} &amp; 0 \\<br>        0 &amp; 0 &amp; -\cfrac{f+n}{f-n} &amp; -\cfrac{2fn}{f-n} \\<br>        0 &amp; 0 &amp; -1 &amp; 0<br>    \end{matrix}<br>\right]<br>$$</p>
-<p>　　由于 $P_z$ 映射到 $[-1, 1]$ 的变化不是线性的，靠近近剪切平面的点的精度高，靠近远剪切平面的点的精度低（Figure 4），图中 $n = 1$，$f = 5$。</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure4.png" alt="figure4"></p>
-<center>Figure 4</center>
-
-<p>　　当精度过低时，可能会出现 <strong>z-fighting</strong> 的现象，即不同 $P_z$ 坐标的点映射到 $P_{S_z}$ 是相同的。这个问题无法被真正解决，我们只能通过使两个剪切平面之间的距离在包含所有物体的前提下尽可能的接近，来尽量避免 <strong>z-fighting</strong> 的问题。（Figure 5）</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure5.png" alt="figure5"></p>
-<center>Figure 5</center>
-
-<h1 id="视场（Fov）和图像纵横比（Aspect-Ratio）"><a href="#视场（Fov）和图像纵横比（Aspect-Ratio）" class="headerlink" title="视场（Fov）和图像纵横比（Aspect Ratio）"></a>视场（Fov）和图像纵横比（Aspect Ratio）</h1><p>　　求解透视投影矩阵时用到了6个参数 <strong>near，far，left，right，top，bottom</strong>。其中 near 和 far 是人为指定的，而剩下的4个参数则是由<strong>视场(Fov)</strong>以及<strong>图像纵横比(Aspect Ratio)</strong>决定的（Figure 6）。</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure6.png" alt="figure 6"></p>
-<center>Figure 6</center>
-
-<p>　　由简单的比例关系可以得到：</p>
-<p>$$<br>tan(\cfrac{FOV}{2}) = \cfrac{opposite}{adjacent} = \cfrac{BC}{AB} = \cfrac{top}{near}<br>$$</p>
-<p>　　因此</p>
-<p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;bottom = -top<br>\end{align}<br>$$</p>
-<p>　　<code>这里假设了 filed-of-view 是纵向的，OpenGL 就是默认 fov 为纵向，但是同时需要注意的是其它渲染器有可能默认 fov 为横向，如 Maya 和 RenderMan。</code></p>
-<p>　　如图（Figure 7）图像的纵横比有可能相等也有可能不等：</p>
-<p><img src="/2019/09/20/光栅化渲染-6-透视投影矩阵/figure7.png" alt="figure 7"></p>
-<center>Figure 7</center>
-
-<p>　　若纵横比相等，由对称关系可得：</p>
-<p>$$<br>\begin{align}<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp;right = top \\<br>&amp;left = bottom = -top<br>\end{align}<br>$$</p>
-<p>　　若纵横比不等，借助 aspect ratio 可得：</p>
-<p>$$<br>\begin{align}<br>&amp;aspect ratio = \cfrac{width}{height} \\<br>&amp;top = tan(\cfrac{FOV}{2})*near \\<br>&amp; bottom = -top \\<br>&amp;right = top * aspect ratio \\<br>&amp;left = -right<br>\end{align}<br>$$</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrices-what-you-need-to-know-first" target="_blank" rel="noopener">Scratchapixel-Projection Matrices: What You Need to Know First</a><br><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/opengl-perspective-projection-matrix" target="_blank" rel="noopener">Scratchapixel-The OpenGL Perspective Projection Matrix</a></p>
-
-          
+          <p>　　<em>GPU结构被设计的非常适合矩阵运算，把透视投影过程用矩阵表达出来可以加速计算。</em></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/20/光栅化渲染-6-透视投影矩阵/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
