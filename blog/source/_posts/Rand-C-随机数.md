@@ -9,7 +9,31 @@ tags:
 ![random](/random.jpg)
 
 　　*C++随机数发生器。*
-<!--more-->
+
+
+# Update
+　　c++11中提供了一种新的产生随机数的方式:
+
+```C++
+#include <iostream>
+#include <random>
+
+int main(){
+    std::random_device device;
+    std::mt19937 generator(device());
+    std::uniform_int_distribution<int> distribution(1, 10); // random integer number bewteen [1, 10]
+    //std::uniform_real_distribution<> distribution(0, 1); // random real number bewteen [0, 1]
+
+    for (uint8_t i = 0; i < 10; i++){
+        std::cout << distribution(generator) << ' ';
+    }
+    std::cout << std::endl;
+}
+```
+## 参考链接
+[Generating random numbers in C++](https://diego.assencio.com/?index=6890b8c50169ef45b74db135063c227c)
+
+----------------------``以下为原答案``---------------------
 
 # rand()
 　　生成随机整数的核心函数是``cstdlib``中的``rand()``，它生成一个闭区间 [0, RAND_MAX] 内的均匀随机数（均匀的含义是：该区间内每个整数被随机获取的概率相同），其中``RAND_MAX``是定义在cstdlib中的一个宏变量，在不同环境下的值可能不同，但是保证至少为$32767(2^{15} - 1)$。
