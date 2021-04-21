@@ -32,8 +32,5 @@
   },
   "resolutions": {
     "lodash": "^4.17.11"
-  },
-  "scripts": {
-    "preinstall": "npx npm-force-resolutions"
   }
 }
