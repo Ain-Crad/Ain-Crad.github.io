@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vultr服务器搭建,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="工欲善其事必先利其器。　　前一段时间在陶司机学长的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。　　觉得靠免费的VPN软件不是长久之计（一方面是速度不理想，另一方面是考虑安全的问题），于是搭了梯子，终于可以愉快的">
+<meta name="keywords" content="vultr服务器搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu下vultr服务器搭建">
+<meta property="og:url" content="http://yoursite.com/2018/04/13/vultr/index.html">
+<meta property="og:site_name" content="Aincrad&#39;s blog">
+<meta property="og:description" content="工欲善其事必先利其器。　　前一段时间在陶司机学长的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。　　觉得靠免费的VPN软件不是长久之计（一方面是速度不理想，另一方面是考虑安全的问题），于是搭了梯子，终于可以愉快的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p1.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p2.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p3.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p4.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p5.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p6.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p7.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p8.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/13/vultr/p9.png">
+<meta property="og:updated_time" content="2019-09-01T09:01:24.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu下vultr服务器搭建">
+<meta name="twitter:description" content="工欲善其事必先利其器。　　前一段时间在陶司机学长的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。　　觉得靠免费的VPN软件不是长久之计（一方面是速度不理想，另一方面是考虑安全的问题），于是搭了梯子，终于可以愉快的">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/13/vultr/p1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/13/vultr/">
+
+
+
+
+
+  <title>ubuntu下vultr服务器搭建 | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aincrad's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">To make the world a better place</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br>
+            
+            友情链接
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/13/vultr/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aincrad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aincrad's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ubuntu下vultr服务器搭建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-13T19:09:32+08:00">
+                2018-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Messy-article/" itemprop="url" rel="index">
+                    <span itemprop="name">Messy article</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/13/vultr/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/13/vultr/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/13/vultr/" class="leancloud_visitors" data-flag-title="ubuntu下vultr服务器搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　工欲善其事必先利其器。<br>　　前一段时间在<a href="http://logqtainia.github.io/" target="_blank" rel="noopener">陶司机学长</a>的帮助下搭了自己的梯子，因为实在是受不了某度的搜索引擎了…，某天电脑出了一个小问题，去某度搜，２个小时过去没有任何头绪，无奈挂了VPN软件搜谷歌，搜索结果的第一条就是解决办法，，，没有对比就没有伤害，google真是一家伟大的公司。<br>　　觉得靠免费的VPN软件不是长久之计（一方面是速度不理想，另一方面是考虑安全的问题），于是搭了梯子，终于可以愉快的用google了(•̀⌄•́)，用这篇博客记录一下搭建的过程。</p>
+<a id="more"></a>
+
+<h1 id="注册vultr账号"><a href="#注册vultr账号" class="headerlink" title="注册vultr账号"></a>注册vultr账号</h1><p><a href="https://www.vultr.com/" target="_blank" rel="noopener">链接</a></p>
+<h1 id="创建vultr主机"><a href="#创建vultr主机" class="headerlink" title="创建vultr主机"></a>创建vultr主机</h1><p>　　点击右上角的蓝色加号，创建新的vultr主机</p>
+<p><img src="/2018/04/13/vultr/p1.png" alt="p1"></p>
+<p>　　服务器位置选择，推荐选择新加坡，或者美国的服务器(日本服务器已基本被墙)</p>
+<p><img src="/2018/04/13/vultr/p2.png" alt="p2"></p>
+<p>　　服务器端系统选择，选择ubuntu</p>
+<p><img src="/2018/04/13/vultr/p3.png" alt="p3"></p>
+<p>　　服务器配置选择,配置越高价格也越高，一般最便宜的2.5刀/month就够用了，但是很难抢到，，，于是就选5刀/month的了。</p>
+<p><img src="/2018/04/13/vultr/p4.png" alt="p4"></p>
+<p>　　其它的选项不需要填写，点击支付就ok(ps:从2017年10月开始支持支付宝支付！！)</p>
+<p><img src="/2018/04/13/vultr/p5.png" alt="p5"></p>
+<p>　　接下来等待主机部署完成即可。</p>
+<h1 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h1><p>　　服务器端，也就是你刚刚创建的那台主机。<br>　　点击主机右侧”…”展开菜单，选择”Server Details”可以看到这台主机的一些信息。包括这台主机的IP地址(IP Address)、用户名(Username)、密码(Password)等，这些信息下面需要用到。<br><img src="/2018/04/13/vultr/p6.png" alt="p6"></p>
+<p>　　打开终端，使用ssh远程登录到主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@你的主机IP地址</span><br></pre></td></tr></table></figure>
+
+<p>　　之后输入你的主机密码进行登录(可以在主机信息页面直接复制，粘贴到终端里时不会显示，但已存在,直接回车即可)。<br>　　登录成功后使用一键配置脚本进行配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh</span><br></pre></td></tr></table></figure>
+
+<p>　　终端中会出现如下界面，输入１选择安装shadowsocksR</p>
+<p><img src="/2018/04/13/vultr/p7.png" alt="p7"></p>
+<p>　　之后会依次要求设置端口号(推荐设置8000以上)、密码、加密方式、协议、混淆等，下面给出我的几个主要配置选择</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">加密方式(method):none</span><br><span class="line">协议(protocol):auth_chain_a</span><br><span class="line">混淆(obfs):plain</span><br></pre></td></tr></table></figure>
+
+<p>　　服务器端配置完成，终端中输入exit退出ssh登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ exit</span><br></pre></td></tr></table></figure>
+
+<h1 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h1><p>　　客户端，也就是你的个人电脑。<br>　　在终端中依次输入如下命令安装配置客户端的ssr(shadowsocksR)，注意此时一定要确保已经在终端中退出ssh登录，或者新打开一个终端。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://www.djangoz.com/ssr</span><br><span class="line">$ sudo mv ssr /usr/local/bin</span><br><span class="line">$ sudo chmod 766 /usr/local/bin/ssr</span><br><span class="line">$ ssr install</span><br><span class="line">$ ssr config</span><br></pre></td></tr></table></figure>
+
+<p>　　配置和服务器端保持一致即可，下面给出示例，只需配置server、server_port、password、method、protocol、obfs这几项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&quot;server&quot;: &quot;11.22.33.44&quot;,</span><br><span class="line">&quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line">&quot;server_port&quot;: 1234,</span><br><span class="line">&quot;local_address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">&quot;local_port&quot;: 1080,</span><br><span class="line"></span><br><span class="line">&quot;password&quot;: &quot;123456789&quot;,</span><br><span class="line">&quot;method&quot;: &quot;none&quot;,</span><br><span class="line">&quot;protocol&quot;: &quot;auth_chain_a&quot;,</span><br><span class="line">&quot;protocol_param&quot;: &quot;&quot;,</span><br><span class="line">&quot;obfs&quot;: &quot;plain&quot;,</span><br><span class="line">&quot;obfs_param&quot;: &quot;&quot;,</span><br><span class="line">&quot;speed_limit_per_con&quot;: 0,</span><br><span class="line">&quot;speed_limit_per_user&quot;: 0,</span><br><span class="line"></span><br><span class="line">&quot;additional_ports&quot; : &#123;&#125;, // only works under multi-user mode</span><br><span class="line">&quot;additional_ports_only&quot; : false, // only works under multi-user mode</span><br><span class="line">&quot;timeout&quot;: 120,</span><br><span class="line">&quot;udp_timeout&quot;: 60,</span><br><span class="line">&quot;dns_ipv6&quot;: false,</span><br><span class="line">&quot;connect_verbose_info&quot;: 0,</span><br><span class="line">&quot;redirect&quot;: &quot;&quot;,</span><br></pre></td></tr></table></figure>
+
+<p>　　以后若想修改配置，在终端中输入ssr config即可(服务器端也要对应修改)，还有打开和关闭命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssr start</span><br><span class="line">ssr stop</span><br></pre></td></tr></table></figure>
+
+<h1 id="可能的问题"><a href="#可能的问题" class="headerlink" title="可能的问题"></a>可能的问题</h1><p>　　检查自己是否可以登录google、youtube、twitter等网站，若依旧不能可尝试用以下方法解决。</p>
+<ul>
+<li><p>依次打开ubuntu系统设置-&gt;网络-&gt;网络代理，设置如下<br><img src="/2018/04/13/vultr/p8.png" alt="p8"></p>
+</li>
+<li><p>推荐使用chrome浏览器+proxy SwitchyOmega插件(可离线安装)<br>proxy SwitchyOmega配置如下<br><img src="/2018/04/13/vultr/p9.png" alt="p9"></p>
+</li>
+<li><p>有可能申请的服务器的ip被墙，可通过在线网站验证是否可以ping通，若确认ip被墙，在你的vultr账户中申请更换即可(更换服务器位置，或只更换ip地址)</p>
+</li>
+</ul>
+<p>　　<em>ps:服务器端配置好后，windows、android端只需下载shadowsocksR软件并进行简单配置即可使用</em></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vultr服务器搭建/" rel="tag"># vultr服务器搭建</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/09/hexo-mathjax/" rel="next" title="hexo中mathjax使用坑点">
+                <i class="fa fa-chevron-left"></i> hexo中mathjax使用坑点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/POJ2481/" rel="prev" title="POJ2481-线段树单点更新">
+                POJ2481-线段树单点更新 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Aincrad">
+            
+              <p class="site-author-name" itemprop="name">Aincrad</p>
+              <p class="site-description motion-element" itemprop="description">Aincrad's blog 记录生活、思考和进步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Ain-Crad" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aincrad@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Iron_Lv" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注册vultr账号"><span class="nav-number">1.</span> <span class="nav-text">注册vultr账号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建vultr主机"><span class="nav-number">2.</span> <span class="nav-text">创建vultr主机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器端配置"><span class="nav-number">3.</span> <span class="nav-text">服务器端配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端配置"><span class="nav-number">4.</span> <span class="nav-text">客户端配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可能的问题"><span class="nav-number">5.</span> <span class="nav-text">可能的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aincrad</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz',
+        appKey: 'NIP5Gqn2qVviUE2rp4ajjUUW',
+        placeholder: 'Write your comments here',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz", "NIP5Gqn2qVviUE2rp4ajjUUW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
