@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="rasterization,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="画家用透视投影的方法作画，以获得接近真实三维物体的视觉效果。">
+<meta name="keywords" content="rasterization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="光栅化渲染(2)-透视投影">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/index.html">
+<meta property="og:site_name" content="Aincrad&#39;s blog">
+<meta property="og:description" content="画家用透视投影的方法作画，以获得接近真实三维物体的视觉效果。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/perspective.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure1.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure2.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure3.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure4.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/figure5.png">
+<meta property="og:updated_time" content="2021-04-21T03:30:14.780Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="光栅化渲染(2)-透视投影">
+<meta name="twitter:description" content="画家用透视投影的方法作画，以获得接近真实三维物体的视觉效果。">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/perspective.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/">
+
+
+
+
+
+  <title>光栅化渲染(2)-透视投影 | Aincrad's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aincrad's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">To make the world a better place</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br>
+            
+            友情链接
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/光栅化渲染-2-透视投影/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aincrad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aincrad's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">光栅化渲染(2)-透视投影</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-11T10:55:42+08:00">
+                2019-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Graphics/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Graphics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Graphics/光栅化渲染/" itemprop="url" rel="index">
+                    <span itemprop="name">光栅化渲染</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/11/光栅化渲染-2-透视投影/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/11/光栅化渲染-2-透视投影/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/11/光栅化渲染-2-透视投影/" class="leancloud_visitors" data-flag-title="光栅化渲染(2)-透视投影">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2019/08/11/光栅化渲染-2-透视投影/perspective.png" alt="perspective projection"></p>
+<p>　　<em>画家用透视投影的方法作画，以获得接近真实三维物体的视觉效果。</em></p>
+<a id="more"></a>
+
+<h1 id="透视投影"><a href="#透视投影" class="headerlink" title="透视投影"></a>透视投影</h1><p>　　透视投影是三维投影的一种，是将三维空间中的点映射到二维平面上的方法。由于目前绝大多数图形数据的显示方式仍是二维的，因此三维投影的在计算机图形学等方面应用广泛。</p>
+<h1 id="投影原理"><a href="#投影原理" class="headerlink" title="投影原理"></a>投影原理</h1><p>　　透视投影符合人眼成像的特点，以人眼作为视点，在视网膜上的图像就是空间物体投影的结果。<br>　　如图(Figure 1)，点 $P$ 为空间中的一点，$P^\prime$ 为其投影在成像平面上的点，$A$ 为视点。</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure1.png" alt="figure 1"></p>
+<center>Figure 1</center>
+
+<p>　　由 $\Delta ABC$ 和 $\Delta AB^\prime C^\prime$ 相似可以得到：</p>
+<p>$$<br>\cfrac{BC}{AB}=\cfrac{B^\prime C^\prime}{AB^\prime}，即 \cfrac{P.y}{P.z}=\cfrac{P^\prime.y}{near}<br>$$</p>
+<p>　　其中<code>near</code>为视点到成像平面的距离。</p>
+<p>$$P^\prime.y=\cfrac{near * P.y}{P.z}$$</p>
+<p>　　同理可得，</p>
+<p>$$P^\prime.x=\cfrac{near * P.x}{P.z}$$</p>
+<p>　　由于默认情况下相机指向z轴的负半轴(Figure 2)，所以实际上要对相机坐标系下的z轴坐标取反。</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure2.png" alt="figure 2"></p>
+<center>Figure 2</center>
+
+<p>$$<br>P_{screen}.x = \cfrac{near * P_{camera}.x}{-P_{camera}.z} \\<br>P_{screen}.y = \cfrac{near * P_{camera}.y}{-P_{camera}.z}<br>$$</p>
+<p>　　假设图片的尺寸为 $W * H$，那么投影后的坐标与该点可见性的关系如下：</p>
+<p>$$<br>visible=<br>\begin{cases}<br>    yes &amp; |P_{screen}.x| &lt;= \cfrac{W}{2} \quad \text{or} \quad |P_{screen}.y| &lt;= \cfrac{H}{2} \\<br>    no &amp; \text{otherwise}<br>\end{cases}<br>$$</p>
+<h1 id="坐标系变换"><a href="#坐标系变换" class="headerlink" title="坐标系变换"></a>坐标系变换</h1><p>　　我们的目标是获得投影点的像素坐标，所以要对坐标系进行变换，由成像平面坐标系变为光栅坐标系。<br>　　相机成像平面上一点 $P_{screen}$ (Figure 3)</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure3.png" alt="figure 3"></p>
+<center>Figure 3</center>
+
+<p>　　先将其转换为 $NDC$ 坐标系下(Figure 4)，范围为 $[0, 1]$</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure4.png" alt="figure 4"></p>
+<center>Figure 4</center>
+
+<p>$$<br>P_{normalized}.x=\cfrac{P_{screen}.x + W/2}{W} \\<br>P_{normalized}.y=\cfrac{P_{screen}.y + H/2}{H}<br>$$</p>
+<p>　　最后转换为光栅化坐标(Figure 5)</p>
+<p><img src="/2019/08/11/光栅化渲染-2-透视投影/figure5.png" alt="figure 5"></p>
+<center>Figure 5</center>
+
+<p>$$<br>P_{raster}.x=P_{normalized}.x * pixelWidth \\<br>P_{raster}.y=(1-P_{normalized}.y) * pixelHeight<br>$$</p>
+<p>　　<em>注意区分</em> $W$ <em>和</em> $pixelWidth$，<em>W指的是图片的物理尺寸，以 m 或 mm 等为单位，pixelWidth指的是图片的横向像素的个数。</em><br>　　由此可得<strong>相机坐标系</strong>到<strong>光栅坐标系</strong>的转换公式：</p>
+<p>$$<br>P_{raster}.x=(1 + \cfrac{near * P_{camera}.x}{-W * P_{camera}.z})* 0.5 * pixelWidth \\<br>P_{raster}.y=(1 - \cfrac{near * P_{camera}.y}{-W * P_{camera}.z}) * 0.5 * pixelHeight<br>$$</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>　　上面提到的 $NDC$ 坐标范围为 $[0, 1]$，实际上在GPU的实现中， $NDC$ 坐标范围为 $[-1, 1]$。另外讨论更一般的情况，假设成像平面坐标系的 $x$ 坐标范围为 $[l, r]$，$y$ 坐标范围为 $[b, t]$。<br>　　此时由成像平面坐标系到 $NDC$ 坐标系的映射关系可以通过以下方式求解，先考虑 $x$：<br>　　由 $l&lt;=x&lt;=r$，可得 $0&lt;=x-l&lt;=r-l$，各项同时除以 $(r-l)$：</p>
+<p>$$<br>0 &lt;= \cfrac{x-l}{r-l} &lt;= 1<br>$$</p>
+<p>　　公式各项同时乘以 $2$ 再减去 $1$：</p>
+<p>$$<br>-1 &lt;= 2 * \cfrac{x-l}{r-l} - 1 &lt;= 1<br>$$</p>
+<p>　　化简得：</p>
+<p>$$<br>-1 &lt;= \cfrac{2x}{r-l}-\cfrac{r+l}{r-l} &lt;= 1，即 \quad P_{normalized}.x = \cfrac{2*P_{screen}.x}{r-l}-\cfrac{r+l}{r-l}<br>$$</p>
+<p>　　同理可得：</p>
+<p>$$<br>-1 &lt;= \cfrac{2y}{t-b}-\cfrac{t+b}{t-b} &lt;= 1，即 \quad P_{normalized}.y = \cfrac{2*P_{screen}.y}{t-b}-\cfrac{t+b}{t-b}<br>$$</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/computing-pixel-coordinates-of-3d-point/mathematics-computing-2d-coordinates-of-3d-points" target="_blank" rel="noopener">Scratchpixel-Mathematics of Computing the 2D Coordinates of a 3D Point</a><br><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/projection-stage" target="_blank" rel="noopener">Scratchpixel-The Projection Stage</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rasterization/" rel="tag"># rasterization</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/10/光栅化渲染-1-算法总述/" rel="next" title="光栅化渲染(1)-算法总述">
+                <i class="fa fa-chevron-left"></i> 光栅化渲染(1)-算法总述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/15/光栅化渲染-3-光栅化/" rel="prev" title="光栅化渲染(3)-光栅化">
+                光栅化渲染(3)-光栅化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Aincrad">
+            
+              <p class="site-author-name" itemprop="name">Aincrad</p>
+              <p class="site-description motion-element" itemprop="description">Aincrad's blog 记录生活、思考和进步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Ain-Crad" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aincrad@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Iron_Lv" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#透视投影"><span class="nav-number">1.</span> <span class="nav-text">透视投影</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#投影原理"><span class="nav-number">2.</span> <span class="nav-text">投影原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#坐标系变换"><span class="nav-number">3.</span> <span class="nav-text">坐标系变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拓展"><span class="nav-number">4.</span> <span class="nav-text">拓展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aincrad</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz',
+        appKey: 'NIP5Gqn2qVviUE2rp4ajjUUW',
+        placeholder: 'Write your comments here',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QwbQGlWuVyLgFLMy9UCKkT0B-gzGzoHsz", "NIP5Gqn2qVviUE2rp4ajjUUW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
